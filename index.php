@@ -18,7 +18,8 @@ require_once('protect.php');
 	     flex-direction: column;
 	     max-width: 50rem;
 	     margin: 0 auto;
-	     padding: 0 0.9375rem;  
+	     padding: 0 0.9375rem;
+	     line-height: 1.9;
          }
          h1,
          h2,
@@ -41,7 +42,7 @@ require_once('protect.php');
              margin-bottom: 1%;
              height: 96px;
              width: 96px;
-        }
+         }
          #center {
              text-align: center;
              margin: 0 auto;
