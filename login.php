@@ -25,7 +25,7 @@ if (isset($_POST['password']) && $_POST['password'] == $password) {
 	    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	    <meta name="viewport" content="width=device-width">
 	    <link rel="shortcut icon" href="favicon.ico" />
-	    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+	    <link rel="stylesheet" href="terminal.css">
 	    <title>micro.sth</title></title>
 	</head>
     </head>

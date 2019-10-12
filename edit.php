@@ -9,7 +9,7 @@ require_once('protect.php');
 	<meta charset="utf-8">
 	<title>micro.sth</title>
 	<link rel="shortcut icon" href="favicon.png" />
-	<link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+	<link rel="stylesheet" href="terminal.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 	 body {
