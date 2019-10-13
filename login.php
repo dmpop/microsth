@@ -21,13 +21,22 @@ if (isset($_POST['password']) && $_POST['password'] == $password) {
 <!DOCTYPE html>
 <html>
     <head>
-	<head>
-	    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	    <meta name="viewport" content="width=device-width">
-	    <link rel="shortcut icon" href="favicon.ico" />
-	    <link rel="stylesheet" href="terminal.css">
-	    <title>micro.sth</title></title>
-	</head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width">
+	<link rel="shortcut icon" href="favicon.png" />
+	<link rel="stylesheet" href="terminal.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	 body {
+	     display: flex;
+	     flex-direction: column;
+	     max-width: 50rem;
+	     margin: 0 auto;
+	     padding: 0 0.9375rem;
+	     line-height: 1.9;
+	 }
+	</style>
+	<title>micro.sth</title>
     </head>
     <body>
 	<div style="text-align:center;margin-top:50px;">
