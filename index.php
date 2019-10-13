@@ -29,6 +29,7 @@ require_once('protect.php');
              margin-top: 2%;
          }
          img {
+	     border-radius: 1em;
              max-width: 100%;
 	     display: block;
 	     align-self: center;
