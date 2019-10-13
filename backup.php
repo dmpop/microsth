@@ -53,7 +53,7 @@ require_once('protect.php');
 	<?php
 	$gravatar_link = 'https://icotar.com/avatar/monkey.png';
 	echo '<img class="gravatar" src="'.$gravatar_link.'" />';
-        echo '<div id="center"><a href="https://'.$_SERVER[HTTP_HOST].DIRECTORY_SEPARATOR.basename(__DIR__).'">micro.sth</a></div>';
+        echo '<div id="center"><a href="index.php">micro.sth</a></div>';
 	$DTSTAMP = date('Ymd-His');
 	$MDFILE = 'data.md';
 	$BACKUP = 'backup/'.$DTSTAMP.'.md';

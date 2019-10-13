@@ -53,7 +53,7 @@ require_once('protect.php');
         <?php
         $gravatar_link = 'https://icotar.com/avatar/monkey.png';
         echo '<img class="gravatar" src="'.$gravatar_link.'" />';
-        echo '<div id="center"><a href="https://'.$_SERVER[HTTP_HOST].DIRECTORY_SEPARATOR.basename(__DIR__).'">micro.sth</a></div>';
+        echo '<div id="center"><a href="https://gitlab.com/dmpop/microsth">micro.sth</a></div>';
         echo "<div id='center'><form method='GET' action='edit.php'>
         <p style='margin-top:3em;'><button class='btn btn-primary' type='submit'>Edit</button></p>
             </form></div>";
