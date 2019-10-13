@@ -12,6 +12,7 @@ require_once('protect.php');
 	<link rel="shortcut icon" href="favicon.png" />
 	<link rel="stylesheet" href="terminal.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="refresh" content="3;url=index.php" />
 	<style>
 	 body {
 	     display: flex;
