@@ -56,11 +56,14 @@ require_once('protect.php');
         $gravatar_link = 'https://icotar.com/avatar/monkey.png';
         echo '<img class="gravatar" src="'.$gravatar_link.'" />';
         echo '<div id="center"><a href="https://gitlab.com/dmpop/microsth">micro.sth</a></div>';
-	{
+	if (file_exists("random.md")) {
 	    $f = file("random.md");
 	    $line = $f[array_rand($f)];
 	    $Parsedown = new Parsedown();
 	    echo "<div id='center'><p style='margin-top:1.9em;'>".$Parsedown->text($line)."</p></div";
+	}
+	if (!file_exists("img")) {
+	    mkdir("img", 0777, true);
 	}
         echo "<div id='center'><form method='GET' action='edit.php'>
         <p style='margin-top:3em;'><button class='btn btn-primary' type='submit'>Edit</button></p>
