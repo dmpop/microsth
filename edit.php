@@ -89,6 +89,22 @@ require_once('protect.php');
 	    <p style="margin-top:3em;" >
 		<button class="btn btn-primary" type="submit" role="button" name="submit">Backup</button>
 	</form>
+	<?php
+	if(isset($_POST['submit'])){
+	    // Count total files
+	    $countfiles = count($_FILES['file']['name']);
+	    // Looping all files
+	    for($i=0;$i<$countfiles;$i++){
+		$filename = $_FILES['file']['name'][$i];
+		// Upload file
+		move_uploaded_file($_FILES['file']['tmp_name'][$i],'img/'.$filename);
+	    }
+	} 
+	?>
+	<form method='post' action='' enctype='multipart/form-data'>
+	    <input type="file" name="file[]" id="file" multiple>
+	    <button class="btn btn-default" type="submit" role="button" name="submit">Upload</button>
+	</form>
             </div>
     </body>
 </html>
