@@ -81,29 +81,24 @@ require_once('protect.php');
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 	    <textarea name="text"><?php Read(); ?></textarea><br /><br />
 	    <div id="center">
-		<button class="btn btn-default btn-ghost" type="submit" role="button" name="submit">Save</button>
+		<button style="display: inline;" class="btn btn-default" type="submit" role="button" name="submit">Save</button>
 		<input type="hidden" name="submit_check" value="1">
         </form>
-
-        <form action="backup.php" method="get">
-	    <p style="margin-top:3em;" >
-		<button class="btn btn-primary" type="submit" role="button" name="submit">Backup</button>
-	</form>
 	<?php
 	if(isset($_POST['submit'])){
-	    // Count total files
 	    $countfiles = count($_FILES['file']['name']);
-	    // Looping all files
 	    for($i=0;$i<$countfiles;$i++){
 		$filename = $_FILES['file']['name'][$i];
-		// Upload file
 		move_uploaded_file($_FILES['file']['tmp_name'][$i],'img/'.$filename);
 	    }
 	} 
 	?>
-	<form method='post' action='' enctype='multipart/form-data'>
+	<form style="display:inline!important;" method='post' action='' enctype='multipart/form-data'>
 	    <input type="file" name="file[]" id="file" multiple>
-	    <button class="btn btn-default" type="submit" role="button" name="submit">Upload</button>
+	    <button style="display: inline;" class="btn btn-default" type="submit" role="button" name="submit">Upload</button>
+	</form>
+	<form style="display:inline!important;" action="backup.php" method="get">
+	    <button style="display: inline;" class="btn btn-primary" type="submit" role="button" name="submit">Backup</button>
 	</form>
             </div>
     </body>
