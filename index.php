@@ -1,5 +1,6 @@
 <?php
 require_once('protect.php');
+include 'inc/parsedown.php';
 ?>
 
 <html lang="en">
@@ -52,7 +53,6 @@ require_once('protect.php');
     </head>
     <body>
         <?php
-	include 'parsedown.php';
         $gravatar_link = 'https://icotar.com/avatar/monkey.png';
         echo '<img class="gravatar" src="'.$gravatar_link.'" />';
         echo '<div id="center"><a href="https://gitlab.com/dmpop/microsth">micro.sth</a></div>';

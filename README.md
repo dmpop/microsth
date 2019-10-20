@@ -1,6 +1,6 @@
 # micro.sth
 
-micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool written in PHP that can be used for keeping a persoal microblog, drafting articles, keeping notes, and whatnot. micro.sth stores content is in a plain text file. The tool supports Markdown and automatically paginates long texts. micro.sth also provides simple password protection and backup functionality. If you add a _random.md_ file with a list of phrases or quotes, micro.sth will display them randomly.
+micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool written in PHP that can be used for keeping a persoal microblog, drafting articles, keeping notes, and whatnot. micro.sth stores content is in a plain text file. The tool supports Markdown and automatically paginates long texts. micro.sth also provides simple password protection and backup functionality. If you add a _random.md_ file with a list of phrases or quotes, micro.sth will display them randomly. micro.sth also allows you to upload images and resize them on-the-fly.
 
 ## Dependencies
 

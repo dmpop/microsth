@@ -1,5 +1,7 @@
 <?php
+namespace Verot\Upload;
 require_once('protect.php');
+include('inc/class.upload.php');
 ?>
 
 <html lang='en'>
@@ -86,15 +88,23 @@ require_once('protect.php');
         </form>
 	<?php
 	if(isset($_POST['submit'])){
-	    $countfiles = count($_FILES['file']['name']);
-	    for($i=0;$i<$countfiles;$i++){
-		$filename = $_FILES['file']['name'][$i];
-		move_uploaded_file($_FILES['file']['tmp_name'][$i],'img/'.$filename);
+	    $handle = new \verot\Upload\Upload($_FILES['image_field']);
+	    if ($handle->uploaded) {
+		$handle->image_resize  = true;
+		$handle->image_x = 600;
+		$handle->image_ratio_y = true;
+		$handle->process('img');
+		if ($handle->processed) {
+		    echo 'OK';
+		    $handle->clean();
+		} else {
+		    echo 'error : ' . $handle->error;
+		}
 	    }
 	} 
 	?>
-	<form style="display:inline!important;" method='post' action='' enctype='multipart/form-data'>
-	    <input type="file" name="file[]" id="file" multiple>
+	<form style="display:inline!important;" enctype="multipart/form-data" method="post" action="">
+	    <input type="file" size="32" name="image_field" value="">
 	    <button style="display: inline;" class="btn btn-default" type="submit" role="button" name="submit">Upload</button>
 	</form>
 	<form style="display:inline!important;" action="backup.php" method="get">
