@@ -1,6 +1,9 @@
 <?php
-require_once('protect.php');
+require_once('protect.php'); // Comment this line to remove password protection
 include 'inc/parsedown.php';
+
+// User-defined parameters
+$perpage = 50; // Pagination limit
 ?>
 
 <html lang="en">

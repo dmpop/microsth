@@ -95,7 +95,7 @@ include('inc/class.upload.php');
 		$handle->image_ratio_y = true;
 		$handle->process('img');
 		if ($handle->processed) {
-		    echo 'OK';
+		    echo '![](img/'.($_FILES['image_field']['name']).')';
 		    $handle->clean();
 		} else {
 		    echo 'error : ' . $handle->error;
