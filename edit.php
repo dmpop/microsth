@@ -2,6 +2,7 @@
 namespace Verot\Upload;
 require_once('protect.php');
 include('inc/class.upload.php');
+$config = include('config.php');
 ?>
 
 <html lang='en'>
@@ -53,9 +54,8 @@ include('inc/class.upload.php');
     </head>
     <body>
 	<?php
-	$gravatar_link = 'https://icotar.com/avatar/monkey.png';
-	echo '<img class="gravatar" src="'.$gravatar_link.'" />';
-        echo '<div id="center"><a href="index.php">micro.sth</a></div>';
+	echo '<img class="gravatar" src="'.$config['gravatar'].'" />';
+        echo '<div id="center"><a href="https://gitlab.com/dmpop/microsth">'.$config['title'].'</a></div>';
         ?>
         <div id='center'>
 	    <form method="GET" action="index.php">
@@ -91,7 +91,7 @@ include('inc/class.upload.php');
 	    $handle = new \verot\Upload\Upload($_FILES['image_field']);
 	    if ($handle->uploaded) {
 		$handle->image_resize  = true;
-		$handle->image_x = 600;
+		$handle->image_x = $config['resize'];
 		$handle->image_ratio_y = true;
 		$handle->process('img');
 		if ($handle->processed) {

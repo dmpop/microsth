@@ -1,6 +1,5 @@
 <?php
-/* Your password */
-$password = 'password';
+$config = include('config.php');
 
 /* Redirects here after login */
 $redirect_after_login = 'index.php';
@@ -12,8 +11,8 @@ date_default_timezone_set('UTC');
 /* Will not ask password again for */
 $remember_password = strtotime('+30 days'); // 30 days
 
-if (isset($_POST['password']) && $_POST['password'] == $password) {
-    setcookie("password", $password, $remember_password);
+if (isset($_POST['password']) && $_POST['password'] == $config['passwd']) {
+    setcookie("password", $config['passwd'], $remember_password);
     header('Location: ' . $redirect_after_login);
     exit;
 }

@@ -1,6 +1,7 @@
 <?php
 require_once('protect.php');
-?>
+$config = include('config.php');
+?>a
 
 <html lang="en">
     <!-- Author: Dmitri Popov, dmpop@linux.com
@@ -52,20 +53,19 @@ require_once('protect.php');
     </head>
     <body>
 	<?php
-	$gravatar_link = 'https://icotar.com/avatar/monkey.png';
-	echo '<img class="gravatar" src="'.$gravatar_link.'" />';
-        echo '<div id="center"><a href="index.php">micro.sth</a></div>';
+	echo '<img class="gravatar" src="'.$config['gravatar'].'" />';
+        echo '<div id="center"><a href="index.php">'.$config['title'].'</a></div>';
 	$DTSTAMP = date('Ymd-His');
 	$MDFILE = 'data.md';
 	$BACKUP = 'backup/'.$DTSTAMP.'.md';
 	if (!file_exists('backup')) {
-	    mkdir('backup', 0777, true);
+	mkdir('backup', 0777, true);
 	}
 	if (!copy($MDFILE, $BACKUP)) {
-	    echo "Failed to copy $MDFILE...\n";
+	echo "Failed to copy $MDFILE...\n";
 	}
 	else {
-	    echo "<div id='center'>Backup completed!</div>";
+	echo "<div id='center'>Backup completed!</div>";
 	}
 	?>
     </body>
