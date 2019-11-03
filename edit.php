@@ -88,20 +88,24 @@ $config = include('config.php');
         </form>
 	<?php
 	if(isset($_POST['submit'])){
-	    $handle = new \verot\Upload\Upload($_FILES['image_field']);
-	    if ($handle->uploaded) {
-		$handle->image_resize  = true;
-		$handle->image_x = $config['resize'];
-		$handle->image_ratio_y = true;
-		$handle->process('img');
-		if ($handle->processed) {
-		    echo '![](img/'.($_FILES['image_field']['name']).')';
-		    $handle->clean();
-		} else {
-		    echo 'error : ' . $handle->error;
+	    $file_type = $_FILES['image_field']['type'];
+	    $allowed = array("image/jpeg");
+	    if(in_array($file_type, $allowed)) {
+		$handle = new \verot\Upload\Upload($_FILES['image_field']);
+		if ($handle->uploaded) {
+		    $handle->image_resize  = true;
+		    $handle->image_x = $config['resize'];
+		    $handle->image_ratio_y = true;
+		    $handle->process('img');
+		    if ($handle->processed) {
+			echo '![](img/'.($_FILES['image_field']['name']).')';
+			$handle->clean();
+		    } else {
+			echo 'error : ' . $handle->error;
+		    }
 		}
 	    }
-	} 
+	}
 	?>
 	<form style="display:inline!important;" enctype="multipart/form-data" method="post" action="">
 	    <input type="file" size="32" name="image_field" value="">

@@ -1,7 +1,7 @@
 <?php
 require_once('protect.php');
 $config = include('config.php');
-?>a
+?>
 
 <html lang="en">
     <!-- Author: Dmitri Popov, dmpop@linux.com
@@ -59,13 +59,12 @@ $config = include('config.php');
 	$MDFILE = 'data.md';
 	$BACKUP = 'backup/'.$DTSTAMP.'.md';
 	if (!file_exists('backup')) {
-	mkdir('backup', 0777, true);
+	    mkdir('backup', 0777, true);
 	}
 	if (!copy($MDFILE, $BACKUP)) {
-	echo "Failed to copy $MDFILE...\n";
-	}
-	else {
-	echo "<div id='center'>Backup completed!</div>";
+	    echo "<div id='center'>Failed to copy $MDFILE!</div>";
+	} else {
+	    echo "<div id='center'>Backup completed!</div>";
 	}
 	?>
     </body>
