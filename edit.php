@@ -2,7 +2,8 @@
 namespace Verot\Upload;
 require_once('protect.php');
 include('inc/class.upload.php');
-$config = include('config.php');
+include('config.php');
+error_reporting(E_ERROR);
 ?>
 
 <html lang='en'>
@@ -12,7 +13,7 @@ $config = include('config.php');
 	<meta charset="utf-8">
 	<title>micro.sth</title>
 	<link rel="shortcut icon" href="favicon.png" />
-	<link rel="stylesheet" href="terminal.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 	 body {
@@ -54,8 +55,8 @@ $config = include('config.php');
     </head>
     <body>
 	<?php
-	echo '<img class="gravatar" src="'.$config['gravatar'].'" />';
-        echo '<div id="center"><a href="https://gitlab.com/dmpop/microsth">'.$config['title'].'</a></div>';
+	echo '<img class="gravatar" src="'.$gravatar.'" />';
+        echo '<div id="center"><a href="https://gitlab.com/dmpop/microsth">'.$title.'</a></div>';
         ?>
         <div id='center'>
 	    <form method="GET" action="index.php">
@@ -83,7 +84,7 @@ $config = include('config.php');
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 	    <textarea name="text"><?php Read(); ?></textarea><br /><br />
 	    <div id="center">
-		<button style="display: inline;" class="btn btn-default" type="submit" role="button" name="submit">Save</button>
+		<button style="display: inline;" type="submit" role="button" name="submit">Save</button>
 		<input type="hidden" name="submit_check" value="1">
         </form>
 	<?php
@@ -91,28 +92,28 @@ $config = include('config.php');
 	    $file_type = $_FILES['image_field']['type'];
 	    $allowed = array("image/jpeg");
 	    if(in_array($file_type, $allowed)) {
-		$handle = new \verot\Upload\Upload($_FILES['image_field']);
-		if ($handle->uploaded) {
-		    $handle->image_resize  = true;
-		    $handle->image_x = $config['resize'];
-		    $handle->image_ratio_y = true;
-		    $handle->process('img');
-		    if ($handle->processed) {
-			echo '![](img/'.($_FILES['image_field']['name']).')';
-			$handle->clean();
-		    } else {
-			echo 'error : ' . $handle->error;
-		    }
+	    $handle = new \verot\Upload\Upload($_FILES['image_field']);
+	    if ($handle->uploaded) {
+		$handle->image_resize  = true;
+		$handle->image_x = $resize;
+		$handle->image_ratio_y = true;
+		$handle->process('img');
+		if ($handle->processed) {
+		    echo '![](img/'.($_FILES['image_field']['name']).')';
+		    $handle->clean();
+		} else {
+		    echo 'error : ' . $handle->error;
 		}
 	    }
-	}
+	    }
+}
 	?>
 	<form style="display:inline!important;" enctype="multipart/form-data" method="post" action="">
 	    <input type="file" size="32" name="image_field" value="">
-	    <button style="display: inline;" class="btn btn-default" type="submit" role="button" name="submit">Upload</button>
+	    <button style="display: inline;" type="submit" role="button" name="submit">Upload</button>
 	</form>
 	<form style="display:inline!important;" action="backup.php" method="get">
-	    <button style="display: inline;" class="btn btn-primary" type="submit" role="button" name="submit">Backup</button>
+	    <button style="display: inline;" type="submit" role="button" name="submit">Backup</button>
 	</form>
             </div>
     </body>

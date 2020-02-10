@@ -1,6 +1,6 @@
 <?php
 require_once('protect.php');
-$config = include('config.php');
+include('config.php');
 ?>
 
 <html lang="en">
@@ -11,7 +11,7 @@ $config = include('config.php');
 	<meta charset="utf-8">
 	<title>micro.sth</title>
 	<link rel="shortcut icon" href="favicon.png" />
-	<link rel="stylesheet" href="terminal.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="refresh" content="3;url=index.php" />
 	<style>
@@ -53,8 +53,8 @@ $config = include('config.php');
     </head>
     <body>
 	<?php
-	echo '<img class="gravatar" src="'.$config['gravatar'].'" />';
-        echo '<div id="center"><a href="index.php">'.$config['title'].'</a></div>';
+	echo '<img class="gravatar" src="'.$gravatar.'" />';
+        echo '<div id="center"><a href="index.php">'.$title.'</a></div>';
 	$DTSTAMP = date('Ymd-His');
 	$MDFILE = 'data.md';
 	$BACKUP = 'backup/'.$DTSTAMP.'.md';
@@ -62,8 +62,9 @@ $config = include('config.php');
 	    mkdir('backup', 0777, true);
 	}
 	if (!copy($MDFILE, $BACKUP)) {
-	    echo "<div id='center'>Failed to copy $MDFILE!</div>";
-	} else {
+	    echo "Failed to copy $MDFILE...\n";
+	}
+	else {
 	    echo "<div id='center'>Backup completed!</div>";
 	}
 	?>

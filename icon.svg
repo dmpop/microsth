@@ -7,24 +7,16 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="24"
-   height="24"
    viewBox="0 0 24 24"
-   fill="none"
-   stroke="currentColor"
-   stroke-width="2"
-   stroke-linecap="round"
-   stroke-linejoin="round"
-   class="feather feather-coffee"
    version="1.1"
-   id="svg12"
-   sodipodi:docname="icon.svg"
+   id="svg10"
+   sodipodi:docname="favicon.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   inkscape:export-filename="/home/dmpop/favicon.png"
-   inkscape:export-xdpi="256"
-   inkscape:export-ydpi="256">
+   inkscape:export-filename="/home/dmpop/Downloads/favicon.png"
+   inkscape:export-xdpi="516"
+   inkscape:export-ydpi="516">
   <metadata
-     id="metadata18">
+     id="metadata16">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -35,7 +27,7 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs16" />
+     id="defs14" />
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -47,42 +39,32 @@
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
      inkscape:window-height="1015"
-     id="namedview14"
+     id="namedview12"
      showgrid="false"
      inkscape:zoom="9.8333333"
-     inkscape:cx="-21.559322"
+     inkscape:cx="-4.7796611"
      inkscape:cy="12"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg12" />
-  <path
-     d="M18 8h1a4 4 0 0 1 0 8h-1"
-     id="path2"
-     style="stroke:#2ce6cf;stroke-opacity:1;fill:none;fill-opacity:1" />
-  <path
-     d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"
-     id="path4"
-     style="stroke:#ff980f;stroke-opacity:1;fill:#ffffff;fill-opacity:1" />
-  <line
-     x1="6"
-     y1="1"
-     x2="6"
-     y2="4"
-     id="line6"
-     style="stroke:#2ce6cf;stroke-opacity:1" />
-  <line
-     x1="10"
-     y1="1"
-     x2="10"
-     y2="4"
-     id="line8"
-     style="stroke:#2ce6cf;stroke-opacity:1" />
-  <line
-     x1="14"
-     y1="1"
-     x2="14"
-     y2="4"
-     id="line10"
-     style="stroke:#2ce6cf;stroke-opacity:1" />
+     inkscape:current-layer="g6" />
+  <g
+     data-name="Layer 2"
+     id="g8">
+    <g
+       data-name="globe"
+       id="g6">
+      <rect
+         width="24"
+         height="24"
+         transform="rotate(180 12 12)"
+         opacity="0"
+         id="rect2" />
+      <path
+         d="M 23.523257,12 A 11.525424,11.525424 0 0 0 11.997833,0.47457663 a 11.525424,11.525424 0 0 0 0,23.05084637 A 11.525424,11.525424 0 0 0 23.523257,12 Z M 21.137494,10.847458 H 17.760545 A 14.879322,14.879322 0 0 0 15.075121,3.3098309 9.220339,9.220339 0 0 1 21.137494,10.847458 Z M 8.6324087,13.152542 H 15.45546 a 13.185085,13.185085 0 0 1 -3.457627,7.618305 12.677966,12.677966 0 0 1 -3.3654243,-7.618305 z m 0,-2.305084 A 13.138983,13.138983 0 0 1 11.997833,3.2406784 12.896949,12.896949 0 0 1 15.45546,10.847458 Z M 9.047324,3.2752547 A 15.190509,15.190509 0 0 0 6.3157985,10.847458 H 2.8581714 A 9.220339,9.220339 0 0 1 9.047324,3.2752547 Z M 2.8581714,13.152542 H 6.3157985 A 14.821695,14.821695 0 0 0 9.0242731,20.71322 9.220339,9.220339 0 0 1 2.8581714,13.152542 Z m 12.1593226,7.549153 a 15.144407,15.144407 0 0 0 2.743051,-7.549153 h 3.4 a 9.220339,9.220339 0 0 1 -6.143051,7.549153 z"
+         id="path4"
+         inkscape:connector-curvature="0"
+         style="stroke-width:1.15254235;fill:#2ad4ff" />
+    </g>
+  </g>
 </svg>

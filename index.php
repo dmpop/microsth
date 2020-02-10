@@ -1,7 +1,7 @@
 <?php
 require_once('protect.php'); // Comment this line to remove password protection
 include 'inc/parsedown.php';
-$config = include('config.php');
+include('config.php');
 ?>
 
 <html lang="en">
@@ -10,9 +10,9 @@ $config = include('config.php');
     
     <head>
 	<meta charset="utf-8">
-	<title><?php echo $config['title'] ?></title>
+	<title><?php echo $title ?></title>
 	<link rel="shortcut icon" href="favicon.png" />
-	<link rel="stylesheet" href="terminal.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 	 body {
@@ -54,8 +54,8 @@ $config = include('config.php');
     </head>
     <body>
         <?php
-        echo '<img class="gravatar" src="'.$config['gravatar'].'" />';
-        echo '<div id="center"><a href="https://gitlab.com/dmpop/microsth">'.$config['title'].'</a></div>';
+        echo '<img class="gravatar" src="'.$gravatar.'" />';
+        echo '<div id="center"><a href="index.php">'.$title.'</a></div>';
 	if (file_exists("random.md")) {
 	    $f = file("random.md");
 	    $line = $f[array_rand($f)];
@@ -79,26 +79,26 @@ $config = include('config.php');
             $Parsedown = new Parsedown();
             $lines = file($MDFILE);
             $start = isset($_GET['start']) ? $_GET['start'] : 0;
-            for($i = $start; $i <= ($start + $config['perpage']); $i++){
+            for($i = $start; $i <= ($start + $perpage); $i++){
 		if($lines[$i] != ''){
 		    echo $Parsedown->text($lines[$i]);
 		}
             }
             echo '<div id="center">';
-            for($j = 1; $j <= (count($lines) / $config['perpage'])-1; $j++){
+            for($j = 1; $j <= (count($lines) / $perpage)-1; $j++){
 		if($start == $j){
 		    echo $j;
 		}
 		else {
-		    echo ' <a href="./?start=' . ($j * $config['perpage']) . '">' . $j . '</a> ';
+		    echo ' <a href="./?start=' . ($j * $perpage) . '">' . $j . '</a> ';
 		}
             }
         }
-        echo ' <a href="./?start=' . ($j * $config['perpage']) . '">' . $j . '</a>';
+        echo ' <a href="./?start=' . ($j * $perpage) . '">' . $j . '</a>';
         ?>
         <form method='GET' action='edit.php'>
             <p style=""margin-top:3em;">
-		<button class="btn btn-primary" type='submit'>Edit</button>
+		<button type='submit'>Edit</button>
             </p>
         </form>
             </div>
