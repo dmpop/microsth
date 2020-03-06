@@ -1,8 +1,10 @@
 <?php
 // Password
 $passwd = 'password';
-// Number of lines per page
-$perpage = '50';
+// microsth base directory
+$base_dir = 'microsth';
+// Default category
+$default_caterory = 'personal';
 // Title
 $title = 'micro.sth';
 // Gravatar

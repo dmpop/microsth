@@ -4,13 +4,14 @@ require_once('protect.php');
 include('inc/class.upload.php');
 include('config.php');
 error_reporting(E_ERROR);
+session_start();
 ?>
 
 <html lang='en'>
     <!-- Author: Dmitri Popov, dmpop@linux.com
          License: GPLv3 https://www.gnu.org/licenses/gpl-3.0.txt -->
-    <head>
-	<meta charset="utf-8">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
 	<title>micro.sth</title>
 	<link rel="shortcut icon" href="favicon.png" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css">
@@ -56,20 +57,13 @@ error_reporting(E_ERROR);
     <body>
 	<?php
 	echo '<img class="gravatar" src="'.$gravatar.'" />';
-        echo '<div id="center"><a href="https://gitlab.com/dmpop/microsth">'.$title.'</a></div>';
-        ?>
-        <div id='center'>
-	    <form method="GET" action="index.php">
-		<p style='margin-top:3em;'><button class="btn btn-primary" type="submit">Back</button></p>
-            </form>
-        </div>
-        <?php
+        echo '<div id="center"><a href="/'.$base_dir.'/?category='.$_SESSION["category"].'">'.$title.'</a></div><p></p>';
         function Read() {
-	    $MDFILE = "data.md";
+	    $MDFILE = $_SESSION['mdfile'];
             echo file_get_contents($MDFILE);
         }
         function Write() {
-	    $MDFILE = "data.md";
+	    $MDFILE = $_SESSION['mdfile'];
             $fp = fopen($MDFILE, "w");
             $data = $_POST["text"];
             fwrite($fp, $data);
@@ -92,28 +86,25 @@ error_reporting(E_ERROR);
 	    $file_type = $_FILES['image_field']['type'];
 	    $allowed = array("image/jpeg");
 	    if(in_array($file_type, $allowed)) {
-	    $handle = new \verot\Upload\Upload($_FILES['image_field']);
-	    if ($handle->uploaded) {
-		$handle->image_resize  = true;
-		$handle->image_x = $resize;
-		$handle->image_ratio_y = true;
-		$handle->process('img');
-		if ($handle->processed) {
-		    echo '![](img/'.($_FILES['image_field']['name']).')';
-		    $handle->clean();
-		} else {
-		    echo 'error : ' . $handle->error;
+		$handle = new \verot\Upload\Upload($_FILES['image_field']);
+		if ($handle->uploaded) {
+		    $handle->image_resize  = true;
+		    $handle->image_x = $resize;
+		    $handle->image_ratio_y = true;
+		    $handle->process('img');
+		    if ($handle->processed) {
+			echo '![](img/'.($_FILES['image_field']['name']).')';
+			$handle->clean();
+		    } else {
+			echo 'error : ' . $handle->error;
+		    }
 		}
 	    }
-	    }
-}
+	}
 	?>
 	<form style="display:inline!important;" enctype="multipart/form-data" method="post" action="">
 	    <input type="file" size="32" name="image_field" value="">
 	    <button style="display: inline;" type="submit" role="button" name="submit">Upload</button>
-	</form>
-	<form style="display:inline!important;" action="backup.php" method="get">
-	    <button style="display: inline;" type="submit" role="button" name="submit">Backup</button>
 	</form>
             </div>
     </body>
