@@ -78,7 +78,7 @@ session_start();
         $_SESSION['category'] = $category;
         $_SESSION['mdfile'] = $MDFILE;
 	?>
-        <select id="selectbox" name="" onchange="javascript:location.href = this.value;">
+        <select style="margin-top:1.9em;" id="selectbox" name="" onchange="javascript:location.href = this.value;">
             <option value='Label'>Categories</option>";
 	    <?php
 	    $files = glob("content/*.md");
