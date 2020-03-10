@@ -6,7 +6,7 @@ micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool
 
 - PHP 7.x or higher
 - PHP7 GD extension
-- Apache or any other web server (optional)
+- Apache or any other web server
 
 # Installation and usage
 
@@ -20,16 +20,14 @@ To run micro.sth locally, run the `php -S 0.0.0.0:8000` command and point your b
 
 To deploy micro.sth on a web server, move the *microsth* directory to the document root of the server. Point your browser to *127.0.0.1/microsth* (replace *127.0.0.1* with the actual IP adress or domain name of your server).
 
-## Working with categories
+## Working with pages
 
-When you open micro.sth for the first time, it automatically creates the default category specified in the _config.php_ file and an accompanying _.md_ file in the _content_ directory. For example, the default value of the `$default_caterory` variable is set to _personal_. When you open micro.sth, it creates the **Personal** category and the _content/personal.md_ file.
+When you open micro.sth for the first time, it automatically creates the default page specified in the _config.php_ file and an accompanying _.md_ file in the _content_ directory. For example, the default value of the `$first_page` variable is set to _personal_. When you open micro.sth, it creates the **Personal** page and the _content/personal.md_ file.
 
-You can add as many categories as you need, and there are two ways to add a new category:
+You can add as many pages as you need, and there are two ways to add a page:
 
 1. Create an _.md_ file manuall in the _content_ directory.
 
-2. Append `?category=name` to the URL of your micro.sth instance, for example: *https://127.0.0.1/microsth/?category=travel* 
+2. Append `?page=name` to the URL of your micro.sth instance, for example: *https://127.0.0.1/microsth/?category=travel* 
 
-No matter what option you choose, keep the file or category name short. Ideally, it should be a single word in lower case, or two-three words connected with dashes, for example: _links.md_, _words-and-expressions.md_, etc.
-
-How you choose to use categories is up to you. For example, you might want to create a separate category for each year (2020, 2019, 2018, and so on). Alternatively, you can create categories for specific types of content (e.g., links, quotes, snippets. etc.) or different kinds of activities (e.g., travel, hacking, photography, etc.).
+How you choose to use pages is up to you. For example, you might want to create a separate page for each year (2020, 2019, 2018, and so on). Alternatively, you can create pages for specific types of content (e.g., links, quotes, snippets. etc.) or different kinds of activities (e.g., travel, hacking, photography, etc.).

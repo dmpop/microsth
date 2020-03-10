@@ -4,7 +4,7 @@ $passwd = 'password';
 // microsth base directory
 $base_dir = 'microsth';
 // Default category
-$default_caterory = 'personal';
+$first_page = 'personal';
 // Title
 $title = 'micro.sth';
 // Gravatar

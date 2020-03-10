@@ -68,24 +68,24 @@ session_start();
 	if (!file_exists("content")) {
 	    mkdir("content", 0777, true);
 	}
-	if(isset($_GET["category"]))
+	if(isset($_GET["page"]))
         {
-            $category = $_GET["category"];
+            $page = $_GET["page"];
         } else {
-            $category = $default_caterory;
+            $page = $first_page;
         }
-        $MDFILE = "content/".$category.".md";
-        $_SESSION['category'] = $category;
+        $MDFILE = "content/".$page.".md";
+        $_SESSION['page'] = $page;
         $_SESSION['mdfile'] = $MDFILE;
 	?>
         <select style="margin-top:1.9em;" id="selectbox" name="" onchange="javascript:location.href = this.value;">
-            <option value='Label'>Categories</option>";
+            <option value='Label'>Pages</option>";
 	    <?php
 	    $files = glob("content/*.md");
 	    foreach ($files as $file) {
 		$filename = basename($file);
 		$name = basename($file, ".md");
-		echo "<option value='?category=$name'>".ucwords($name)."</option>";
+		echo "<option value='?page=$name'>".ucwords($name)."</option>";
 	    }
 	    ?>
 	</select>
