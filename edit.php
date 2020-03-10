@@ -57,7 +57,7 @@ session_start();
     <body>
 	<?php
 	echo '<img class="gravatar" src="'.$gravatar.'" />';
-        echo '<div id="center"><a href="/'.$base_dir.'/?category='.$_SESSION["category"].'">'.$title.'</a></div><p></p>';
+        echo '<div id="center"><a href="/'.$base_dir.'/?page='.$_SESSION["page"].'">'.$title.'</a></div><p></p>';
         function Read() {
 	    $MDFILE = $_SESSION['mdfile'];
             echo file_get_contents($MDFILE);
