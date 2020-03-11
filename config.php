@@ -9,6 +9,8 @@ $base_dir = 'microsth';
 $first_page = 'personal';
 // Title
 $title = 'micro.sth';
+// Theme (choose between "light" and "dark")
+$theme = "light";
 // Gravatar
 $gravatar = 'https://icotar.com/avatar/monkey.png';
 // Resize image size
