@@ -1,7 +1,9 @@
 <?php
-require_once('protect.php'); // Comment this line to remove password protection
 include 'inc/parsedown.php';
 include('config.php');
+if ($protect) {
+    require_once('protect.php');
+}
 session_start();
 ?>
 

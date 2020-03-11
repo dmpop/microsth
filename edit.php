@@ -1,8 +1,10 @@
 <?php
 namespace Verot\Upload;
-require_once('protect.php');
 include('inc/class.upload.php');
 include('config.php');
+if ($protect) {
+    require_once('protect.php');
+}
 error_reporting(E_ERROR);
 session_start();
 ?>

@@ -1,4 +1,6 @@
 <?php
+//Enable password protection
+$protect = false;
 // Password
 $passwd = 'password';
 // microsth base directory
