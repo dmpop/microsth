@@ -13,6 +13,8 @@ $title = 'micro.sth';
 $theme = "light";
 // Gravatar
 $gravatar = 'https://icotar.com/avatar/monkey.png';
+// Footer
+$footer = "<a href='https://gitlab.com/dmpop/micro.sth'>micro.sth</a> - Write here";
 // Resize image size
 $resize = '800';
 ?>
