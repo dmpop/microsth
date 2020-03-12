@@ -8,13 +8,11 @@ if ($protect) {
 error_reporting(E_ERROR);
 session_start();
 ?>
-
 <html lang='en'>
     <!-- Author: Dmitri Popov, dmpop@linux.com
          License: GPLv3 https://www.gnu.org/licenses/gpl-3.0.txt -->
     <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	
-	<title>micro.sth</title>
+	<title><?php echo $title ?></title>
 	<link rel="shortcut icon" href="favicon.png" />
 	<link rel="stylesheet" href="css/<?php echo $theme ?>.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -84,8 +82,21 @@ session_start();
 		<button style="display: inline;" type="submit" role="button" name="submit">Save</button>
 		<input type="hidden" name="submit_check" value="1">
         </form>
+        
+        <?php
+	if(isset($_POST['publish'])){
+	    $MDFILE = $_SESSION['mdfile'];
+	    if (!copy($MDFILE, "pub/".basename($MDFILE))) {
+            echo "Failed to copy basename($MDFILE) ";
+        }
+	}
+        
+        ?>
+        <form style="display:inline!important;" method="post" action="">
+	        <button style="display: inline;" type="submit" role="button" name="publish">Publish</button>
+	    </form>
 	<?php
-	if(isset($_POST['submit'])){
+	if(isset($_POST['upload'])){
 	    $file_type = $_FILES['image_field']['type'];
 	    $allowed = array("image/jpeg");
 	    if(in_array($file_type, $allowed)) {
@@ -107,8 +118,8 @@ session_start();
 	?>
 	<form style="display:inline!important;" enctype="multipart/form-data" method="post" action="">
 	    <input type="file" size="32" name="image_field" value="">
-	    <button style="display: inline;" type="submit" role="button" name="submit">Upload</button>
+	        <button style="display: inline;" type="submit" role="button" name="upload">Upload</button>
 	</form>
-            </div>
+        </div>
     </body>
 </html>

@@ -8,7 +8,8 @@ micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool
 - Markdown support
 - Password protection
 - Support for multiple pages
-- Images are resized to a specified dimensions during upload
+- Publish individual pages
+- Images are resized to a specified size during upload
 
 ## Dependencies
 
@@ -39,3 +40,7 @@ You can add as many pages as you need, and there are two ways to add a page:
 2. Append `?page=name` to the URL of your micro.sth instance, for example: *https://127.0.0.1/microsth/?page=travel* 
 
 How you choose to use pages is up to you. For example, you might want to create a separate page for each year (2020, 2019, 2018, and so on). Alternatively, you can create pages for specific types of content (e.g., links, quotes, snippets. etc.) or different kinds of activities (e.g., travel, hacking, photography, etc.).
+
+### Publish pages
+
+If you enabled password protection, you can make individual pages publicly available. To do this, open the desired page for editing and press the **Publish** button. You can then access the page either by going to _https://tokyoma.de/microsth/pub.php_ and selecting the published page from the **Pages** list, or by pointing the browser the direct link _https://127.0.0.1/microsth/pub.php?page=PAGENAME_ (where _PAGENAME_ is the actual name of the published page).
