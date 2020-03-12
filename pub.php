@@ -94,8 +94,17 @@ session_start();
             $Parsedown = new Parsedown();
             echo $Parsedown->text($text);
         } else {
-            echo "PAGE NOT FOUND";
+            exit();
         }
         ?>
+    <?php
+	    if(isset($_POST['unpublish'])){
+	        $MDFILE = $_SESSION['mdfile'];
+	        unlink("pub/".basename($MDFILE));
+	    }
+    ?>
+    <form style="display:inline!important;" method="post" action="">
+        <button style="display: inline;" type="submit" role="button" name="unpublish">Unpublish</button>
+    </form>
     </body>
 </html>

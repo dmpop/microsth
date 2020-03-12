@@ -71,36 +71,37 @@ session_start();
             fclose($fp);
         }
         ?>
-        <?php
+    <?php
         if ($_POST["submit_check"]){
-	    Write();
-        };
-        ?>
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-	    <textarea name="text"><?php Read(); ?></textarea><br /><br />
-	    <div id="center">
-		<button style="display: inline;" type="submit" role="button" name="submit">Save</button>
-		<input type="hidden" name="submit_check" value="1">
-        </form>
-        
-        <?php
-	if(isset($_POST['publish'])){
-	    $MDFILE = $_SESSION['mdfile'];
+	        Write();
+            };
+    ?>
+    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+	   <textarea name="text"><?php Read(); ?></textarea><br /><br />
+	   <div id="center">
+	    <button style="display: inline;" type="submit" role="button" name="submit">Save</button>
+	    <input type="hidden" name="submit_check" value="1">
+    </form>
+    <?php
+	    if(isset($_POST['publish'])){
+	        $MDFILE = $_SESSION['mdfile'];
 	    if (!copy($MDFILE, "pub/".basename($MDFILE))) {
             echo "Failed to copy basename($MDFILE) ";
-        }
-	}
+            } else {
+                echo "Published";
+            }
+	    }
         
-        ?>
-        <form style="display:inline!important;" method="post" action="">
-	        <button style="display: inline;" type="submit" role="button" name="publish">Publish</button>
-	    </form>
-	<?php
-	if(isset($_POST['upload'])){
-	    $file_type = $_FILES['image_field']['type'];
-	    $allowed = array("image/jpeg");
-	    if(in_array($file_type, $allowed)) {
-		$handle = new \verot\Upload\Upload($_FILES['image_field']);
+    ?>
+    <form style="display:inline!important;" method="post" action="">
+        <button style="display: inline;" type="submit" role="button" name="publish">Publish</button>
+    </form>
+    <?php
+	    if(isset($_POST['upload'])){
+	        $file_type = $_FILES['image_field']['type'];
+	        $allowed = array("image/jpeg");
+	        if(in_array($file_type, $allowed)) {
+		    $handle = new \verot\Upload\Upload($_FILES['image_field']);
 		if ($handle->uploaded) {
 		    $handle->image_resize  = true;
 		    $handle->image_x = $resize;
@@ -111,14 +112,14 @@ session_start();
 			$handle->clean();
 		    } else {
 			echo 'error : ' . $handle->error;
+		        }
 		    }
-		}
 	    }
 	}
 	?>
 	<form style="display:inline!important;" enctype="multipart/form-data" method="post" action="">
 	    <input type="file" size="32" name="image_field" value="">
-	        <button style="display: inline;" type="submit" role="button" name="upload">Upload</button>
+	    <button style="display: inline;" type="submit" role="button" name="upload">Upload</button>
 	</form>
         </div>
     </body>
