@@ -63,7 +63,7 @@ session_start();
     <body>
         <?php
         echo '<img class="gravatar" src="'.$gravatar.'" />';
-        echo '<div id="center"><a href="https://gitlab.com/dmpop/microsth">'.$title.'</a></div>';
+        echo '<div id="center"><a href="index.php">'.$title.'</a></div>';
 	if (file_exists("random.md")) {
 	    $f = file("random.md");
 	    $line = $f[array_rand($f)];

@@ -63,7 +63,7 @@ session_start();
     <body>
 	<?php
 	    echo '<img class="gravatar" src="'.$gravatar.'" />';
-        echo '<div id="center"><a href="https://gitlab.com/dmpop/microsth">'.$title.'</a></div>';
+        echo '<div id="center"><a href="index.php">'.$title.'</a></div>';
         echo '<div id="center" style="margin-bottom:1em; margin-top:1em;"><a href="/'.$base_dir.'/?page='.$_SESSION["page"].'">Back</a></div>';
         function Read() {
 	    $MDFILE = $_SESSION['mdfile'];
