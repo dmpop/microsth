@@ -101,12 +101,20 @@ session_start();
 	    if(isset($_POST['unpublish'])){
 	        $MDFILE = $_SESSION['mdfile'];
 	        unlink("pub/".basename($MDFILE));
+	        ob_start();
+	        $url = 'index.php';
+	        while (ob_get_status()) {
+	            ob_end_clean();
+	        }
+	        header( "Location: $url" );
+	    }
+	    if ($unpublish) {
+	        echo "<div id='center'  style='margin-top: 1em;'>";
+	        echo "<form style='display:inline!important;' method='post' action=''>";
+	        echo "<button style='display: inline;' type='submit' role='button' name='unpublish'>Unpublish</button>";
+	        echo "</form>";
 	    }
     ?>
-    <div id='center'  style='margin-top: 1em;'>
-    <form style="display:inline!important;" method="post" action="">
-        <button style="display: inline;" type="submit" role="button" name="unpublish">Unpublish</button>
-    </form>
     </div>
     <div id='center'  style='margin-top: 1em;'><?php echo $footer; ?></div>
     </body>

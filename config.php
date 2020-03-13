@@ -3,8 +3,10 @@
 $protect = false;
 // Password
 $passwd = 'password';
-// Enable Trash
+// Enable Trash button
 $trash = false;
+// Enable Unpublish button
+$unpublish = false;
 // microsth base directory
 $base_dir = 'microsth';
 // Default category
