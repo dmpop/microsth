@@ -70,6 +70,9 @@ session_start();
 	if (!file_exists("content")) {
 	    mkdir("content", 0777, true);
 	}
+	if (!file_exists("trash")) {
+	    mkdir("trash", 0777, true);
+	}
 	if(isset($_GET["page"]))
         {
             $page = $_GET["page"];
@@ -105,7 +108,23 @@ session_start();
             $Parsedown = new Parsedown();
             echo $Parsedown->text($text);
         }
-        ?>
+	    if(isset($_POST['trash'])){
+	        $MDFILE = $_SESSION['mdfile'];
+	        rename($MDFILE, "trash/".basename($MDFILE));
+	        ob_start();
+	        $url = 'index.php';
+	        while (ob_get_status()) {
+	            ob_end_clean();
+	        }
+	        header( "Location: $url" );
+	    }
+    if ($trash) {
+    echo "<div id='center'  style='margin-top: 1em;'>";
+    echo "<form style='display:inline!important;' method='post' action=''>";
+    echo "<button style='display: inline;' type='submit' role='button' name='trash'>Trash</button>";
+    echo "</form>";
+    }
+    ?>
         <hr />
 		<div id='center'><?php echo $footer; ?></div>
     </body>

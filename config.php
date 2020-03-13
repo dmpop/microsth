@@ -3,6 +3,8 @@
 $protect = false;
 // Password
 $passwd = 'password';
+// Enable Trash
+$trash = false;
 // microsth base directory
 $base_dir = 'microsth';
 // Default category
