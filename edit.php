@@ -117,9 +117,10 @@ session_start();
 	    }
 	}
 	?>
-	<form style="display:inline!important;" enctype="multipart/form-data" method="post" action="">
-	    <input type="file" size="32" name="image_field" value="">
-	    <button style="display: inline;" type="submit" role="button" name="upload">Upload</button>
+	<div id='center' style='margin-top: 1em;'>
+	<form enctype="multipart/form-data" method="post" action="">
+	    <input style='display: inline!important;' type="file" size="32" name="image_field" value="">
+	    <button style="display: inline;!important" type="submit" role="button" name="upload">Upload</button>
 	</form>
         </div>
         <hr />

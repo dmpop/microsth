@@ -128,17 +128,18 @@ session_start();
 	        header( "Location: $url" );
 	    }
 	    if ($newpage) {
-        echo "<div id='center'  style='margin-top: 1em;'>";
-        echo "<form style='display:inline!important;' method='post' action=''>";
-        echo " <label for='pagename'>Page name:</label>";
-        echo "<input type='text' name='pagename'>";
+        echo "<div id='center'>";
+        echo "<form method='post' action=''>";
+        echo " <label for='pagename'>Page name: </label>";
+        echo "<input style='display: inline!important;' type='text' name='pagename'>";
         echo "<button style='margin-top: 0.5em;' type='submit' role='button' name='newpage'>New Page</button>";
         echo "</form>";
+        echo "</div>";
         }
         if ($trash) {
-            echo "<div id='center'  style='margin-top: 1em;'>";
-            echo "<form style='display:inline!important;' method='post' action=''>";
-            echo "<button style='display: inline;' type='submit' role='button' name='trash'>Trash</button>";
+            echo "<div id='center'  style='margin-top: 0.5em;'>";
+            echo "<form method='post' action=''>";
+            echo "<button type='submit' role='button' name='trash'>Trash</button>";
         echo "</form>";
         }
     ?>
