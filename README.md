@@ -39,7 +39,9 @@ You can add as many pages as you need, and there are three ways to add a page:
 
 2. Create an _.md_ file manuall in the _content_ directory.
 
-3. Append `?page=name` to the URL of your micro.sth instance, for example: *https://127.0.0.1/microsth/?page=travel* 
+3. Append `?page=name` to the URL of your micro.sth instance, for example: *https://127.0.0.1/microsth/?page=travel*
+
+Keep in mind that page names are case-sensitive.
 
 How you choose to use pages is up to you. For example, you might want to create a separate page for each year (2020, 2019, 2018, and so on). Alternatively, you can create pages for specific types of content (e.g., links, quotes, snippets. etc.) or different kinds of activities (e.g., travel, hacking, photography, etc.).
 

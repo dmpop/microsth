@@ -12,7 +12,7 @@ $unpublish = false;
 // microsth base directory
 $base_dir = 'microsth';
 // Default category
-$first_page = 'home';
+$first_page = 'Home';
 // Title
 $title = 'micro.sth';
 // Theme (choose between "light" and "dark")

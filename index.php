@@ -88,7 +88,7 @@ session_start();
 	    foreach ($files as $file) {
 		$filename = basename($file);
 		$name = basename($file, ".md");
-		echo "<option value='?page=$name'>".ucwords($name)."</option>";
+		echo "<option value='?page=$name'>".$name."</option>";
 	    }
 	    ?>
 	</select>
