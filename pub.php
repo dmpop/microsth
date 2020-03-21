@@ -101,11 +101,7 @@ session_start();
 	    if(isset($_POST['unpublish'])){
 	        $MDFILE = $_SESSION['mdfile'];
 	        unlink("pub/".basename($MDFILE));
-	        ob_start();
 	        $url = 'index.php';
-	        while (ob_get_status()) {
-	            ob_end_clean();
-	        }
 	        header( "Location: $url" );
 	    }
 	    if ($unpublish) {

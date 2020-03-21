@@ -119,12 +119,7 @@ session_start();
 	    if(isset($_POST['newpage'])){
 	        $pagename = $_POST["pagename"];
 	        fopen("content/".$pagename.".md", "w");
-            ob_end_clean();
-	        ob_start();
 	        $url = "index.php?page=".$pagename;
-	        while (ob_get_status()) {
-	            ob_end_clean();
-	        }
 	        header( "Location: $url" );
 	    }
 	    if ($newpage) {
