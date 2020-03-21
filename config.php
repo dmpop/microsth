@@ -3,6 +3,8 @@
 $protect = false;
 // Password
 $passwd = 'password';
+// Enable New Page button
+$newpage = true;
 // Enable Trash button
 $trash = false;
 // Enable Unpublish button
@@ -10,7 +12,7 @@ $unpublish = false;
 // microsth base directory
 $base_dir = 'microsth';
 // Default category
-$first_page = 'personal';
+$first_page = 'home';
 // Title
 $title = 'micro.sth';
 // Theme (choose between "light" and "dark")

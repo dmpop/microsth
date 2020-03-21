@@ -31,13 +31,15 @@ To deploy micro.sth on a web server, move the *microsth* directory to the docume
 
 ## Working with pages
 
-When you open micro.sth for the first time, it automatically creates the default page specified in the _config.php_ file and an accompanying _.md_ file in the _content_ directory. For example, the default value of the `$first_page` variable is set to _personal_. When you open micro.sth, it creates the **Personal** page and the _content/personal.md_ file.
+When you open micro.sth for the first time, it automatically creates the default page specified in the _config.php_ file and an accompanying _.md_ file in the _content_ directory. For example, the default value of the `$first_page` variable is set to _home_. When you open micro.sth, it creates the **Personal** page and the _content/personal.md_ file.
 
-You can add as many pages as you need, and there are two ways to add a page:
+You can add as many pages as you need, and there are three ways to add a page:
 
-1. Create an _.md_ file manuall in the _content_ directory.
+1. If the `$newpage` parameter in the _config.php_ file is set to _true_, enter the desired page name into the **Page name** field  and press the **New Page** button.
 
-2. Append `?page=name` to the URL of your micro.sth instance, for example: *https://127.0.0.1/microsth/?page=travel* 
+2. Create an _.md_ file manuall in the _content_ directory.
+
+3. Append `?page=name` to the URL of your micro.sth instance, for example: *https://127.0.0.1/microsth/?page=travel* 
 
 How you choose to use pages is up to you. For example, you might want to create a separate page for each year (2020, 2019, 2018, and so on). Alternatively, you can create pages for specific types of content (e.g., links, quotes, snippets. etc.) or different kinds of activities (e.g., travel, hacking, photography, etc.).
 

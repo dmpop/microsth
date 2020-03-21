@@ -6,11 +6,9 @@ if ($protect) {
 }
 session_start();
 ?>
-
 <html lang="en">
     <!-- Author: Dmitri Popov, dmpop@linux.com
 	 License: GPLv3 https://www.gnu.org/licenses/gpl-3.0.txt -->
-    
     <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title><?php echo $title ?></title>
 	<link rel="shortcut icon" href="favicon.png" />
@@ -100,8 +98,7 @@ session_start();
             </form></div>";
         if(!is_file($MDFILE))
         {
-            $CONTENT = "Write something here";
-            file_put_contents($MDFILE, $CONTENT);
+            file_put_contents($MDFILE, "Write something here");
         }
         if (($handle = fopen($MDFILE, "r")) !== FALSE) {
             $text = file_get_contents($MDFILE);
@@ -111,6 +108,7 @@ session_start();
 	    if(isset($_POST['trash'])){
 	        $MDFILE = $_SESSION['mdfile'];
 	        rename($MDFILE, "trash/".basename($MDFILE));
+	        ob_end_clean();
 	        ob_start();
 	        $url = 'index.php';
 	        while (ob_get_status()) {
@@ -118,12 +116,31 @@ session_start();
 	        }
 	        header( "Location: $url" );
 	    }
-    if ($trash) {
-    echo "<div id='center'  style='margin-top: 1em;'>";
-    echo "<form style='display:inline!important;' method='post' action=''>";
-    echo "<button style='display: inline;' type='submit' role='button' name='trash'>Trash</button>";
-    echo "</form>";
-    }
+	    if(isset($_POST['newpage'])){
+	        $pagename = $_POST["pagename"];
+	        fopen("content/".$pagename.".md", "w");
+            ob_end_clean();
+	        ob_start();
+	        $url = "index.php?page=".$pagename;
+	        while (ob_get_status()) {
+	            ob_end_clean();
+	        }
+	        header( "Location: $url" );
+	    }
+	    if ($newpage) {
+        echo "<div id='center'  style='margin-top: 1em;'>";
+        echo "<form style='display:inline!important;' method='post' action=''>";
+        echo " <label for='pagename'>Page name:</label>";
+        echo "<input type='text' name='pagename'>";
+        echo "<button style='margin-top: 0.5em;' type='submit' role='button' name='newpage'>New Page</button>";
+        echo "</form>";
+        }
+        if ($trash) {
+            echo "<div id='center'  style='margin-top: 1em;'>";
+            echo "<form style='display:inline!important;' method='post' action=''>";
+            echo "<button style='display: inline;' type='submit' role='button' name='trash'>Trash</button>";
+        echo "</form>";
+        }
     ?>
         <hr />
 		<div id='center'><?php echo $footer; ?></div>
