@@ -93,13 +93,13 @@ session_start();
 	    ?>
 	</select>
 	<?php
+	    if(!is_file($MDFILE))
+        {
+            exit("<div id='center'>Page not found</div>");
+        }
         echo "<div id='center'><form method='GET' action='edit.php'>
         <p style='margin-top:1em;'><button type='submit'>Edit</button></p>
             </form></div>";
-        if(!is_file($MDFILE))
-        {
-            file_put_contents($MDFILE, "Write something here");
-        }
         if (($handle = fopen($MDFILE, "r")) !== FALSE) {
             $text = file_get_contents($MDFILE);
             $Parsedown = new Parsedown();
