@@ -19,8 +19,8 @@ if (isset($_POST['password']) && $_POST['password'] == $passwd) {
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
 	<meta name="viewport" content="width=device-width">
 	<link rel="shortcut icon" href="favicon.png" />
 	<link rel="stylesheet" href="css/<?php echo $theme ?>.min.css">
@@ -38,8 +38,11 @@ if (isset($_POST['password']) && $_POST['password'] == $passwd) {
 	<title>micro.sth</title>
     </head>
     <body>
-        <form method="POST">
-	    Password:  <input type="password" name="password">
-        </form>
+        <div id='center'  style='margin-top: 3em;'>
+            <form method="POST">
+                <label for='pagename'>Password: </label>
+	            <input style='display: inline!important;' type="password" name="password">
+	            </form>
+        </div>
     </body>
 </html>
