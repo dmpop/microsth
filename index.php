@@ -58,31 +58,31 @@ session_start();
         <?php
         echo '<img class="gravatar" src="'.$gravatar.'" />';
         echo '<div id="center"><a href="index.php">'.$title.'</a></div>';
-	if (file_exists("random.md")) {
-	    $f = file("random.md");
-	    $line = $f[array_rand($f)];
-	    $Parsedown = new Parsedown();
-	    echo "<div id='center'><p style='margin-top:1.9em;'>".$Parsedown->text($line)."</p></div>";
-	}
-	if (!file_exists("img")) {
-	    mkdir("img", 0777, true);
-	}
-	if (!file_exists("content")) {
-	    mkdir("content", 0777, true);
-	}
-	if (!file_exists("trash")) {
-	    mkdir("trash", 0777, true);
-	}
-	if(isset($_GET["page"]))
-        {
+	    if (file_exists("random.md")) {
+	        $f = file("random.md");
+	        $line = $f[array_rand($f)];
+	        $Parsedown = new Parsedown();
+	        echo "<div id='center'><p style='margin-top:1.9em;'>".$Parsedown->text($line)."</p></div>";
+	    }
+	    if (!file_exists("img")) {
+	        mkdir("img", 0777, true);
+	    }
+	    if (!file_exists("content")) {
+	        mkdir("content", 0777, true);
+	    }
+	    if (!file_exists("trash")) {
+	        mkdir("trash", 0777, true);
+	    }
+	    if(isset($_GET["page"]))
+            {
             $page = $_GET["page"];
-        } else {
-            $page = $first_page;
+            } else {
+                $page = $first_page;
         }
         $MDFILE = "content/".$page.".md";
         $_SESSION['page'] = $page;
         $_SESSION['mdfile'] = $MDFILE;
-	?>
+	    ?>
         <select style="margin-top:1.9em;" id="selectbox" name="" onchange="javascript:location.href = this.value;">
             <option value='Label'>Pages</option>";
 	    <?php
@@ -93,53 +93,48 @@ session_start();
 		echo "<option value='?page=$name'>".$name."</option>";
 	    }
 	    ?>
-	</select>
-	<?php
-	    if(!is_file($MDFILE))
-        {
-            exit("<div id='center'>Page not found</div>");
-        }
-        echo "<div id='center'><form method='GET' action='edit.php'>
-        <p style='margin-top:1em;'><button type='submit'>Edit</button></p>
+	    </select>
+	    <?php
+	        if(!is_file($MDFILE))
+            {
+                exit("<div id='center'>Page not found</div>");
+            }
+            echo "<div id='center'><form method='GET' action='edit.php'>
+            <p style='margin-top:1em;'><button type='submit'>Edit</button></p>
             </form></div>";
-        if (($handle = fopen($MDFILE, "r")) !== FALSE) {
-            $text = file_get_contents($MDFILE);
-            $Parsedown = new Parsedown();
-            echo $Parsedown->text($text);
-        }
-	    if(isset($_POST['trash'])){
-	        $MDFILE = $_SESSION['mdfile'];
-	        rename($MDFILE, "trash/".basename($MDFILE));
-	        ob_end_clean();
-	        ob_start();
-	        $url = 'index.php';
-	        while (ob_get_status()) {
-	            ob_end_clean();
+            if (($handle = fopen($MDFILE, "r")) !== FALSE) {
+                $text = file_get_contents($MDFILE);
+                $Parsedown = new Parsedown();
+                echo $Parsedown->text($text);
+            }
+	        if(isset($_POST['trash'])){
+	            $MDFILE = $_SESSION['mdfile'];
+	            rename($MDFILE, "trash/".basename($MDFILE));
+	            $url = 'index.php';
+	            header( "Location: $url" );
 	        }
-	        header( "Location: $url" );
-	    }
-	    if(isset($_POST['newpage'])){
-	        $pagename = $_POST["pagename"];
-	        fopen("content/".$pagename.".md", "w");
-	        $url = "index.php?page=".$pagename;
-	        header( "Location: $url" );
-	    }
-	    if ($newpage) {
-        echo "<div id='center'>";
-        echo "<form method='post' action=''>";
-        echo " <label for='pagename'>Page name: </label>";
-        echo "<input style='display: inline!important;' type='text' name='pagename'>";
-        echo "<button style='margin-top: 0.5em;' type='submit' role='button' name='newpage'>New Page</button>";
-        echo "</form>";
-        echo "</div>";
-        }
-        if ($trash) {
-            echo "<div id='center'  style='margin-top: 0.5em;'>";
-            echo "<form method='post' action=''>";
-            echo "<button type='submit' role='button' name='trash'>Trash</button>";
-        echo "</form>";
-        }
-    ?>
+	        if(isset($_POST['newpage'])){
+	            $pagename = $_POST["pagename"];
+	            fopen("content/".$pagename.".md", "w");
+	            $url = "index.php?page=".$pagename;
+	            header( "Location: $url" );
+	        }
+	        if ($newpage) {
+                echo "<div id='center'>";
+                echo "<form method='post' action=''>";
+                echo " <label for='pagename'>Page name: </label>";
+                echo "<input style='display: inline!important;' type='text' name='pagename'>";
+                echo "<button style='margin-top: 0.5em;' type='submit' role='button' name='newpage'>New Page</button>";
+                echo "</form>";
+                echo "</div>";
+            }
+            if ($trash) {
+                echo "<div id='center'  style='margin-top: 0.5em;'>";
+                echo "<form method='post' action=''>";
+                echo "<button type='submit' role='button' name='trash'>Trash</button>";
+            echo "</form>";
+            }
+        ?>
         <hr />
 		<div id='center'><?php echo $footer; ?></div>
     </body>
