@@ -108,6 +108,8 @@ session_start();
 		    $handle->image_ratio_y = true;
 		    $handle->process('img');
 		    if ($handle->processed) {
+				// Processed images are saved with lower-case file extensions
+				// Use the strtolower() to convert the file extension to lower case
 		        $filename = pathinfo(($_FILES['image_field']['name']), PATHINFO_FILENAME) . '.' . strtolower(pathinfo(($_FILES['image_field']['name']), PATHINFO_EXTENSION));
 			    echo '![](img/'.$filename.')';
 			    $handle->clean();
