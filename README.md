@@ -19,15 +19,11 @@ micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool
 
 # Installation and usage
 
-Open the _config.php_ file and edit the default values. To replace the default gravatar with your own, replace the _https://icotar.com/avatar/monkey.png_ value of the `$gravatar` variable with a Gravatar link as follows:
+1. Use the `git clone https://gitlab.com/dmpop/microsth.git` commmand to fetch micro.sth.
 
-    'gravatar' => 'http://www.gravatar.com/avatar/' . md5("dmpop@linux.com") . '?s=96';
+2. Open the _microsth/config.php_ file and edit the default values. To replace the default gravatar with your own, replace the _https://icotar.com/avatar/monkey.png_ value of the `$gravatar` variable with a Gravatar link as follows: `'gravatar' => 'http://www.gravatar.com/avatar/' . md5("dmpop@linux.com") . '?s=96';`
 
-Save the changes and close the file.
-
-To serve micro.sth locally, run the `php -S 0.0.0.0:8000` command and point your browser to *localhost:8000*
-
-To deploy micro.sth on a web server, move the *microsth* directory to the document root of the server. Point your browser to *127.0.0.1/microsth* (replace *127.0.0.1* with the actual IP adress or domain name of your server).
+3. Save the changes and close the file. Upload the entire _microsth_ folder to the document directory of your web server.
 
 ## Working with pages
 

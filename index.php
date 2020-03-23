@@ -78,6 +78,10 @@ session_start();
             $page = $_GET["page"];
             } else {
                 $page = $first_page;
+                if (!file_exists("content/".$page.".md"))
+                {
+		            fopen("content/".$page.".md", "w");
+	            }
         }
         $MDFILE = "content/".$page.".md";
         $_SESSION['page'] = $page;
