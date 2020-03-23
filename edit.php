@@ -108,14 +108,15 @@ session_start();
 		    $handle->image_ratio_y = true;
 		    $handle->process('img');
 		    if ($handle->processed) {
-			echo '![](img/'.($_FILES['image_field']['name']).')';
-			$handle->clean();
-		    } else {
-			echo 'error : ' . $handle->error;
+		        $filename = pathinfo(($_FILES['image_field']['name']), PATHINFO_FILENAME) . '.' . strtolower(pathinfo(($_FILES['image_field']['name']), PATHINFO_EXTENSION));
+			    echo '![](img/'.$filename.')';
+			    $handle->clean();
+		        } else {
+			        echo 'error : ' . $handle->error;
+		            }
 		        }
-		    }
+	        }
 	    }
-	}
 	?>
 	<div id='center' style='margin-top: 1em;'>
 	<form enctype="multipart/form-data" method="post" action="">
