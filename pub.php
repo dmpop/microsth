@@ -1,7 +1,6 @@
 <?php
 include 'inc/parsedown.php';
 include('config.php');
-session_start();
 ?>
 
 <html lang="en">
@@ -61,12 +60,6 @@ session_start();
 	    $Parsedown = new Parsedown();
 	    echo "<div id='center'><p style='margin-top:1.9em;'>".$Parsedown->text($line)."</p></div>";
 	}
-	if (!file_exists("img")) {
-	    mkdir("img", 0777, true);
-	}
-	if (!file_exists("pub")) {
-	    mkdir("pub", 0777, true);
-	}
 	if(isset($_GET["page"]))
         {
             $page = $_GET["page"];
@@ -97,20 +90,6 @@ session_start();
             exit();
         }
         ?>
-    <?php
-	    if(isset($_POST['unpublish'])){
-	        $MDFILE = $_SESSION['mdfile'];
-	        unlink("pub/".basename($MDFILE));
-	        $url = 'index.php';
-	        header( "Location: $url" );
-	    }
-	    if ($unpublish) {
-	        echo "<div id='center'  style='margin-top: 1em;'>";
-	        echo "<form style='display:inline!important;' method='post' action=''>";
-	        echo "<button style='display: inline;' type='submit' role='button' name='unpublish'>Unpublish</button>";
-	        echo "</form>";
-	    }
-    ?>
     </div>
     <div id='center'  style='margin-top: 1em;'><?php echo $footer; ?></div>
     </body>

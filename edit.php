@@ -97,6 +97,17 @@ session_start();
         <button style="display: inline;" type="submit" role="button" name="publish">Publish</button>
     </form>
     <?php
+        $MDFILE = $_SESSION['mdfile'];
+        if(isset($_POST['unpublish'])){
+	        unlink("pub/".basename($MDFILE));
+	        $url = 'index.php';
+	        header( "Location: $url" );
+        }
+	 if (file_exists("pub/".basename($MDFILE))) {
+	        echo "<form style='display:inline!important;' method='post' action=''>";
+	        echo "<button style='display: inline;' type='submit' role='button' name='unpublish'>Unpublish</button>";
+	        echo "</form>";
+	    }
 	    if(isset($_POST['upload'])){
 	        $file_type = $_FILES['image_field']['type'];
 	        $allowed = array("image/jpeg");
@@ -108,8 +119,6 @@ session_start();
 		    $handle->image_ratio_y = true;
 		    $handle->process('img');
 		    if ($handle->processed) {
-				// Processed images are saved with lower-case file extensions
-				// Use the strtolower() to convert the file extension to lower case
 		        $filename = pathinfo(($_FILES['image_field']['name']), PATHINFO_FILENAME) . '.' . strtolower(pathinfo(($_FILES['image_field']['name']), PATHINFO_EXTENSION));
 			    echo '![](img/'.$filename.')';
 			    $handle->clean();
