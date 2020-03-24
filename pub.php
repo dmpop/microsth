@@ -1,6 +1,7 @@
 <?php
 include 'inc/parsedown.php';
 include('config.php');
+error_reporting(E_ERROR);
 ?>
 
 <html lang="en">

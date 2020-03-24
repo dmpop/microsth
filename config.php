@@ -18,7 +18,7 @@
     // Gravatar
     $gravatar = 'https://icotar.com/avatar/monkey.png';
     // Footer
-    $footer = "<a href='https://gitlab.com/dmpop/micro.sth'>micro.sth</a> - Write here";
+    $footer = "<a href='https://gitlab.com/dmpop/micro.sth'>micro.sth</a> - write here";
     // Resize image size
     $resize = '800';
 ?>
