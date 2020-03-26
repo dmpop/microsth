@@ -4,8 +4,8 @@ include('config.php');
 if ($protect) {
     require_once('protect.php');
 }
-ini_set('session.gc_maxlifetime', 3600); // Set session expiration to 60 min.
-session_set_cookie_params(3600);
+ini_set('session.gc_maxlifetime', 10800); // Set session expiration to 180 min.
+session_set_cookie_params(10800);
 session_start();
 ?>
 <html lang="en">
@@ -94,7 +94,7 @@ session_start();
 	    foreach ($files as $file) {
 		$filename = basename($file);
 		$name = basename($file, ".md");
-		echo "<option value='?page=$name'>".$name."</option>";
+		echo "<option value='?page=".str_replace('\'', '&apos;', $name)."'>".$name."</option>";
 	    }
 	    ?>
 	    </select>
