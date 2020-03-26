@@ -13,7 +13,7 @@ error_reporting(E_ERROR);
 	<link rel="shortcut icon" href="favicon.png" />
 	<link rel="stylesheet" href="css/<?php echo $theme ?>.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+	<style>
 	 body {
 	     display: flex;
 	     flex-direction: column;
@@ -22,33 +22,33 @@ error_reporting(E_ERROR);
 	     padding: 0 0.9375rem;
 	     line-height: 1.9;
 	 }
-    h1,
-    h2,
-    h3,
-    h4 {
-        font-size: 1.5em;
-        margin-top: 2%;
-    }
-    img {
-        border-radius: 1em;
-        max-width: 100%;
-	    display: block;
-	    align-self: center;
-    }
-    img.gravatar {
-        border-radius: 50%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 5%;
-        margin-bottom: 1%;
-        height: 96px;
-        width: 96px;
-    }
-    #center {
-        text-align: center;
-        margin: 0 auto;
-    }
+	 h1,
+	 h2,
+	 h3,
+	 h4 {
+             font-size: 1.5em;
+             margin-top: 2%;
+	 }
+	 img {
+             border-radius: 1em;
+             max-width: 100%;
+	     display: block;
+	     align-self: center;
+	 }
+	 img.gravatar {
+             border-radius: 50%;
+             display: block;
+             margin-left: auto;
+             margin-right: auto;
+             margin-top: 5%;
+             margin-bottom: 1%;
+             height: 96px;
+             width: 96px;
+	 }
+	 #center {
+             text-align: center;
+             margin: 0 auto;
+	 }
 	</style>
     </head>
     <body>
@@ -68,8 +68,8 @@ error_reporting(E_ERROR);
             echo "Choose the desired page from the list below.";
         }
         $MDFILE = "pub/".$page.".md";
-            $_SESSION['page'] = $page;
-            $_SESSION['mdfile'] = $MDFILE;
+        $_SESSION['page'] = $page;
+        $_SESSION['mdfile'] = $MDFILE;
 	?>
         <select style="margin-top:1.9em;" id="selectbox" name="" onchange="javascript:location.href = this.value;">
             <option value='Label'>Pages</option>";
@@ -78,7 +78,7 @@ error_reporting(E_ERROR);
 	    foreach ($files as $file) {
 		$filename = basename($file);
 		$name = basename($file, ".md");
-		echo "<option value='?page=$name'>".ucwords($name)."</option>";
+		echo "<option value='?page=".str_replace('\'', '&apos;', $name)."'>".$name."</option>";
 	    }
 	    ?>
 	</select>
