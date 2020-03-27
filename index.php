@@ -73,16 +73,15 @@ session_start();
 	    if (!file_exists("trash")) {
 	        mkdir("trash", 0777, true);
 	    }
-	    if(isset($_GET["page"]))
+	    if(isset($_GET["page"])) {
+	        $page = $_GET["page"];
+	    } else {
+            $page = $first_page;
+            if (!file_exists("content/".$page.".md"))
             {
-            $page = $_GET["page"];
-            } else {
-                $page = $first_page;
-                if (!file_exists("content/".$page.".md"))
-                {
-		            fopen("content/".$page.".md", "w");
-	            }
-        }
+                fopen("content/".$page.".md", "w");
+            }
+	    }
         $MDFILE = "content/".$page.".md";
         $_SESSION['page'] = $page;
         $_SESSION['mdfile'] = $MDFILE;
@@ -99,47 +98,55 @@ session_start();
 	    ?>
 	    </select>
 	    <?php
-	        if(!is_file($MDFILE))
+	    if(isset($_POST['trash'])) {
+	        $MDFILE = $_SESSION['mdfile'];
+	        rename($MDFILE, "trash/".basename($MDFILE));
+	        $url = 'index.php';
+	        if (headers_sent()) {
+	            die("Return <a href='$url'>Home</a>");
+	        } else {
+	            header( "Location: $url" );
+	        }
+	    }
+	   if(isset($_POST['newpage'])) {
+	       $pagename = $_POST["pagename"];
+	       fopen("content/".$pagename.".md", "w");
+	       $url = "index.php?page=".$pagename;
+	       if (headers_sent()) {
+	           die("Go to <a href='$url'>$pagename</a>");
+	       } else {
+	           header( "Location: $url" );
+	       }
+	   }
+	   if(!is_file($MDFILE))
             {
                 exit("<div id='center'>Page not found</div>");
             }
-            echo "<div id='center'><form method='GET' action='edit.php'>
-            <p style='margin-top:1em;'><button type='submit'>Edit</button></p>
-            </form></div>";
-            if (($handle = fopen($MDFILE, "r")) !== FALSE) {
-                $text = file_get_contents($MDFILE);
-                $Parsedown = new Parsedown();
-                echo $Parsedown->text($text);
-            }
-	        if(isset($_POST['trash'])){
-	            $MDFILE = $_SESSION['mdfile'];
-	            rename($MDFILE, "trash/".basename($MDFILE));
-	            $url = 'index.php';
-	            header( "Location: $url" );
-	        }
-	        if(isset($_POST['newpage'])){
-	            $pagename = $_POST["pagename"];
-	            fopen("content/".$pagename.".md", "w");
-	            $url = "index.php?page=".$pagename;
-	            header( "Location: $url" );
-	        }
-	        if ($newpage) {
-                echo "<div id='center'>";
-                echo "<form method='post' action=''>";
-                echo " <label for='pagename'>Page name: </label>";
-                echo "<input style='display: inline!important;' type='text' name='pagename'>";
-                echo "<button style='margin-top: 0.5em;' type='submit' role='button' name='newpage'>New Page</button>";
-                echo "</form>";
-                echo "</div>";
-            }
-            if ($trash) {
-                echo "<div id='center'  style='margin-top: 0.5em;'>";
-                echo "<form method='post' action=''>";
-                echo "<button type='submit' role='button' name='trash'>Trash</button>";
+        echo "<div id='center'><form method='GET' action='edit.php'>
+        <p style='margin-top:1em;'><button type='submit'>Edit</button></p>
+        </form></div>";
+        if (($handle = fopen($MDFILE, "r")) !== FALSE) {
+            $text = file_get_contents($MDFILE);
+            $Parsedown = new Parsedown();
+            echo $Parsedown->text($text);
+        }
+        if ($newpage) {
+            echo "<div id='center'>";
+            echo "<form method='post' action=''>";
+            echo " <label for='pagename'>Page name: </label>";
+            echo "<input style='display: inline!important;' type='text' name='pagename'>";
+            echo "<button style='margin-top: 0.5em;' type='submit' role='button' name='newpage'>New Page</button>";
             echo "</form>";
-            }
+            echo "</div>";
+        }
+        if ($trash) {
+            echo "<div id='center'  style='margin-top: 0.5em;'>";
+            echo "<form method='post' action=''>";
+            echo "<button type='submit' role='button' name='trash'>Trash</button>";
+            echo "</form>";
+            echo "</div>";
+        }
         ?>
-        <hr />
-		<div id='center'><?php echo $footer; ?></div>
+		<div id='center'><hr /><?php echo $footer; ?></div>
     </body>
 </html>
