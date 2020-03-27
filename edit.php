@@ -5,9 +5,6 @@ include('config.php');
 if ($protect) {
     require_once('protect.php');
 }
-ini_set('session.gc_maxlifetime', 10800); // Set session expiration to 180 min.
-session_set_cookie_params(10800);
-session_start();
 ?>
 <html lang='en'>
     <!-- Author: Dmitri Popov, dmpop@linux.com
@@ -59,13 +56,13 @@ session_start();
 	<?php
 	echo '<img class="gravatar" src="'.$gravatar.'" />';
     echo '<div id="center"><a href="index.php">'.$title.'</a></div>';
-    echo '<div id="center" style="margin-bottom:1em; margin-top:1em;"><a href="/'.$base_dir.'/?page='.$_SESSION["page"].'">Back</a></div>';
+    echo '<div id="center" style="margin-bottom:1em; margin-top:1em;"><a href="/'.$base_dir.'/?page='.$_COOKIE["page"].'">Back</a></div>';
     function Read() {
-        $MDFILE = $_SESSION['mdfile'];
+        $MDFILE = $_COOKIE['mdfile'];
         echo file_get_contents($MDFILE);
     }
     function Write() {
-	    $MDFILE = $_SESSION['mdfile'];
+        $MDFILE = $_COOKIE['mdfile'];
 	    $fp = fopen($MDFILE, "w");
 	    $data = $_POST["text"];
         fwrite($fp, $data);
@@ -83,7 +80,7 @@ session_start();
     </form>
     <?php
     if(isset($_POST['publish'])) {
-        $MDFILE = $_SESSION['mdfile'];
+        $MDFILE = $_COOKIE['mdfile'];
 	    if (!copy($MDFILE, "pub/".basename($MDFILE))) {
             echo "Failed to copy basename($MDFILE) ";
         } else {
@@ -95,7 +92,7 @@ session_start();
         <button style="display: inline;" type="submit" role="button" name="publish">Publish</button>
     </form>
     <?php
-    $MDFILE = $_SESSION['mdfile'];
+    $MDFILE = $_COOKIE['mdfile'];
     if(isset($_POST['unpublish'])) {
         unlink("pub/".basename($MDFILE));
         $url = 'index.php';

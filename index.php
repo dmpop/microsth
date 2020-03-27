@@ -4,9 +4,8 @@ include('config.php');
 if ($protect) {
     require_once('protect.php');
 }
-ini_set('session.gc_maxlifetime', 10800); // Set session expiration to 180 min.
-session_set_cookie_params(10800);
-session_start();
+date_default_timezone_set('UTC');
+$EXPIRE = strtotime('+7 days'); // 7 days
 ?>
 <html lang="en">
     <!-- Author: Dmitri Popov, dmpop@linux.com
@@ -83,8 +82,8 @@ session_start();
             }
 	    }
         $MDFILE = "content/".$page.".md";
-        $_SESSION['page'] = $page;
-        $_SESSION['mdfile'] = $MDFILE;
+        setcookie("page", $page, $EXPIRE);
+        setcookie("mdfile", $MDFILE, $EXPIRE);
 	    ?>
         <select style="margin-top:1.9em;" id="selectbox" name="" onchange="javascript:location.href = this.value;">
             <option value='Label'>Pages</option>";
@@ -99,7 +98,7 @@ session_start();
 	    </select>
 	    <?php
 	    if(isset($_POST['trash'])) {
-	        $MDFILE = $_SESSION['mdfile'];
+	        $MDFILE = $_COOKIE['mdfile'];
 	        rename($MDFILE, "trash/".basename($MDFILE));
 	        $url = 'index.php';
 	        if (headers_sent()) {
