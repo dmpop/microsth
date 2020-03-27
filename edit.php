@@ -5,7 +5,8 @@ include('config.php');
 if ($protect) {
     require_once('protect.php');
 }
-error_reporting(E_ERROR);
+ini_set('session.gc_maxlifetime', 10800); // Set session expiration to 180 min.
+session_set_cookie_params(10800);
 session_start();
 ?>
 <html lang='en'>
