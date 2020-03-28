@@ -4,6 +4,7 @@ include('config.php');
 if ($protect) {
     require_once('protect.php');
 }
+// error_reporting(E_ERROR);
 date_default_timezone_set('UTC');
 $EXPIRE = strtotime('+7 days'); // 7 days
 ?>
@@ -24,67 +25,83 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 	     padding: 0 0.9375rem;
 	     line-height: 1.9;
 	 }
-    h1,
-    h2,
-    h3,
-    h4 {
-        font-size: 1.5em;
-        margin-top: 2%;
-    }
-    img {
-        border-radius: 1em;
-        max-width: 100%;
-	    display: block;
-	    align-self: center;
-    }
-    img.gravatar {
-        border-radius: 50%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 5%;
-        margin-bottom: 1%;
-        height: 96px;
-        width: 96px;
-    }
-    #center {
-        text-align: center;
-        margin: 0 auto;
-    }
+	 h1,
+	 h2,
+	 h3,
+	 h4 {
+             font-size: 1.5em;
+             margin-top: 2%;
+	 }
+	 img {
+             border-radius: 1em;
+             max-width: 100%;
+	     display: block;
+	     align-self: center;
+	 }
+	 img.gravatar {
+             border-radius: 50%;
+             display: block;
+             margin-left: auto;
+             margin-right: auto;
+             margin-top: 5%;
+             margin-bottom: 1%;
+             height: 96px;
+             width: 96px;
+	 }
+	 #center {
+             text-align: center;
+             margin: 0 auto;
+	 }
 	</style>
     </head>
     <body>
         <?php
         echo '<img class="gravatar" src="'.$gravatar.'" />';
         echo '<div id="center"><a href="index.php">'.$title.'</a></div>';
-	    if (file_exists("random.md")) {
-	        $f = file("random.md");
-	        $line = $f[array_rand($f)];
-	        $Parsedown = new Parsedown();
-	        echo "<div id='center'><p style='margin-top:1.9em;'>".$Parsedown->text($line)."</p></div>";
-	    }
-	    if (!file_exists("img")) {
-	        mkdir("img", 0777, true);
-	    }
-	    if (!file_exists("content")) {
-	        mkdir("content", 0777, true);
-	    }
-	    if (!file_exists("trash")) {
-	        mkdir("trash", 0777, true);
-	    }
-	    if(isset($_GET["page"])) {
-	        $page = $_GET["page"];
-	    } else {
+	if (file_exists("random.md")) {
+	    $f = file("random.md");
+	    $line = $f[array_rand($f)];
+	    $Parsedown = new Parsedown();
+	    echo "<div id='center'><p style='margin-top:1.9em;'>".$Parsedown->text($line)."</p></div>";
+	}
+	if (!file_exists("img")) {
+	    mkdir("img", 0777, true);
+	}
+	if (!file_exists("content")) {
+	    mkdir("content", 0777, true);
+	}
+	if (!file_exists("trash")) {
+	    mkdir("trash", 0777, true);
+	}
+	if(isset($_GET["page"])) {
+	    $page = $_GET["page"];
+	} else {
             $page = $first_page;
             if (!file_exists("content/".$page.".md"))
             {
                 fopen("content/".$page.".md", "w");
             }
+	}
+	if(isset($_POST['newpage'])) {
+	    $pagename = $_POST["pagename"];
+	    $url = "index.php?page=".$pagename;
+	    if (!file_exists("content/".$pagename.".md")) {
+	        fopen("content/".$pagename.".md", "w");
+	        header( "Location: $url" );
+	    } else {
+	        header( "Location: $url" );
 	    }
+	}
+        if(isset($_POST['trash'])) {
+	    $MDFILE = $_COOKIE['mdfile'];
+	    rename($MDFILE, "trash/".basename($MDFILE));
+	    $url = 'index.php';
+	    header( "Location: $url" );
+	}
         $MDFILE = "content/".$page.".md";
         setcookie("page", $page, $EXPIRE);
         setcookie("mdfile", $MDFILE, $EXPIRE);
-	    ?>
+	?>
         <select style="margin-top:1.9em;" id="selectbox" name="" onchange="javascript:location.href = this.value;">
             <option value='Label'>Pages</option>";
 	    <?php
@@ -95,32 +112,12 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 		echo "<option value='?page=".str_replace('\'', '&apos;', $name)."'>".$name."</option>";
 	    }
 	    ?>
-	    </select>
-	    <?php
-	    if(isset($_POST['trash'])) {
-	        $MDFILE = $_COOKIE['mdfile'];
-	        rename($MDFILE, "trash/".basename($MDFILE));
-	        $url = 'index.php';
-	        if (headers_sent()) {
-	            die("Return <a href='$url'>Home</a>");
-	        } else {
-	            header( "Location: $url" );
-	        }
-	    }
-	   if(isset($_POST['newpage'])) {
-	       $pagename = $_POST["pagename"];
-	       fopen("content/".$pagename.".md", "w");
-	       $url = "index.php?page=".$pagename;
-	       if (headers_sent()) {
-	           die("Go to <a href='$url'>$pagename</a>");
-	       } else {
-	           header( "Location: $url" );
-	       }
-	   }
-	   if(!is_file($MDFILE))
-            {
-                exit("<div id='center'>Page not found</div>");
-            }
+	</select>
+	<?php
+	if(!is_file($MDFILE))
+        {
+            exit("<div id='center'>Page not found</div>");
+        }
         echo "<div id='center'><form method='GET' action='edit.php'>
         <p style='margin-top:1em;'><button type='submit'>Edit</button></p>
         </form></div>";
@@ -146,6 +143,6 @@ $EXPIRE = strtotime('+7 days'); // 7 days
             echo "</div>";
         }
         ?>
-		<div id='center'><hr /><?php echo $footer; ?></div>
+	<div id='center'><hr /><?php echo $footer; ?></div>
     </body>
 </html>
