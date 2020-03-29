@@ -10,7 +10,7 @@
     //Enable password protection
     $protect = true;
     // Password
-    $passwd = 'cowpat';
+    $passwd = 'password';
     // Enable New Page button
     $newpage = true;
     // Enable Trash button

@@ -17,7 +17,14 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 	<link rel="stylesheet" href="css/<?php echo $theme ?>.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
+	 @font-face {
+	     font-family: "Montserrat Regular";
+	     src: url('fonts/Montserrat-Regular.eot');
+	     src: url('fonts/Montserrat-Regular.eot?') format('☺'),
+	     url('fonts/Montserrat-Regular.woff') format('woff');
+	 }
 	 body {
+	     font-family: "Montserrat Regular", monospace;
 	     display: flex;
 	     flex-direction: column;
 	     max-width: 50rem;
