@@ -16,6 +16,12 @@ error_reporting(E_ERROR);
 	<link rel="stylesheet" href="css/<?php echo $theme ?>.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
+	 @font-face {
+	     font-family: "League Mono Regular";
+	     src: url('fonts/LeagueMono-Regular.eot');
+	     src: url('fonts/LeagueMono-Regular.eot?') format('☺'),
+	     url('fonts/LeagueMono-Regular.woff') format('woff');
+	 }
 	 body {
 	     display: flex;
 	     flex-direction: column;
@@ -24,6 +30,7 @@ error_reporting(E_ERROR);
 	     padding: 0 0.9375rem;  
          }
 	 textarea {
+	     font-family: "League Mono Regular", monospace;
 	     font-size: 15px;
 	     width: 100%;
 	     height: 25em;
