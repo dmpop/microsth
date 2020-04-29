@@ -24,6 +24,7 @@ if (isset($_POST['password']) && $_POST['password'] == $passwd) {
 	<meta name="viewport" content="width=device-width">
 	<link rel="shortcut icon" href="favicon.png" />
 	<link rel="stylesheet" href="css/<?php echo $theme ?>.min.css">
+	<link rel="stylesheet" href="css/styles.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 	 body {
