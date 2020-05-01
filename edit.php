@@ -16,50 +16,6 @@ error_reporting(E_ERROR);
 	<link rel="stylesheet" href="css/<?php echo $theme ?>.min.css">
 	<link rel="stylesheet" href="css/styles.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<style>
-	 @font-face {
-	     font-family: "Montserrat Regular";
-	     src: url('fonts/Montserrat-Regular.eot');
-	     src: url('fonts/Montserrat-Regular.eot?') format('☺'),
-	     url('fonts/Montserrat-Regular.woff') format('woff');
-	 }
-	 body {
-	     font-family: "Montserrat Regular", monospace;
-	     display: flex;
-	     flex-direction: column;
-	     max-width: 50rem;
-	     margin: 0 auto;
-	     padding: 0 0.9375rem;  
-         }
-	 textarea {
-	     font-size: 15px;
-	     width: 100%;
-	     height: 25em;
-	     line-height: 1.9;
-	 }
-	 img {
-	     display: block;
-	     margin-left: auto;
-	     margin-right: auto;
-	     margin-top: 1%;
-	     margin-bottom: 1%;
-	     width: 600px;
-         }
-	 img.gravatar {
-	     border-radius: 50%;
-	     display: block;
-	     margin-left: auto;
-	     margin-right: auto;
-	     margin-top: 5%;
-	     margin-bottom: 1%;
-	     height: 96px;
-	     width: 96px;
-         }
-	 #center {
-             text-align: center;
-             margin: 0 auto;
-         }
-	</style>
     </head>
     <body>
 	<?php

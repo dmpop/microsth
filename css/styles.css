@@ -1,8 +1,8 @@
 @font-face {
     font-family: "Montserrat Regular";
-    src: url('fonts/Montserrat-Regular.eot');
-    src: url('fonts/Montserrat-Regular.eot?') format('☺'),
-    url('fonts/Montserrat-Regular.woff') format('woff');
+    src: url('../fonts/Montserrat-Regular.eot');
+    src: url('../fonts/Montserrat-Regular.eot?') format('☺'),
+    url('../fonts/Montserrat-Regular.woff') format('woff');
     }
 body {
     font-family: "Montserrat Regular", monospace;
@@ -34,7 +34,13 @@ img.gravatar {
     margin-bottom: 1%;
     height: 96px;
     width: 96px;
-    }
+}
+textarea {
+    font-size: 15px;
+    width: 100%;
+    height: 25em;
+    line-height: 1.9;
+}
 #center {
     text-align: center;
     margin: 0 auto;
