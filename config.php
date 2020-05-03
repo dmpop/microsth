@@ -5,8 +5,6 @@
     $title = 'micro.sth';
     // Default category
     $first_page = 'Home';
-    // Theme (choose between "light" and "dark")
-    $theme = "light";
     //Enable password protection
     $protect = true;
     // Password
