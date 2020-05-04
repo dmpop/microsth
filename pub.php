@@ -31,11 +31,11 @@ error_reporting(E_ERROR);
 	    } else {
 		echo "Choose the desired page from the list below.";
 	    }
-	    $MDFILE = "pub/".$page.".md";
+	    $md_file = "pub/".$page.".md";
 	    $_SESSION['page'] = $page;
-	    $_SESSION['mdfile'] = $MDFILE;
+	    $_SESSION['mdfile'] = $md_file;
 	    ?>
-	    <select style="margin-top:1.9em;" id="selectbox" name="" onchange="javascript:location.href = this.value;">
+	    <select class="card w-100" style="margin-top:1.9em;" id="selectbox" name="" onchange="javascript:location.href = this.value;">
 		<option value='Label'>Pages</option>";
 		<?php
 		$files = glob("pub/*.md");
@@ -47,8 +47,8 @@ error_reporting(E_ERROR);
 		?>
 	    </select>
 	    <?php
-	    if (($handle = fopen($MDFILE, "r")) !== FALSE) {
-		$text = file_get_contents($MDFILE);
+	    if (($handle = fopen($md_file, "r")) !== FALSE) {
+		$text = file_get_contents($md_file);
 		$Parsedown = new Parsedown();
 		echo $Parsedown->text($text);
 	    } else {

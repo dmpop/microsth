@@ -22,6 +22,7 @@ img.gravatar {
 }
 textarea {
     line-height: 1.9;
+    height: 25em;
 }
 #center {
     text-align: center;

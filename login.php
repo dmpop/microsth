@@ -30,7 +30,12 @@ if (isset($_POST['password']) && $_POST['password'] == $passwd) {
     </head>
     <body>
         <div class="c">
-            <form method="POST">
+	    <h1><?php echo $title ?></h1>
+	    <hr>
+	    <p>
+		Enter password and press ENTER to log in.
+	    </p>
+	    <form method="POST">
                 <label for='pagename'>Password: </label>
 	        <input type="password" name="password">
 	    </form>

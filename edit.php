@@ -22,7 +22,7 @@ error_reporting(E_ERROR);
 	    <?php
 	    echo '<img class="gravatar" src="'.$gravatar.'" />';
 	    echo '<div id="center"><a href="index.php">'.$title.'</a></div>';
-	    echo '<div id="center" style="margin-bottom:1em; margin-top:1em;"><a href="/'.$base_dir.'/?page='.$_COOKIE["page"].'">Back</a></div>';
+	    echo '<div id="center" style="margin-bottom:1em; margin-top:1em;"><a class="btn" href="/'.$base_dir.'/?page='.$_COOKIE["page"].'">Back</a></div>';
 	    function Read() {
 		$md_file = $_COOKIE['mdfile'];
 		echo file_get_contents($md_file);
@@ -64,7 +64,7 @@ error_reporting(E_ERROR);
 	    }
 	    if (file_exists("pub/".basename($md_file))) {
 		echo "<form style='display:inline!important;' method='post' action=''>";
-		echo "<button style='display: inline;' type='submit' role='button' name='unpublish'>Unpublish</button>";
+		echo "<button class='btn' style='display: inline;' type='submit' role='button' name='unpublish'>Unpublish</button>";
 		echo "</form>";
 	    }
 	    if(isset($_POST['upload'])) {
