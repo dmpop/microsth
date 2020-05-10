@@ -20,12 +20,6 @@ error_reporting(E_ERROR);
 	    <?php
 	    echo '<img class="gravatar" src="'.$gravatar.'" />';
 	    echo '<div id="center"><a href="https://gitlab.com/dmpop/microsth">'.$title.'</a></div>';
-	    if (file_exists("random.md")) {
-		$f = file("random.md");
-		$line = $f[array_rand($f)];
-		$Parsedown = new Parsedown();
-		echo "<div id='center'><p style='margin-top:1.9em;'>".$Parsedown->text($line)."</p></div>";
-	    }
 	    if(isset($_GET["page"]))
             {
 		$page = $_GET["page"];

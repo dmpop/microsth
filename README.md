@@ -4,7 +4,6 @@ micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool
 
 ## Features
 
-- Light and dark themes
 - Markdown support
 - Password protection
 - Support for multiple pages

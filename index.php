@@ -24,12 +24,6 @@ $EXPIRE = strtotime('+7 days'); // 7 days
             <?php
             echo '<img class="gravatar" src="'.$gravatar.'" />';
             echo '<div id="center"><a href="index.php">'.$title.'</a></div>';
-	    if (file_exists("random.md")) {
-		$f = file("random.md");
-		$line = $f[array_rand($f)];
-		$Parsedown = new Parsedown();
-		echo "<div id='center'><p style='margin-top:1.9em;'>".$Parsedown->text($line)."</p></div>";
-	    }
 	    if (!file_exists("img")) {
 		mkdir("img", 0777, true);
 	    }
