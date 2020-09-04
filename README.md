@@ -20,7 +20,7 @@ micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool
 
 1. Use the `git clone https://gitlab.com/dmpop/microsth.git` commmand to fetch micro.sth.
 
-2. Open the _microsth/config.php_ file and edit the default values. To replace the default gravatar with your own, replace the _https://icotar.com/avatar/monkey.png_ value of the `$gravatar` variable with a Gravatar link as follows: `'gravatar' => 'http://www.gravatar.com/avatar/' . md5("dmpop@linux.com") . '?s=96';`
+2. Open the _microsth/config.php_ file and edit the default values.
 
 3. Save the changes and close the file. Upload the entire _microsth_ folder to the document directory of your web server.
 
