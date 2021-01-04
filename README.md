@@ -43,3 +43,27 @@ How you choose to use pages is up to you. For example, you might want to create 
 If you enabled password protection, you can make individual pages publicly available. To do this, open the desired page for editing and press the **Publish** button. You can then access the page either by going to _https://127.0.0.1/microsth/pub.php_ and selecting the published page from the **Pages** list, or by pointing the browser the direct link _https://127.0.0.1/microsth/pub.php?page=PAGENAME_ (where _PAGENAME_ is the actual name of the published page). To unpublish a published page, use the **Unpublish** button in the edit area.
 
 If the `$trash` parameter in the _config.php_ file is set to _true_, you can use the **Trash** button to remove the currently viewed page. Keep in mind that this doesn't delete the page but moves it to the _trash_ directory.
+
+## Problems?
+
+Please report bugs and issues in the [Issues](https://github.com/dmpop/microsth/issues) section.
+
+## Contribute
+
+If you've found a bug or have a suggestion for improvement, open an issue in the [Issues](https://github.com/dmpop/microsth/issues) section.
+
+To add a new feature or fix issues yourself, proceed as follows.
+
+1. Fork the project's repository.
+2. Create a feature branch using the `git checkout -b new-feature` command.
+3. Add your new feature or fix bugs and run the `git commit -am 'Add a new feature'` command to commit changes.
+4. Push changes using the `git push origin new-feature` command.
+5. Submit a pull request.
+
+## Author
+
+Dmitri Popov [dmpop@linux.com](mailto:dmpop@linux.com)
+
+## License
+
+The [GNU General Public License version 3](http://www.gnu.org/licenses/gpl-3.0.en.html)
