@@ -101,10 +101,10 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 				echo "</form>";
 			}
 			?>
-			</div>
-			<?php echo $footer; ?>
-			<hr>
 		</div>
+		<?php echo $footer; ?>
+		<hr>
+	</div>
 	</div>
 </body>
 

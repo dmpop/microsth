@@ -63,9 +63,13 @@ error_reporting(E_ERROR);
 			if (isset($_POST['publish'])) {
 				$md_file = $_COOKIE['mdfile'];
 				if (!copy($md_file, "pub/" . basename($md_file))) {
-					echo "Failed to copy basename($md_file) ";
+					echo "<script>";
+					echo "UIkit.notification({message: 'Failed to publish " . basename($md_file) . "', status: 'warning'});";
+					echo "</script>";
 				} else {
-					echo "Published";
+					echo "<script>";
+					echo "UIkit.notification({message: 'Published', status: 'success'});";
+					echo "</script>";
 				}
 			}
 			?>
@@ -77,7 +81,9 @@ error_reporting(E_ERROR);
 				$md_file = $_COOKIE['mdfile'];
 				if (isset($_POST['unpublish'])) {
 					unlink("pub/" . basename($md_file));
-					echo "Unpublished";
+					echo "<script>";
+					echo "UIkit.notification({message: 'Unpublished', status: 'success'});";
+					echo "</script>";
 				}
 				if (file_exists("pub/" . basename($md_file))) {
 					echo "<button class='uk-button uk-button-default' type='submit' role='button' name='unpublish'>Unpublish</button>";
@@ -95,10 +101,14 @@ error_reporting(E_ERROR);
 							$handle->process('img');
 							if ($handle->processed) {
 								$filename = pathinfo(($_FILES['image_field']['name']), PATHINFO_FILENAME) . '.' . strtolower(pathinfo(($_FILES['image_field']['name']), PATHINFO_EXTENSION));
-								echo '![](img/' . $filename . ')';
+								echo "<script>";
+								echo "UIkit.notification({message: '![](img/$filename', status: 'success', timeout: '10000'});";
+								echo "</script>";
 								$handle->clean();
 							} else {
-								echo 'error : ' . $handle->error;
+								echo "<script>";
+								echo "UIkit.notification({message: 'Error: $handle->error', status: 'warning'});";
+								echo "</script>";
 							}
 						}
 					}
@@ -106,7 +116,7 @@ error_reporting(E_ERROR);
 				?>
 				<form enctype="multipart/form-data" method="post" action="">
 					<input class="uk-input" type="file" size="32" name="image_field" value="">
-					<button class="uk-button uk-button-default" type="submit" role="button" name="upload">Upload</button>
+					<button class="uk-button uk-button-default uk-margin-small-top" type="submit" role="button" name="upload">Upload</button>
 				</form>
 		</div>
 		<hr>
