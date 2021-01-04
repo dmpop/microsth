@@ -1,6 +1,6 @@
 <?php
     // microsth base directory
-    $base_dir = 'microsth';
+    $base_dir = '/';
     // Title
     $title = 'micro.sth';
     // Default category
