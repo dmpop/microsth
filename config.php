@@ -1,5 +1,6 @@
 <?php
     // microsth base directory
+    // Use preceding and trailing slashes, for example: /microsth/
     $base_dir = '/';
     // Title
     $title = 'micro.sth';

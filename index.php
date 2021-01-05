@@ -24,6 +24,9 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 <body>
 	<h1 style="font-size: 2.5em; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
 	<hr style="margin-bottom: 2em;">
+	<noscript>
+		<p>Make sure that JavaScript is enabled.</p>
+	</noscript>
 	<?php
 	if (!file_exists("img")) {
 		mkdir("img", 0777, true);
