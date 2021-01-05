@@ -90,7 +90,7 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 	}
 	?>
 	<hr style='margin-top: 2em; margin-bottom: 1.5em;'>
-	<form method='post' action=''>
+	<form method='POST' action=''>
 		<label for='pagename'>Page name: </label>
 		<input style='display: inline;' type='text' name='pagename'>
 		<input style='display: inline;' type='submit' name='newpage' value='Create'>

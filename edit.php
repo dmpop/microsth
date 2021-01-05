@@ -33,8 +33,8 @@ error_reporting(E_ERROR);
 <body>
 	<h1 style="font-size: 2.5em; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
 	<hr style="margin-bottom: 2em;">
+	<button style="margin-bottom: 1.5em;" onclick="window.location.href='<?php echo $base_dir . '?page=' . $_COOKIE['page'] ?>';">Back</button>
 	<?php
-	echo '<p style="margin-bottom:1.5em;"><a href="' . $base_dir . '?page=' . $_COOKIE["page"] . '">Back</a>';
 	function Read()
 	{
 		$md_file = $_COOKIE['mdfile'];
@@ -52,9 +52,9 @@ error_reporting(E_ERROR);
 		Write();
 	};
 	?>
-	<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+	<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 		<textarea name="text"><?php Read(); ?></textarea>
-		<input style="display: inline; margin-top: 1em;" type="submit" name="save" value="Save">
+		<input style="margin-top: 1em;" type="submit" name="save" value="Save">
 	</form>
 	<?php
 	if (isset($_POST['publish'])) {
@@ -109,7 +109,7 @@ error_reporting(E_ERROR);
 			}
 		}
 		?>
-		<form enctype="multipart/form-data" method="post" action="">
+		<form enctype="multipart/form-data" method="POST" action="">
 			<input style="display: inline;" type="file" size="32" name="image_field" value="">
 			<button style="display: inline;" type="submit" role="button" name="upload">Upload</button>
 		</form>
