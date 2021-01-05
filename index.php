@@ -81,7 +81,7 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 	</select>
 	<?php
 	if (!is_file($MDFILE)) {
-		exit("<div id='center'>Page not found</div>");
+		exit("<p>Page not found</p>");
 	}
 	echo "<form method='GET' action='edit.php'>
         <p style='margin-top:1em;'><button type='submit'>Edit</button></p>
