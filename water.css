@@ -10,44 +10,21 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-button, input, textarea {
-  transition: background-color 0.1s linear, border-color 0.1s linear, color 0.1s linear, box-shadow 0.1s linear, transform 0.1s ease;
-}
-
 h1 {
   font-family: "Barlow-Medium", sans-serif;
   font-size: 1.9em;
   margin-top: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   margin-bottom: 12px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong {
+h1, h2, h3, h4, h5, h6, strong {
   color: #000000;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-b,
-strong,
-th {
+h1, h2, h3, h4, h5, h6, b, strong, th {
   font-weight: 600;
 }
 
@@ -58,7 +35,7 @@ blockquote {
   font-style: italic;
 }
 
-blockquote > footer {
+blockquote>footer {
   margin-top: 10px;
   font-style: normal;
 }
@@ -71,27 +48,11 @@ address {
   font-style: normal;
 }
 
-a[href^='mailto']::before {
-  content: '📧 ';
-}
-
-a[href^='tel']::before {
-  content: '📞 ';
-}
-
-a[href^='sms']::before {
-  content: '💬 ';
-}
-
-button,
-input[type='submit'],
-input[type='button'],
-input[type='checkbox'] {
+button, input[type='submit'], input[type='button'], input[type='checkbox'] {
   cursor: pointer;
 }
 
-input:not([type='checkbox']):not([type='radio']),
-select {
+input:not([type='checkbox']):not([type='radio']), select {
   display: block;
 }
 
@@ -112,8 +73,7 @@ input, button {
   font-family: Barlow-Medium;
 }
 
-input:not([type='checkbox']):not([type='radio']),
-select, button, textarea {
+input:not([type='checkbox']):not([type='radio']), select, button, textarea {
   -webkit-appearance: none;
 }
 
@@ -130,31 +90,19 @@ button, input[type='submit'], input[type='button'] {
   padding-left: 30px;
 }
 
-button:hover,
-input[type='submit']:hover,
-input[type='button']:hover {
-  background: #dddddd;
+button:hover, input[type='submit']:hover, input[type='button']:hover {
+  box-shadow: 0 0 0 2px #f1c23eab;
 }
 
-input:focus,
-select:focus,
-button:focus,
-textarea:focus {
-  box-shadow: 0 0 0 2px #0096bfab;
+input:focus, select:focus, button:focus, textarea:focus {
+  box-shadow: 0 0 0 2px #f1c23eab;
 }
 
-input[type='checkbox']:active,
-input[type='radio']:active,
-input[type='submit']:active,
-input[type='button']:active,
-button:active {
+input[type='checkbox']:active, input[type='radio']:active, input[type='submit']:active, input[type='button']:active, button:active {
   transform: translateY(2px);
 }
 
-input:disabled,
-select:disabled,
-button:disabled,
-textarea:disabled {
+input:disabled, select:disabled, button:disabled, textarea:disabled {
   cursor: not-allowed;
   opacity: .5;
 }
@@ -191,7 +139,7 @@ code, kbd {
   border-radius: 6px;
 }
 
-pre > code {
+pre>code {
   padding: 10px;
   display: block;
   overflow-x: auto;
