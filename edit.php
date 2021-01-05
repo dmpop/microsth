@@ -79,10 +79,18 @@ error_reporting(E_ERROR);
 			echo 'alert("Page has been unpublished.")';
 			echo "</script>";
 		}
+		if (isset($_POST['update'])) {
+			unlink("pub/" . basename($md_file));
+			copy($md_file, "pub/" . basename($md_file));
+			echo "<script>";
+			echo 'alert("Page has been updated.")';
+			echo "</script>";
+		}
 		if (!file_exists("pub/" . basename($md_file))) {
 			echo '<input type="submit" name="publish" value="Publish" />';
 		}
 		if (file_exists("pub/" . basename($md_file))) {
+			echo "<input style='float: left;' type='submit' name='update' value='Update' />";
 			echo "<input type='submit' name='unpublish' value='Unpublish' />";
 		}
 		echo "</form>";
