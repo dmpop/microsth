@@ -33,7 +33,7 @@ error_reporting(E_ERROR);
 <body>
 	<h1 style="font-size: 2.5em; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
 	<hr style="margin-bottom: 2em;">
-	<button style="margin-bottom: 1.5em;" onclick="window.location.href='<?php echo $base_dir . '?page=' . $_COOKIE['page'] ?>';">Back</button>
+	<button style="margin-bottom: 1.3em;" onclick="window.location.href='<?php echo $base_dir . '?page=' . $_COOKIE['page'] ?>';">Back</button>
 	<?php
 	function Read()
 	{
@@ -54,7 +54,7 @@ error_reporting(E_ERROR);
 	?>
 	<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 		<textarea name="text"><?php Read(); ?></textarea>
-		<input style="margin-top: 1em;" type="submit" name="save" value="Save">
+		<input style="float: left; margin-top: 1em;" type="submit" name="save" value="Save">
 	</form>
 	<?php
 	if (isset($_POST['publish'])) {
@@ -71,7 +71,6 @@ error_reporting(E_ERROR);
 	}
 	?>
 	<form method="POST" action="">
-		<input type="submit" name="publish" value="Publish" />
 		<?php
 		$md_file = $_COOKIE['mdfile'];
 		if (isset($_POST['unpublish'])) {
@@ -80,8 +79,11 @@ error_reporting(E_ERROR);
 			echo 'alert("Page has been unpublished.")';
 			echo "</script>";
 		}
+		if (!file_exists("pub/" . basename($md_file))) {
+			echo '<input type="submit" name="publish" value="Publish" />';
+		}
 		if (file_exists("pub/" . basename($md_file))) {
-			echo "<button type='submit' role='button' name='unpublish'>Unpublish</button>";
+			echo "<input type='submit' name='unpublish' value='Unpublish' />";
 		}
 		echo "</form>";
 		if (isset($_POST['upload'])) {
@@ -109,7 +111,7 @@ error_reporting(E_ERROR);
 			}
 		}
 		?>
-		<form enctype="multipart/form-data" method="POST" action="">
+		<form style="margin-top: 2em;" enctype="multipart/form-data" method="POST" action="">
 			<input style="display: inline;" type="file" size="32" name="image_field" value="">
 			<button style="display: inline;" type="submit" role="button" name="upload">Upload</button>
 		</form>
