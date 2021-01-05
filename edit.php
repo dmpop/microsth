@@ -31,9 +31,9 @@ error_reporting(E_ERROR);
 </head>
 
 <body>
+	<h1 style="font-size: 2.5em; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
+	<hr style="margin-bottom: 2em;">
 	<?php
-	echo '<h1><a href="index.php">' . $title . '</a></h1>';
-	echo '<hr style="margin-bottom: 2em;">';
 	echo '<p style="margin-bottom:1.5em;"><a href="' . $base_dir . '?page=' . $_COOKIE["page"] . '">Back</a>';
 	function Read()
 	{

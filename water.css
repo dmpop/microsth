@@ -98,7 +98,6 @@ select {
 input, select, button, textarea {
   color: #000000;
   background-color: #efefef;
-  font-family: Barlow-Regular;
   font-size: inherit;
   letter-spacing: 0.1em;
   margin-right: 6px;
@@ -109,12 +108,17 @@ input, select, button, textarea {
   outline: none;
 }
 
+input, button {
+  font-family: Barlow-Medium;
+}
+
 input:not([type='checkbox']):not([type='radio']),
 select, button, textarea {
   -webkit-appearance: none;
 }
 
 textarea {
+  font-family: Barlow-Regular;
   margin-right: 0;
   width: 100%;
   box-sizing: border-box;

@@ -29,7 +29,7 @@ if (isset($_POST['password']) && $_POST['password'] == $passwd) {
 </head>
 
 <body>
-	<h1><?php echo $title; ?></h1>
+	<h1 style="font-size: 2.5em; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
 	<hr style="margin-bottom: 2em;">
 	<form method="POST">
 		<p>Type password and press ENTER:</p>

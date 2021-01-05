@@ -22,9 +22,9 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 </head>
 
 <body>
+	<h1 style="font-size: 2.5em; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
+	<hr style="margin-bottom: 2em;">
 	<?php
-	echo '<h1><a href="index.php">' . $title . '</a></h1>';
-	echo '<hr style="margin-bottom: 2em;">';
 	if (!file_exists("img")) {
 		mkdir("img", 0777, true);
 	}
@@ -88,18 +88,14 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 		$Parsedown = new Parsedown();
 		echo $Parsedown->text($text);
 	}
-	if ($newpage) {
-		echo "<hr style='margin-top: 2em; margin-bottom: 1.5em;'>";
-		echo "<form method='post' action=''>";
-		echo " <label for='pagename'>Page name: </label>";
-		echo "<input style='display: inline;' type='text' name='pagename'>";
-		echo "<input style='display: inline;' type='submit' name='newpage' value='Create'>";
-	}
-	if ($trash) {
-		echo " <input style='display: inline;' type='submit' name='trash' value='Trash'></input>";
-		echo "</form>";
-	}
 	?>
+	<hr style='margin-top: 2em; margin-bottom: 1.5em;'>
+	<form method='post' action=''>
+		<label for='pagename'>Page name: </label>
+		<input style='display: inline;' type='text' name='pagename'>
+		<input style='display: inline;' type='submit' name='newpage' value='Create'>
+		<input style='display: inline;' type='submit' name='trash' value='Trash'></input>
+	</form>
 	<hr style="margin-bottom: 1.5em;">
 	<?php echo $footer; ?>
 </body>

@@ -9,12 +9,8 @@
     $protect = true;
     // Password
     $passwd = 'password';
-    // Enable New Page button
-    $newpage = true;
-    // Enable Trash button
-    $trash = true;
     // Footer
-    $footer = "<a href='https://gitlab.com/dmpop/micro.sth'>micro.sth</a> - write here";
+    $footer = "<a href='https://github.com/dmpop/micro.sth'>micro.sth</a> - write here";
     // Resize image size
     $resize = '800';
 ?>
