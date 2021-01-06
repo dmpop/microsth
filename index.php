@@ -59,14 +59,17 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 		}
 	}
 	if (isset($_POST['trash'])) {
-		$MDFILE = $_COOKIE['mdfile'];
-		rename($MDFILE, "trash/" . basename($MDFILE));
+		$md_file = $_COOKIE['mdfile'];
+		rename($md_file, "trash/" . basename($md_file));
+		if (file_exists("pub/" . basename($md_file))) {
+			unlink("pub/" . basename($md_file));
+		}
 		$url = 'index.php';
 		header("Location: $url");
 	}
-	$MDFILE = "content/" . $page . ".md";
+	$md_file = "content/" . $page . ".md";
 	setcookie("page", $page, $EXPIRE);
-	setcookie("mdfile", $MDFILE, $EXPIRE);
+	setcookie("mdfile", $md_file, $EXPIRE);
 	?>
 	<select name="" onchange="javascript:location.href = this.value;">
 		<option value='Label'>Pages</option>";
@@ -80,14 +83,14 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 		?>
 	</select>
 	<?php
-	if (!is_file($MDFILE)) {
+	if (!is_file($md_file)) {
 		exit("<p>Page not found</p>");
 	}
 	echo "<form method='GET' action='edit.php'>
         <p style='margin-top:1em;'><button type='submit'>Edit</button></p>
         </form>";
-	if (($handle = fopen($MDFILE, "r")) !== FALSE) {
-		$text = file_get_contents($MDFILE);
+	if (($handle = fopen($md_file, "r")) !== FALSE) {
+		$text = file_get_contents($md_file);
 		$Parsedown = new Parsedown();
 		echo $Parsedown->text($text);
 	}

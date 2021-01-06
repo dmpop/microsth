@@ -54,7 +54,7 @@ error_reporting(E_ERROR);
 	?>
 	<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 		<textarea name="text"><?php Read(); ?></textarea>
-		<input style="float: left; margin-top: 1em;" type="submit" name="save" value="Save">
+		<input style="float: left; background-color: #ccffcc; margin-top: 1em;" type="submit" name="save" value="Save">
 	</form>
 	<?php
 	if (isset($_POST['publish'])) {
