@@ -91,7 +91,7 @@ error_reporting(E_ERROR);
 		}
 		if (file_exists("pub/" . basename($md_file))) {
 			echo "<input style='float: left;' type='submit' name='update' value='Update' />";
-			echo "<input type='submit' name='unpublish' value='Unpublish' />";
+			echo "<input style='background-color: #ffcccc;' type='submit' name='unpublish' value='Unpublish' />";
 		}
 		echo "</form>";
 		if (isset($_POST['upload'])) {

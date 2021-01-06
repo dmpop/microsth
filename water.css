@@ -193,8 +193,6 @@ tbody tr:nth-child(even) {
   background: #c4c4c4;
 }
 
-/*# sourceMappingURL=light.css.map */
-
 strong {
   font-family: "Barlow-Medium", sans-serif;
 }
@@ -206,6 +204,7 @@ em {
 @font-face {
   font-family: 'Barlow-Regular';
   font-weight: 400;
+  font-style: normal;
   src: url('../woff/Barlow-Regular.woff2') format('woff');
 }
 
