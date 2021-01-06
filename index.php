@@ -109,8 +109,8 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 		<label for='pagename'>Page name: </label>
 		<input style='display: inline;' type='text' name='pagename'>
 		<input style='display: inline;' type='submit' name='newpage' value='Create'>
-		<input style='display: inline; background-color: #cce6ff;' type='submit' name='archive' value='Archive'></input>
-		<input style='display: inline; background-color: #ffcccc;' type='submit' name='trash' value='Trash'></input>
+		<input style='display: inline;' type='submit' name='archive' value='Archive'></input>
+		<input style='display: inline;' type='submit' name='trash' value='Trash'></input>
 	</form>
 	<hr style="margin-bottom: 1.5em;">
 	<?php echo $footer; ?>

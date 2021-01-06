@@ -91,7 +91,7 @@ button, input[type='submit'], input[type='button'] {
 }
 
 button:hover, input[type='submit']:hover, input[type='button']:hover {
-  box-shadow: 0 0 0 2px #f1c23eab;
+  background: #dddddd;
 }
 
 input:focus, select:focus, button:focus, textarea:focus {
@@ -211,6 +211,7 @@ em {
 @font-face {
   font-family: 'Barlow-Medium';
   font-weight: 500;
+  font-style: bold;
   src: url('../woff/Barlow-Medium.woff2') format('woff');
 }
 

@@ -54,7 +54,7 @@ error_reporting(E_ERROR);
 	?>
 	<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 		<textarea name="text"><?php Read(); ?></textarea>
-		<input style="float: left; background-color: #ccffcc; margin-top: 1em;" type="submit" name="save" value="Save">
+		<input style="float: left; margin-top: 1em;" type="submit" name="save" value="Save">
 	</form>
 	<?php
 	if (isset($_POST['publish'])) {
@@ -91,7 +91,7 @@ error_reporting(E_ERROR);
 		}
 		if (file_exists("pub/" . basename($md_file))) {
 			echo "<input style='float: left;' type='submit' name='update' value='Update' />";
-			echo "<input style='background-color: #ffcccc;' type='submit' name='unpublish' value='Unpublish' />";
+			echo "<input type='submit' name='unpublish' value='Unpublish' />";
 		}
 		echo "</form>";
 		if (isset($_POST['upload'])) {
