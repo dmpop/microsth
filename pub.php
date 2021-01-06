@@ -22,15 +22,13 @@ error_reporting(E_ERROR);
 	<?php
 	if (isset($_GET["page"])) {
 		$page = $_GET["page"];
-	} else {
-		echo "<p>Choose the desired page from the list below.</p>";
 	}
 	$md_file = "pub/" . $page . ".md";
 	$_SESSION['page'] = $page;
 	$_SESSION['mdfile'] = $md_file;
 	?>
-	<select name="" onchange="javascript:location.href = this.value;">
-		<option value='Label'>Pages</option>";
+	<select style="width: 100%;" name="" onchange="javascript:location.href = this.value;">
+		<option value='Label'>Choose page</option>";
 		<?php
 		$files = glob("pub/*.md");
 		foreach ($files as $file) {

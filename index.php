@@ -80,8 +80,8 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 	setcookie("page", $page, $EXPIRE);
 	setcookie("mdfile", $md_file, $EXPIRE);
 	?>
-	<select name="" onchange="javascript:location.href = this.value;">
-		<option value='Label'>Pages</option>";
+	<select style="width: 100%;"  name="" onchange="javascript:location.href = this.value;">
+		<option value='Label'>Go to page</option>";
 		<?php
 		$files = glob("content/*.md");
 		foreach ($files as $file) {
@@ -96,7 +96,7 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 		exit("<p>Page not found</p>");
 	}
 	echo "<form method='GET' action='edit.php'>
-        <p style='margin-top:1em;'><button type='submit'>Edit</button></p>
+        <button style='margin-top: 1.5em;'  type='submit'>Edit this page</button>
         </form>";
 	if (($handle = fopen($md_file, "r")) !== FALSE) {
 		$text = file_get_contents($md_file);
