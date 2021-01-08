@@ -23,14 +23,14 @@ error_reporting(E_ERROR);
 	if (isset($_GET["page"])) {
 		$page = $_GET["page"];
 	}
-	$md_file = "pub/" . $page . ".md";
+	$md_file = "content/pub/" . $page . ".md";
 	$_SESSION['page'] = $page;
 	$_SESSION['mdfile'] = $md_file;
 	?>
 	<select style="width: 100%;" name="" onchange="javascript:location.href = this.value;">
 		<option value='Label'>Choose page</option>";
 		<?php
-		$files = glob("pub/*.md");
+		$files = glob("content/pub/*.md");
 		foreach ($files as $file) {
 			$filename = basename($file);
 			$name = basename($file, ".md");

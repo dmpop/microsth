@@ -28,34 +28,37 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 		<p>Make sure that JavaScript is enabled.</p>
 	</noscript>
 	<?php
-	if (!file_exists("img")) {
-		mkdir("img", 0777, true);
-	}
 	if (!file_exists("content")) {
 		mkdir("content", 0777, true);
 	}
-	if (!file_exists("archive")) {
-		mkdir("archive", 0777, true);
+	if (!file_exists("content/pages")) {
+		mkdir("content/pages", 0777, true);
 	}
-	if (!file_exists("pub")) {
-		mkdir("pub", 0777, true);
+	if (!file_exists("content/pub")) {
+		mkdir("content/pub", 0777, true);
 	}
-	if (!file_exists("trash")) {
-		mkdir("trash", 0777, true);
+	if (!file_exists("content/archive")) {
+		mkdir("content/archive", 0777, true);
+	}
+	if (!file_exists("content/trash")) {
+		mkdir("content/trash", 0777, true);
+	}
+	if (!file_exists("content/img")) {
+		mkdir("content/img", 0777, true);
 	}
 	if (isset($_GET["page"])) {
 		$page = $_GET["page"];
 	} else {
 		$page = $first_page;
-		if (!file_exists("content/" . $page . ".md")) {
-			fopen("content/" . $page . ".md", "w");
+		if (!file_exists("content/pages/" . $page . ".md")) {
+			fopen("content/pages/" . $page . ".md", "w");
 		}
 	}
 	if (isset($_POST['newpage'])) {
 		$pagename = $_POST["pagename"];
 		$url = "index.php?page=" . $pagename;
-		if (!file_exists("content/" . $pagename . ".md")) {
-			fopen("content/" . $pagename . ".md", "w");
+		if (!file_exists("content/pages/" . $pagename . ".md")) {
+			fopen("content/pages/" . $pagename . ".md", "w");
 			header("Location: $url");
 		} else {
 			header("Location: $url");
@@ -63,27 +66,27 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 	}
 	if (isset($_POST['archive'])) {
 		$md_file = $_COOKIE['mdfile'];
-		rename($md_file, "archive/" . basename($md_file));
+		rename($md_file, "content/archive/" . basename($md_file));
 		$url = 'index.php';
 		header("Location: $url");
 	}
 	if (isset($_POST['trash'])) {
 		$md_file = $_COOKIE['mdfile'];
-		rename($md_file, "trash/" . basename($md_file));
-		if (file_exists("pub/" . basename($md_file))) {
-			unlink("pub/" . basename($md_file));
+		rename($md_file, "content/trash/" . basename($md_file));
+		if (file_exists("content/pub/" . basename($md_file))) {
+			unlink("content/pub/" . basename($md_file));
 		}
 		$url = 'index.php';
 		header("Location: $url");
 	}
-	$md_file = "content/" . $page . ".md";
+	$md_file = "content/pages/" . $page . ".md";
 	setcookie("page", $page, $EXPIRE);
 	setcookie("mdfile", $md_file, $EXPIRE);
 	?>
 	<select style="width: 100%;"  name="" onchange="javascript:location.href = this.value;">
 		<option value='Label'>Go to page</option>";
 		<?php
-		$files = glob("content/*.md");
+		$files = glob("content/pages/*.md");
 		foreach ($files as $file) {
 			$filename = basename($file);
 			$name = basename($file, ".md");

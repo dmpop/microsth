@@ -59,7 +59,7 @@ error_reporting(E_ERROR);
 	<?php
 	if (isset($_POST['publish'])) {
 		$md_file = $_COOKIE['mdfile'];
-		if (!copy($md_file, "pub/" . basename($md_file))) {
+		if (!copy($md_file, "content/pub/" . basename($md_file))) {
 			echo "<script>";
 			echo 'alert("Failed to publish "' . basename($md_file) . '")';
 			echo "</script>";
@@ -74,22 +74,22 @@ error_reporting(E_ERROR);
 		<?php
 		$md_file = $_COOKIE['mdfile'];
 		if (isset($_POST['unpublish'])) {
-			unlink("pub/" . basename($md_file));
+			unlink("content/pub/" . basename($md_file));
 			echo "<script>";
 			echo 'alert("Page has been unpublished.")';
 			echo "</script>";
 		}
 		if (isset($_POST['update'])) {
-			unlink("pub/" . basename($md_file));
-			copy($md_file, "pub/" . basename($md_file));
+			unlink("content/pub/" . basename($md_file));
+			copy($md_file, "content/pub/" . basename($md_file));
 			echo "<script>";
 			echo 'alert("Page has been updated.")';
 			echo "</script>";
 		}
-		if (!file_exists("pub/" . basename($md_file))) {
+		if (!file_exists("content/pub/" . basename($md_file))) {
 			echo '<input type="submit" name="publish" value="Publish" />';
 		}
-		if (file_exists("pub/" . basename($md_file))) {
+		if (file_exists("content/pub/" . basename($md_file))) {
 			echo "<input style='float: left;' type='submit' name='update' value='Update' />";
 			echo "<input type='submit' name='unpublish' value='Unpublish' />";
 		}
@@ -103,11 +103,11 @@ error_reporting(E_ERROR);
 					$handle->image_resize  = true;
 					$handle->image_x = $resize;
 					$handle->image_ratio_y = true;
-					$handle->process('img');
+					$handle->process('content/img');
 					if ($handle->processed) {
 						$filename = pathinfo(($_FILES['image_field']['name']), PATHINFO_FILENAME) . '.' . strtolower(pathinfo(($_FILES['image_field']['name']), PATHINFO_EXTENSION));
 						echo "<script>";
-						echo 'alert("Insert image: ![](img/' . $filename . ')")';
+						echo 'alert("Insert image: ![](content/img/' . $filename . ')")';
 						echo "</script>";
 						$handle->clean();
 					} else {
