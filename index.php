@@ -83,7 +83,7 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 	setcookie("page", $page, $EXPIRE);
 	setcookie("mdfile", $md_file, $EXPIRE);
 	?>
-	<select style="width: 100%;"  name="" onchange="javascript:location.href = this.value;">
+	<select style="width: 100%;" name="" onchange="javascript:location.href = this.value;">
 		<option value='Label'>Go to page</option>";
 		<?php
 		$files = glob("content/pages/*.md");
@@ -105,6 +105,9 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 		$text = file_get_contents($md_file);
 		$Parsedown = new Parsedown();
 		echo $Parsedown->text($text);
+		if (file_exists("content/pub/" . basename($md_file))) {
+			echo '<p style="margin-top: 1.5em;"><a href="pub.php?page=' . basename($md_file, ".md") . '">Public link</a></p>';
+		}
 	}
 	?>
 	<hr style='margin-top: 2em; margin-bottom: 1.5em;'>
