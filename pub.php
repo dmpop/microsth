@@ -17,7 +17,7 @@ error_reporting(E_ERROR);
 </head>
 
 <body>
-	<h1 style="font-size: 2.5em; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
+	<h1 style="font-size: 3em; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
 	<hr style="margin-bottom: 2em;">
 	<?php
 	if (isset($_GET["page"])) {
@@ -27,17 +27,6 @@ error_reporting(E_ERROR);
 	$_SESSION['page'] = $page;
 	$_SESSION['mdfile'] = $md_file;
 	?>
-	<select style="width: 100%;" name="" onchange="javascript:location.href = this.value;">
-		<option value='Label'>Choose page</option>";
-		<?php
-		$files = glob("content/pub/*.md");
-		foreach ($files as $file) {
-			$filename = basename($file);
-			$name = basename($file, ".md");
-			echo "<option value='?page=" . str_replace('\'', '&apos;', $name) . "'>" . $name . "</option>";
-		}
-		?>
-	</select>
 	<?php
 	if (($handle = fopen($md_file, "r")) !== FALSE) {
 		$text = file_get_contents($md_file);
