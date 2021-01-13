@@ -10,8 +10,10 @@
     $protect = true;
     // Password
     $passwd = 'password';
-    // Footer
-    $footer = "<a href='https://github.com/dmpop/micro.sth'>micro.sth</a> - write here";
     // Resize image size
     $resize = '800';
+    // Number of items before the trash is emptied
+    $trash_limit = 100;
+    // Footer
+    $footer = "<a href='https://github.com/dmpop/micro.sth'>micro.sth</a> - write here";
 ?>

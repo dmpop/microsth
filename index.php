@@ -43,6 +43,13 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 	if (!file_exists("content/trash")) {
 		mkdir("content/trash", 0777, true);
 	}
+	$trash_count = count(scandir("content/trash")) - 2;
+	if ($trash_count >= $trash_limit) {
+		$files = glob("content/trash/*");
+		foreach ($files as $file) {
+			unlink($file);
+		}
+	}
 	if (!file_exists("content/img")) {
 		mkdir("content/img", 0777, true);
 	}
