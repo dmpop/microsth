@@ -9,7 +9,7 @@
     //Enable password protection
     $protect = true;
     // Password
-    $password = password_hash('secret', PASSWORD_DEFAULT);
+    $password = 'secret';
     // Resize image size
     $resize = '800';
     // Number of items before the trash is emptied

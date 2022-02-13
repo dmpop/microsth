@@ -1,5 +1,5 @@
 <?php
-
+// Upload class: https://github.com/verot/class.upload.php
 namespace Verot\Upload;
 
 include('inc/class.upload.php');
@@ -33,16 +33,16 @@ error_reporting(E_ERROR);
 <body>
 	<h1 style="font-size: 2.5em; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
 	<hr style="margin-bottom: 2em;">
-	<button style="margin-bottom: 1.3em;" onclick="window.location.href='<?php echo $base_dir . '?page=' . $_COOKIE['page'] ?>';">Back</button>
+	<button style="margin-bottom: 1.3em;" onclick="window.location.href='<?php echo $base_dir . '?page=' . $_SESSION['page'] ?>';">Back</button>
 	<?php
 	function Read()
 	{
-		$md_file = $_COOKIE['mdfile'];
+		$md_file = $_SESSION['mdfile'];
 		echo file_get_contents($md_file);
 	}
 	function Write()
 	{
-		$md_file = $_COOKIE['mdfile'];
+		$md_file = $_SESSION['mdfile'];
 		$fp = fopen($md_file, "w");
 		$data = $_POST["text"];
 		fwrite($fp, $data);
@@ -58,7 +58,7 @@ error_reporting(E_ERROR);
 	</form>
 	<?php
 	if (isset($_POST['publish'])) {
-		$md_file = $_COOKIE['mdfile'];
+		$md_file = $_SESSION['mdfile'];
 		if (!copy($md_file, "content/pub/" . basename($md_file))) {
 			echo "<script>";
 			echo 'alert("Failed to publish "' . basename($md_file) . '")';
@@ -72,7 +72,7 @@ error_reporting(E_ERROR);
 	?>
 	<form method="POST" action="">
 		<?php
-		$md_file = $_COOKIE['mdfile'];
+		$md_file = $_SESSION['mdfile'];
 		if (isset($_POST['unpublish'])) {
 			unlink("content/pub/" . basename($md_file));
 			echo "<script>";

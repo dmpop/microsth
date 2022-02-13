@@ -27,6 +27,8 @@
 
 namespace Verot\Upload;
 
+if (!defined('IMG_WEBP')) define('IMG_WEBP', 32);
+
 /**
  * Class upload
  *
@@ -1687,6 +1689,17 @@ class Upload {
     var $forbidden;
 
     /**
+     * Blacklisted file extensions
+     *
+     * List of blacklisted extensions, that are enforced if {@link no_script} is true
+     *
+     * @access public
+     * @var array
+     */
+    var $blacklist;
+
+
+    /**
      * Array of translated error messages
      *
      * By default, the language is english (en_GB)
@@ -1744,7 +1757,7 @@ class Upload {
         $this->file_max_size = $this->getsize($this->file_max_size_raw);
 
         $this->image_resize             = false;    // resize the image
-        $this->image_convert            = '';       // convert. values :''; 'png'; 'jpeg'; 'gif'; 'bmp'
+        $this->image_convert            = '';       // convert. values :''; 'png'; 'jpeg'; 'gif'; 'bmp'; 'webp'
 
         $this->image_x                  = 150;
         $this->image_y                  = 150;
@@ -1927,7 +1940,13 @@ class Upload {
             'text/richtext',
             'text/xml',
             'video/*',
-            'text/csv'
+            'text/csv',
+            'text/x-c',
+            'text/x-csv',
+            'text/comma-separated-values',
+            'text/x-comma-separated-values',
+            'application/csv',
+            'application/x-csv',
         );
 
         $this->mime_types = array(
@@ -2017,6 +2036,28 @@ class Upload {
             'csv' => 'text/csv',
         );
 
+        $this->blacklist = array(
+            'php',
+            'php7',
+            'php6',
+            'php5',
+            'php4',
+            'php3',
+            'phtml',
+            'pht',
+            'phpt',
+            'phtm',
+            'phps',
+            'inc',
+            'pl',
+            'py',
+            'cgi',
+            'asp',
+            'js',
+            'sh',
+            'phar',
+        );
+
     }
 
     /**
@@ -2052,7 +2093,7 @@ class Upload {
      */
     function upload($file, $lang = 'en_GB') {
 
-        $this->version            = '03/08/2019';
+        $this->version            = '05/10/2021';
 
         $this->file_src_name      = '';
         $this->file_src_name_body = '';
@@ -2796,7 +2837,7 @@ class Upload {
      */
     function getsize($size) {
         if ($size === null) return null;
-        $last = strtolower($size{strlen($size)-1});
+        $last = is_string($size) ? strtolower(substr($size, -1)) : null;
         $size = (int) $size;
         switch($last) {
             case 'g':
@@ -2901,9 +2942,23 @@ class Upload {
      * @return resource Destination image
      */
     function imagetransfer($src_im, $dst_im) {
-        if (is_resource($dst_im)) imagedestroy($dst_im);
+        $this->imageunset($dst_im);
         $dst_im = & $src_im;
         return $dst_im;
+    }
+
+    /**
+     * Destroy GD ressource
+     *
+     * @access private
+     * @param  resource $im Image
+     */
+    function imageunset($im) {
+        if (is_resource($im)) {
+            imagedestroy($im);
+        } else if (is_object($im) && $im instanceOf \GdImage) {
+            unset($im);
+        }
     }
 
     /**
@@ -3065,7 +3120,7 @@ class Upload {
                 }
                 // if the file is text based, or has a dangerous extension, we rename it as .txt
                 if ((((substr($this->file_src_mime, 0, 5) == 'text/' && $this->file_src_mime != 'text/rtf') || strpos($this->file_src_mime, 'javascript') !== false)  && (substr($file_src_name, -4) != '.txt'))
-                    || preg_match('/\.(php|php5|php4|php3|phtml|pl|py|cgi|asp|js)$/i', $this->file_src_name)
+                    || preg_match('/\.(' . implode('|', $this->blacklist) . ')$/i', $this->file_src_name)
                     || $this->file_force_extension && empty($file_src_name_ext)) {
                     $this->file_src_mime = 'text/plain';
                     if ($this->file_src_name_ext) $file_src_name_body = $file_src_name_body . '.' . $this->file_src_name_ext;
@@ -3531,9 +3586,12 @@ class Upload {
                     if (empty($this->image_convert)) {
                         $this->log .= '- setting destination file type to ' . $this->image_src_type . '<br />';
                         $this->image_convert = $this->image_src_type;
+                    } else {
+                        $this->log .= '- requested destination file type is ' . $this->image_convert . '<br />';
                     }
 
                     if (!in_array($this->image_convert, $this->image_supported)) {
+                        $this->log .= '- destination file type ' . $this->image_convert . ' is not supported; switching to jpg<br />';
                         $this->image_convert = 'jpg';
                     }
 
@@ -3938,7 +3996,7 @@ class Upload {
                             imagecopyresized($filter, $image_dst, 0, 0, 0, 0, round($this->image_dst_x / $this->image_pixelate), round($this->image_dst_y / $this->image_pixelate), $this->image_dst_x, $this->image_dst_y);
                             imagecopyresized($image_dst, $filter, 0, 0, 0, 0, $this->image_dst_x, $this->image_dst_y, round($this->image_dst_x / $this->image_pixelate), round($this->image_dst_y / $this->image_pixelate));
                         }
-                        imagedestroy($filter);
+                        $this->imageunset($filter);
                     }
 
                     // unsharp mask
@@ -4002,8 +4060,8 @@ class Upload {
                                     }
                                 }
                             }
-                            imagedestroy($canvas);
-                            imagedestroy($blur);
+                            $this->imageunset($canvas);
+                            $this->imageunset($blur);
                         }
                     }
 
@@ -4015,7 +4073,7 @@ class Upload {
                         $color = imagecolorallocate($filter, $red, $green, $blue);
                         imagefilledrectangle($filter, 0, 0, $this->image_dst_x, $this->image_dst_y, $color);
                         $this->imagecopymergealpha($image_dst, $filter, 0, 0, 0, 0, $this->image_dst_x, $this->image_dst_y, $this->image_overlay_opacity);
-                        imagedestroy($filter);
+                        $this->imageunset($filter);
                     }
 
                     // add brightness, contrast and tint, turns to greyscale and inverts colors
@@ -4549,7 +4607,7 @@ class Upload {
                                 $background_color = imagecolorallocate($filter, $red, $green, $blue);
                                 imagefilledrectangle($filter, 0, 0, $text_width, $text_height, $background_color);
                                 $this->imagecopymergealpha($image_dst, $filter, $text_x, $text_y, 0, 0, $text_width, $text_height, $this->image_text_background_opacity);
-                                imagedestroy($filter);
+                                $this->imageunset($filter);
                             } else {
                                 $background_color = imagecolorallocate($image_dst ,$red, $green, $blue);
                                 imagefilledrectangle($image_dst, $text_x, $text_y, $text_x + $text_width, $text_y + $text_height, $background_color);
@@ -4598,7 +4656,7 @@ class Upload {
                                              $text);
                             }
                             $this->imagecopymergealpha($image_dst, $filter, $text_x, $text_y, 0, 0, $t_width, $t_height, $this->image_text_opacity);
-                            imagedestroy($filter);
+                            $this->imageunset($filter);
 
                         } else {
                             $text_color = imagecolorallocate($image_dst ,$red, $green, $blue);
@@ -4936,8 +4994,8 @@ class Upload {
                             $this->error = $this->translate('no_conversion_type');
                     }
                     if ($this->processed) {
-                        if (is_resource($image_src)) imagedestroy($image_src);
-                        if (is_resource($image_dst)) imagedestroy($image_dst);
+                        $this->imageunset($image_src);
+                        $this->imageunset($image_dst);
                         $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;image objects destroyed<br />';
                     }
                 }
@@ -5089,7 +5147,7 @@ class Upload {
         if (!imageistruecolor($im)) {
             $tmp = imagecreatetruecolor($w, $h);
             imagecopy($tmp, $im, 0, 0, 0, 0, $w, $h);
-            imagedestroy($im);
+            $this->imageunset($im);
             $im = & $tmp;
         }
 

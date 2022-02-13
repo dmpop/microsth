@@ -4,9 +4,6 @@ include('config.php');
 if ($protect) {
 	require_once('protect.php');
 }
-// error_reporting(E_ERROR);
-date_default_timezone_set('UTC');
-$EXPIRE = strtotime('+7 days'); // 7 days
 ?>
 <html lang="en">
 
@@ -72,13 +69,13 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 		}
 	}
 	if (isset($_POST['archive'])) {
-		$md_file = $_COOKIE['mdfile'];
+		$md_file = $_SESSION['mdfile'];
 		rename($md_file, "content/archive/" . basename($md_file));
 		$url = 'index.php';
 		header("Location: $url");
 	}
 	if (isset($_POST['trash'])) {
-		$md_file = $_COOKIE['mdfile'];
+		$md_file = $_SESSION['mdfile'];
 		rename($md_file, "content/trash/" . basename($md_file));
 		if (file_exists("content/pub/" . basename($md_file))) {
 			unlink("content/pub/" . basename($md_file));
@@ -87,8 +84,8 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 		header("Location: $url");
 	}
 	$md_file = "content/pages/" . $page . ".md";
-	setcookie("page", $page, $EXPIRE);
-	setcookie("mdfile", $md_file, $EXPIRE);
+	$_SESSION["page"] = $page;
+	$_SESSION["mdfile"] = $md_file;
 	?>
 	<select style="width: 100%;" name="" onchange="javascript:location.href = this.value;">
 		<option value='Label'>Go to page</option>";
@@ -119,8 +116,9 @@ $EXPIRE = strtotime('+7 days'); // 7 days
 	?>
 	<hr style='margin-top: 2em; margin-bottom: 1.5em;'>
 	<form method='POST' action=''>
-		<label for='pagename'>Page name: </label>
+		<label>Page name:
 		<input style='display: inline;' type='text' name='pagename'>
+		</label>
 		<input style='display: inline;' type='submit' name='newpage' value='Create'>
 		<input style='display: inline;' type='submit' name='archive' value='Archive'></input>
 		<input style='display: inline;' type='submit' name='trash' value='Trash'></input>

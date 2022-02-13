@@ -131,11 +131,30 @@ a:hover {
   text-decoration: underline;
 }
 
-code, kbd {
+code {
   background: #efefef;
   color: #000000;
   padding: 5px;
   border-radius: 6px;
+}
+
+kbd {
+  -moz-border-radius: 3px;
+  -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  -webkit-border-radius: 3px;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  color: #333;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  margin: 0 0.1em;
+  padding: 0.1em 0.6em;
+  text-shadow: 0 1px 0 #fff;
 }
 
 pre>code {
@@ -204,19 +223,19 @@ em {
   font-family: 'Barlow-Regular';
   font-weight: 400;
   font-style: normal;
-  src: url('woff/Barlow-Regular.woff2') format('woff2');
+  src: url('fonts/Barlow-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Barlow-Medium';
   font-weight: 500;
   font-style: bold;
-  src: url('woff/Barlow-Medium.woff2') format('woff2');
+  src: url('fonts/Barlow-Medium.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Barlow-Italic';
   font-weight: 300;
   font-style: italic;
-  src: url('woff/Barlow-Italic.woff2') format('woff2');
+  src: url('fonts/Barlow-Italic.woff2') format('woff2');
 }

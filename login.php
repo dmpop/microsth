@@ -1,18 +1,13 @@
 <?php
+session_start();
 $config = include('config.php');
+$pw_hash = password_hash('secret', PASSWORD_DEFAULT);
 
 /* Redirects here after login */
 $redirect_after_login = 'index.php';
 
-/* Set timezone to UTC */
-
-date_default_timezone_set('UTC');
-
-/* Will not ask password again for */
-$remember_password = strtotime('+30 days'); // 30 days
-
-if (isset($_POST['password']) && password_verify($_POST['password'], $password)) {
-	setcookie("password", $password, $remember_password);
+if (isset($_POST['password']) && password_verify($_POST['password'], $pw_hash)) {
+	$_SESSION["password"] = $pw_hash;
 	header('Location: ' . $redirect_after_login);
 	exit;
 }
