@@ -40,16 +40,10 @@ error_reporting(E_ERROR);
 		$md_file = $_SESSION['mdfile'];
 		echo file_get_contents($md_file);
 	}
-	function Write()
-	{
-		$md_file = $_SESSION['mdfile'];
-		$fp = fopen($md_file, "w");
-		$data = $_POST["text"];
-		fwrite($fp, $data);
-		fclose($fp);
-	}
 	if ($_POST["save"]) {
-		Write();
+		$md_file = $_SESSION['mdfile'];
+		$data = $_POST["text"];
+		file_put_contents($md_file, $data);
 	};
 	?>
 	<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
