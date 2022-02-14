@@ -18,11 +18,11 @@ micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool
 
 # Installation and usage
 
-1. Use the `git clone https://gitlab.com/dmpop/microsth.git` commmand to fetch micro.sth.
+1. Use the `git clone https://gitlab.com/dmpop/microsth.git` command to fetch micro.sth.
 
 2. Open the _microsth/config.php_ file and edit the default values.
 
-3. Save the changes and close the file. Upload the entire _microsth_ folder to the document directory of your web server.
+3. Save the changes and close the file. Upload the entire _microsth_ folder to the document directory of a web server.
 
 ## Working with pages
 
@@ -30,9 +30,9 @@ When you open micro.sth for the first time, it automatically creates the default
 
 You can add as many pages as you need, and there are two ways to add a page:
 
-1. If the `$newpage` parameter in the _config.php_ file is set to _true_, enter the desired page name into the **Page name** field  and press the **New Page** button.
+1. Enter the desired page name into the **Page name** field and press the **New Page** button.
 
-2. Create an _.md_ file in the _content_ directory.
+2. Create an _.md_ file directly in the _content_ directory.
 
 Keep in mind that page names are case-sensitive.
 
