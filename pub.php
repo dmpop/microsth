@@ -18,7 +18,7 @@ error_reporting(E_ERROR);
 
 <body>
 	<div style="text-align: center;">
-		<img style="display: inline; height: 2.5em; vertical-align: middle;" src="favicon.svg" alt="logo" />
+		<img style="display: inline; height: 2.5em; border-radius: 0; vertical-align: middle;" src="favicon.svg" alt="logo" />
 		<h1 class="text-center" style="display: inline; margin-left: 0.19em; vertical-align: middle; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
 		<hr style="margin-bottom: 2em; margin-top: 1em;">
 	</div>
@@ -40,7 +40,9 @@ error_reporting(E_ERROR);
 	}
 	?>
 	<hr style="margin-top: 2em; margin-bottom: 1.5em;">
-	<?php echo $footer; ?>
+	<div style="text-align: center;">
+		<?php echo $footer; ?>
+	</div>
 </body>
 
 </html>

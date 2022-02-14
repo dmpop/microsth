@@ -6,8 +6,6 @@
     $title = 'micro.sth';
     // Default category
     $first_page = 'Home';
-    //Enable password protection
-    $protect = true;
     // Password
     $password = 'secret';
     // Resize image size

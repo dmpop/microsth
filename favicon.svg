@@ -11,70 +11,16 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="512"
    height="512"
-   viewBox="0 0 135.46667 135.46667"
+   viewBox="0 0 135.46667 135.46668"
    version="1.1"
    id="svg8"
-   inkscape:export-filename="/home/dmpop/favicon.png"
-   inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="favicon.svg">
+   sodipodi:docname="favicon.svg"
+   inkscape:export-filename="/home/dmpop/favicon.png"
+   inkscape:export-xdpi="96.000008"
+   inkscape:export-ydpi="96.000008">
   <defs
-     id="defs2">
-    <inkscape:perspective
-       sodipodi:type="inkscape:persp3d"
-       inkscape:vp_x="0 : 65.011906 : 1"
-       inkscape:vp_y="0 : 1000.0001 : 0"
-       inkscape:vp_z="103.56549 : -49.136907 : 1"
-       inkscape:persp3d-origin="65.011904 : 43.34127 : 1"
-       id="perspective9439" />
-    <symbol
-       id="Coffeeshop_Inv">
-      <title
-         id="title1729">Coffeeshop</title>
-      <rect
-         x="0.13229166"
-         y="0.13229166"
-         width="18.785418"
-         height="18.785418"
-         ry="1.5875"
-         style="stroke:#ffffff;stroke-width:0.26458332"
-         id="rect1731" />
-      <g
-         style="fill:#ffffff;fill-rule:evenodd;stroke:none"
-         id="g1737">
-        <path
-           style="stroke-width:0.26458332"
-           inkscape:connector-curvature="0"
-           d="m 5.2916667,11.90625 a 1.3229167,1.3229167 0 0 0 1.3229166,1.322917 h 5.8208337 a 1.3229167,1.3229167 0 0 0 1.322916,-1.322917 v -0.264583 h 0.264584 a 2.6458335,2.6458335 0 0 0 0,-5.291667 H 5.2916667 Z M 13.758333,7.4083333 v 3.1749997 h 0.264584 a 1.5875,1.5875 0 0 0 0,-3.1749997 z"
-           id="path1733" />
-        <path
-           style="stroke-width:0.26458332"
-           inkscape:connector-curvature="0"
-           d="m 2.1166667,13.758333 a 1.5875,1.5875 0 0 0 1.5875,1.5875 H 15.345833 a 1.5875,1.5875 0 0 0 1.5875,-1.5875 z"
-           id="path1735" />
-      </g>
-    </symbol>
-    <symbol
-       id="Coffeeshop">
-      <title
-         id="title1720">Coffeeshop</title>
-      <g
-         style="fill-rule:evenodd;stroke:none"
-         id="g1726">
-        <path
-           style="stroke-width:0.26458332"
-           inkscape:connector-curvature="0"
-           d="m 5.2916667,11.90625 a 1.3229167,1.3229167 0 0 0 1.3229166,1.322917 h 5.8208337 a 1.3229167,1.3229167 0 0 0 1.322916,-1.322917 v -0.264583 h 0.264584 a 2.6458335,2.6458335 0 0 0 0,-5.291667 H 5.2916667 Z M 13.758333,7.4083333 v 3.1749997 h 0.264584 a 1.5875,1.5875 0 0 0 0,-3.1749997 z"
-           id="path1722" />
-        <path
-           style="stroke-width:0.26458332"
-           inkscape:connector-curvature="0"
-           d="m 2.1166667,13.758333 a 1.5875,1.5875 0 0 0 1.5875,1.5875 H 15.345833 a 1.5875,1.5875 0 0 0 1.5875,-1.5875 z"
-           id="path1724" />
-      </g>
-    </symbol>
-  </defs>
+     id="defs2" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -82,21 +28,21 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="1302.2857"
-     inkscape:cy="68.209528"
+     inkscape:zoom="0.7"
+     inkscape:cx="44.328041"
+     inkscape:cy="251.6952"
      inkscape:document-units="mm"
-     inkscape:current-layer="g919"
+     inkscape:current-layer="layer1"
      showgrid="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1920"
-     inkscape:window-height="1009"
-     inkscape:window-x="2560"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
      units="px" />
   <metadata
      id="metadata5">
@@ -114,32 +60,30 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(825.44936,-64.257588)">
+     transform="translate(389.48549,-170.6753)">
     <g
-       id="g919"
-       transform="matrix(1.0288249,0,0,1.0288249,23.148004,-3.0546917)">
-      <g
-         id="g984"
-         transform="matrix(0,-1.0587297,1.0587297,0,-895.96045,-676.44218)">
-        <path
-           style="fill:#71c837;fill-opacity:1;stroke:none;stroke-width:0.18068224;stroke-opacity:1"
-           d="m -706.87508,108.41217 c 0.22807,23.23523 -24.51221,40.55824 -47.74751,40.7863 -23.23522,0.22805 -42.43209,-23.89131 -42.66018,-47.12656 -0.22805,-23.235217 14.27614,-33.191797 37.51142,-33.419867 23.2352,-0.22807 52.6682,16.52487 52.89627,39.760127 z"
-           id="path875-1"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="sssss" />
-        <path
-           style="fill:#d400aa;fill-opacity:1;stroke:none;stroke-width:0.18068224;stroke-opacity:1"
-           d="m -708.60247,149.31419 c 0.22807,23.23523 -24.51221,40.55824 -47.74751,40.7863 -23.23522,0.22805 -42.43209,-23.89131 -42.66018,-47.12654 -0.22805,-23.23522 14.27614,-33.19177 37.51142,-33.41984 23.2352,-0.22807 52.6682,16.52484 52.89627,39.76008 z"
-           id="path875-9"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="sssss" />
-        <path
-           style="fill:#ffa000;fill-opacity:1;stroke:none;stroke-width:0.18068224;stroke-opacity:1"
-           d="m -728.5148,129.25494 c 0.22807,23.23523 -24.51221,40.55824 -47.74751,40.7863 -23.23522,0.22805 -42.43209,-23.89131 -42.66018,-47.12655 -0.22805,-23.235229 14.27614,-33.191809 37.51142,-33.419879 23.2352,-0.22807 52.6682,16.524879 52.89627,39.760129 z"
-           id="path875"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="sssss" />
-      </g>
+       id="g825"
+       transform="translate(31.990186,-1.6666667e-6)">
+      <path
+         style="fill:none;fill-opacity:1;stroke:#ffa800;stroke-width:12.3325901;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m -378.9021,207.20935 h -19.78016 c -8.32257,0 -15.02269,6.70014 -15.02269,15.02271 v 31.96279 c 0,8.32258 6.70012,15.02271 15.02269,15.02271 h 19.78016 c 8.32257,0 15.02269,-6.70013 15.02269,-15.02271 v -31.96279 c 0,-8.32257 -6.70012,-15.02271 -15.02269,-15.02271 z"
+         id="rect829"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:connector-curvature="0"
+         id="rect815"
+         d="m -387.89798,178.08648 v 106.33984 c 0,7.9244 4.557,14.30447 10.21701,14.30447 h 79.85021 c 5.66001,0 10.21701,-6.38007 10.21701,-14.30447 V 178.08648 Z"
+         style="fill:#ffa800;fill-opacity:1;stroke:none;stroke-width:8.72044754;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         style="fill:#aa4400;fill-opacity:1;stroke:none;stroke-width:11.96526527;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m -387.89799,178.12808 h 100.28455 v 17.61239 h -100.28455 z"
+         id="rect866"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:#ff6600;fill-opacity:1;stroke:none;stroke-width:11.96526527;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m -387.89799,195.74046 h 100.28455 v 17.61239 h -100.28455 z"
+         id="rect866-3"
+         inkscape:connector-curvature="0" />
     </g>
   </g>
 </svg>

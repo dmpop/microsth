@@ -4,9 +4,7 @@ namespace Verot\Upload;
 
 include('inc/class.upload.php');
 include('config.php');
-if ($protect) {
-	require_once('protect.php');
-}
+require_once('protect.php');
 error_reporting(E_ERROR);
 ?>
 <html lang='en'>
@@ -32,7 +30,7 @@ error_reporting(E_ERROR);
 
 <body>
 	<div style="text-align: center;">
-		<img style="display: inline; height: 2.5em; vertical-align: middle;" src="favicon.svg" alt="logo" />
+		<img style="display: inline; height: 2.5em; border-radius: 0; vertical-align: middle;" src="favicon.svg" alt="logo" />
 		<h1 class="text-center" style="display: inline; margin-left: 0.19em; vertical-align: middle; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
 		<hr style="margin-bottom: 2em; margin-top: 1em;">
 		<button style="margin-bottom: 1.3em;" onclick="window.location.href='<?php echo $base_dir . '?page=' . $_SESSION['page'] ?>';">Back</button>
@@ -49,9 +47,10 @@ error_reporting(E_ERROR);
 		file_put_contents($md_file, $data);
 	};
 	?>
-	<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+	<div style="text-align: center;">
+	<form style="display: inline;" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 		<textarea name="text"><?php Read(); ?></textarea>
-		<input style="float: left; margin-top: 1em;" type="submit" name="save" value="Save">
+		<input style="display: inline; margin-top: 1em;" type="submit" name="save" value="Save">
 	</form>
 	<?php
 	if (isset($_POST['publish'])) {
@@ -67,61 +66,66 @@ error_reporting(E_ERROR);
 		}
 	}
 	?>
-	<form method="POST" action="">
-		<?php
-		$md_file = $_SESSION['mdfile'];
-		if (isset($_POST['unpublish'])) {
-			unlink("content/pub/" . basename($md_file));
-			echo "<script>";
-			echo 'alert("Page has been unpublished.")';
-			echo "</script>";
-		}
-		if (isset($_POST['update'])) {
-			unlink("content/pub/" . basename($md_file));
-			copy($md_file, "content/pub/" . basename($md_file));
-			echo "<script>";
-			echo 'alert("Page has been updated.")';
-			echo "</script>";
-		}
-		if (!file_exists("content/pub/" . basename($md_file))) {
-			echo '<input type="submit" name="publish" value="Publish" />';
-		}
-		if (file_exists("content/pub/" . basename($md_file))) {
-			echo "<input style='float: left;' type='submit' name='update' value='Update' />";
-			echo "<input type='submit' name='unpublish' value='Unpublish' />";
-		}
-		echo "</form>";
-		if (isset($_POST['upload'])) {
-			$file_type = $_FILES['image_field']['type'];
-			$allowed = array("image/jpeg");
-			if (in_array($file_type, $allowed)) {
-				$handle = new \verot\Upload\Upload($_FILES['image_field']);
-				if ($handle->uploaded) {
-					$handle->image_resize  = true;
-					$handle->image_x = $resize;
-					$handle->image_ratio_y = true;
-					$handle->process('content/img');
-					if ($handle->processed) {
-						$filename = pathinfo(($_FILES['image_field']['name']), PATHINFO_FILENAME) . '.' . strtolower(pathinfo(($_FILES['image_field']['name']), PATHINFO_EXTENSION));
-						echo "<script>";
-						echo 'alert("Insert image: ![](content/img/' . $filename . ')")';
-						echo "</script>";
-						$handle->clean();
-					} else {
-						echo "<script>";
-						echo 'alert("Error: ' . $handle->error . ')"';
-						echo "</script>";
-					}
+		<form style="display: inline;" method="POST" action="">
+			<?php
+			$md_file = $_SESSION['mdfile'];
+			if (isset($_POST['unpublish'])) {
+				unlink("content/pub/" . basename($md_file));
+				echo "<script>";
+				echo 'alert("Page has been unpublished.")';
+				echo "</script>";
+			}
+			if (isset($_POST['update'])) {
+				unlink("content/pub/" . basename($md_file));
+				copy($md_file, "content/pub/" . basename($md_file));
+				echo "<script>";
+				echo 'alert("Page has been updated.")';
+				echo "</script>";
+			}
+			if (!file_exists("content/pub/" . basename($md_file))) {
+				echo '<input style="display: inline;" type="submit" name="publish" value="Publish" />';
+			}
+			if (file_exists("content/pub/" . basename($md_file))) {
+				echo '<input style="display: inline;" type="submit" name="update" value="Update" />';
+				echo '<input style="display: inline;" type="submit" name="unpublish" value="Unpublish" />';
+			}
+			?>
+		</form>
+	</div>
+	<?php
+	if (isset($_POST['upload'])) {
+		$file_type = $_FILES['image_field']['type'];
+		$allowed = array("image/jpeg");
+		if (in_array($file_type, $allowed)) {
+			$handle = new \verot\Upload\Upload($_FILES['image_field']);
+			if ($handle->uploaded) {
+				$handle->image_resize  = true;
+				$handle->image_x = $resize;
+				$handle->image_ratio_y = true;
+				$handle->process('content/img');
+				if ($handle->processed) {
+					$filename = pathinfo(($_FILES['image_field']['name']), PATHINFO_FILENAME) . '.' . strtolower(pathinfo(($_FILES['image_field']['name']), PATHINFO_EXTENSION));
+					echo "<script>";
+					echo 'alert("Insert image: ![](content/img/' . $filename . ')")';
+					echo "</script>";
+					$handle->clean();
+				} else {
+					echo "<script>";
+					echo 'alert("Error: ' . $handle->error . ')"';
+					echo "</script>";
 				}
 			}
 		}
-		?>
-		<form style="margin-top: 2em;" enctype="multipart/form-data" method="POST" action="">
-			<input style="display: inline;" type="file" size="32" name="image_field" value="">
-			<button style="display: inline;" type="submit" role="button" name="upload">Upload</button>
-		</form>
-		<hr>
+	}
+	?>
+	<form style="margin-top: 2em;" enctype="multipart/form-data" method="POST" action="">
+		<input style="display: inline; vertical-align: middle;" type="file" size="32" name="image_field" value="">
+		<button style="vertical-align: middle;" type="submit" role="button" name="upload">Upload</button>
+	</form>
+	<hr>
+	<div style="text-align: center;">
 		<?php echo $footer; ?>
+	</div>
 </body>
 
 </html>

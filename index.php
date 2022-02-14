@@ -1,9 +1,7 @@
 <?php
 include 'inc/parsedown.php';
 include('config.php');
-if ($protect) {
-	require_once('protect.php');
-}
+require_once('protect.php');
 ?>
 <html lang="en">
 
@@ -20,7 +18,7 @@ if ($protect) {
 
 <body>
 	<div style="text-align: center;">
-		<img style="display: inline; height: 2.5em; vertical-align: middle;" src="favicon.svg" alt="logo" />
+		<img style="display: inline; height: 2.5em; border-radius: 0; vertical-align: middle;" src="favicon.svg" alt="logo" />
 		<h1 class="text-center" style="display: inline; margin-left: 0.19em; vertical-align: middle; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
 		<hr style="margin-bottom: 2em; margin-top: 1em;">
 	</div>
@@ -112,15 +110,17 @@ if ($protect) {
 	if (!is_file($md_file)) {
 		exit("<p>Page not found</p>");
 	}
-	echo "<form method='GET' action='edit.php'>
+	echo "<div style='text-align: center;'>
+		<form method='GET' action='edit.php'>
         <button style='margin-top: 1.5em;'  type='submit'>Edit this page</button>
-        </form>";
+        </form>
+		</div>";
 	if (($handle = fopen($md_file, "r")) !== FALSE) {
 		$text = file_get_contents($md_file);
 		$Parsedown = new Parsedown();
 		echo $Parsedown->text($text);
 		if (file_exists("content/pub/" . basename($md_file))) {
-			echo '<p style="margin-top: 1.5em;"><a href="pub.php?page=' . basename($md_file, ".md") . '">Public link</a></p>';
+			echo '<div style="text-align: center; margin-top: 1.5em;"><a href="pub.php?page=' . basename($md_file, ".md") . '">Public link</a></div>';
 		}
 	}
 	?>
@@ -135,7 +135,9 @@ if ($protect) {
 		<input style='display: inline;' type='submit' name='trash' value='Trash'></input>
 	</form>
 	<hr style="margin-bottom: 1.5em;">
-	<?php echo $footer; ?>
+	<div style="text-align: center;">
+		<?php echo $footer; ?>
+	</div>
 </body>
 
 </html>
