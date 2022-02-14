@@ -31,7 +31,7 @@ error_reporting(E_ERROR);
 <body>
 	<div style="text-align: center;">
 		<img style="display: inline; height: 2.5em; border-radius: 0; vertical-align: middle;" src="favicon.svg" alt="logo" />
-		<h1 class="text-center" style="display: inline; margin-left: 0.19em; vertical-align: middle; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
+		<h1 style="display: inline; font-size: 1.9em; margin-left: 0.19em; vertical-align: middle; letter-spacing: 3px; color: #ff6600;"><?php echo $title ?></h1>
 		<hr style="margin-bottom: 2em; margin-top: 1em;">
 		<button style="margin-bottom: 1.3em;" onclick="window.location.href='<?php echo $base_dir . '?page=' . $_SESSION['page'] ?>';">Back</button>
 	</div>

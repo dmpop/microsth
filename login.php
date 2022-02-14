@@ -26,15 +26,15 @@ if (isset($_POST['password']) && password_verify($_POST['password'], $pw_hash)) 
 <body>
 	<div style="text-align: center;">
 		<img style="display: inline; height: 2.5em; border-radius: 0; vertical-align: middle;" src="favicon.svg" alt="logo" />
-		<h1 class="text-center" style="display: inline; margin-left: 0.19em; vertical-align: middle; letter-spacing: 3px; color: rgb(200, 113, 55);"><?php echo $title ?></h1>
+		<h1 style="display: inline; font-size: 1.9em; margin-left: 0.19em; vertical-align: middle; letter-spacing: 3px; color: #ff6600;"><?php echo $title ?></h1>
 		<hr style="margin-bottom: 2em; margin-top: 1em;">
-	</div>
-	<form method="POST">
-		<p>Type password and press ENTER:</p>
-		<input type="password" name="password">
-	</form>
-	<hr style="margin-top: 2em; margin-bottom: 1.5em;">
-	<div style="text-align: center;">
+		<form method="POST">
+			<label>Type password and press ENTER:
+				<input style="margin-top: 1em; display: inline;" type="password" name="password">
+				<input style='display: inline;' type='submit' value='Go'>
+			</label>
+		</form>
+		<hr style="margin-top: 2em; margin-bottom: 1.5em;">
 		<?php echo $footer; ?>
 	</div>
 </body>

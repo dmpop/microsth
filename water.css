@@ -6,21 +6,22 @@ body {
   margin: 20px auto;
   padding: 0 10px;
   color: #363636;
-  background: #ffffff;
+  background: #fffaee;
   text-rendering: optimizeLegibility;
 }
 
 h1 {
   font-family: "Barlow-Medium", sans-serif;
-  font-size: 1.9em;
+  font-size: 1.5em;
   margin-top: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 12px;
+  margin-bottom: 0.5em;
+  color: #ffc159ff;
 }
 
-h1, h2, h3, h4, h5, h6, strong {
+strong {
   color: #000000;
 }
 
@@ -70,6 +71,7 @@ input, select, button, textarea {
 
 input, button {
   font-family: Barlow-Medium;
+  color: #ff6600;
 }
 
 input:not([type='checkbox']):not([type='radio']), select, button, textarea {
@@ -132,10 +134,10 @@ a:hover {
 }
 
 code {
-  background: #efefef;
+  background: #ffe7c8;
   color: #000000;
   padding: 5px;
-  border-radius: 6px;
+  border-radius: 9px;
 }
 
 kbd {
