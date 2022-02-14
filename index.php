@@ -26,19 +26,19 @@ if ($protect) {
 	</noscript>
 	<?php
 	if (!file_exists("content")) {
-		mkdir("content", 0777, true);
+		mkdir("content", 0755, true);
 	}
 	if (!file_exists("content/pages")) {
-		mkdir("content/pages", 0777, true);
+		mkdir("content/pages", 0755, true);
 	}
 	if (!file_exists("content/pub")) {
-		mkdir("content/pub", 0777, true);
+		mkdir("content/pub", 0755, true);
 	}
 	if (!file_exists("content/archive")) {
-		mkdir("content/archive", 0777, true);
+		mkdir("content/archive", 0755, true);
 	}
 	if (!file_exists("content/trash")) {
-		mkdir("content/trash", 0777, true);
+		mkdir("content/trash", 0755, true);
 	}
 	$trash_count = count(scandir("content/trash")) - 2;
 	if ($trash_count >= $trash_limit) {
@@ -48,7 +48,7 @@ if ($protect) {
 		}
 	}
 	if (!file_exists("content/img")) {
-		mkdir("content/img", 0777, true);
+		mkdir("content/img", 0755, true);
 	}
 	if (isset($_GET["page"])) {
 		$page = $_GET["page"];
@@ -68,6 +68,13 @@ if ($protect) {
 			header("Location: $url");
 		}
 	}
+	if (isset($_POST["rename"])) {
+		$md_file = $_SESSION['mdfile'];
+		$pagename = $_POST["pagename"];
+		rename($md_file, "content/pages/" . $pagename . ".md");
+		$url = "index.php?page=" . $pagename;
+		header("Location: $url");
+	};
 	if (isset($_POST['archive'])) {
 		$md_file = $_SESSION['mdfile'];
 		rename($md_file, "content/archive/" . basename($md_file));
@@ -117,9 +124,10 @@ if ($protect) {
 	<hr style='margin-top: 2em; margin-bottom: 1.5em;'>
 	<form method='POST' action=''>
 		<label>Page name:
-		<input style='display: inline;' type='text' name='pagename'>
+			<input style='display: inline;' type='text' name='pagename'>
 		</label>
 		<input style='display: inline;' type='submit' name='newpage' value='Create'>
+		<input style='display: inline;' type='submit' name='rename' value='Rename'>
 		<input style='display: inline;' type='submit' name='archive' value='Archive'></input>
 		<input style='display: inline;' type='submit' name='trash' value='Trash'></input>
 	</form>
