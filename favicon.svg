@@ -9,18 +9,72 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="100mm"
-   height="100mm"
-   viewBox="0 0 100 100"
+   width="512"
+   height="512"
+   viewBox="0 0 135.46667 135.46667"
    version="1.1"
    id="svg8"
-   sodipodi:docname="favicon.svg"
    inkscape:export-filename="/home/dmpop/favicon.png"
-   inkscape:export-xdpi="32.512001"
-   inkscape:export-ydpi="32.512001"
-   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="favicon.svg">
   <defs
-     id="defs2" />
+     id="defs2">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 65.011906 : 1"
+       inkscape:vp_y="0 : 1000.0001 : 0"
+       inkscape:vp_z="103.56549 : -49.136907 : 1"
+       inkscape:persp3d-origin="65.011904 : 43.34127 : 1"
+       id="perspective9439" />
+    <symbol
+       id="Coffeeshop_Inv">
+      <title
+         id="title1729">Coffeeshop</title>
+      <rect
+         x="0.13229166"
+         y="0.13229166"
+         width="18.785418"
+         height="18.785418"
+         ry="1.5875"
+         style="stroke:#ffffff;stroke-width:0.26458332"
+         id="rect1731" />
+      <g
+         style="fill:#ffffff;fill-rule:evenodd;stroke:none"
+         id="g1737">
+        <path
+           style="stroke-width:0.26458332"
+           inkscape:connector-curvature="0"
+           d="m 5.2916667,11.90625 a 1.3229167,1.3229167 0 0 0 1.3229166,1.322917 h 5.8208337 a 1.3229167,1.3229167 0 0 0 1.322916,-1.322917 v -0.264583 h 0.264584 a 2.6458335,2.6458335 0 0 0 0,-5.291667 H 5.2916667 Z M 13.758333,7.4083333 v 3.1749997 h 0.264584 a 1.5875,1.5875 0 0 0 0,-3.1749997 z"
+           id="path1733" />
+        <path
+           style="stroke-width:0.26458332"
+           inkscape:connector-curvature="0"
+           d="m 2.1166667,13.758333 a 1.5875,1.5875 0 0 0 1.5875,1.5875 H 15.345833 a 1.5875,1.5875 0 0 0 1.5875,-1.5875 z"
+           id="path1735" />
+      </g>
+    </symbol>
+    <symbol
+       id="Coffeeshop">
+      <title
+         id="title1720">Coffeeshop</title>
+      <g
+         style="fill-rule:evenodd;stroke:none"
+         id="g1726">
+        <path
+           style="stroke-width:0.26458332"
+           inkscape:connector-curvature="0"
+           d="m 5.2916667,11.90625 a 1.3229167,1.3229167 0 0 0 1.3229166,1.322917 h 5.8208337 a 1.3229167,1.3229167 0 0 0 1.322916,-1.322917 v -0.264583 h 0.264584 a 2.6458335,2.6458335 0 0 0 0,-5.291667 H 5.2916667 Z M 13.758333,7.4083333 v 3.1749997 h 0.264584 a 1.5875,1.5875 0 0 0 0,-3.1749997 z"
+           id="path1722" />
+        <path
+           style="stroke-width:0.26458332"
+           inkscape:connector-curvature="0"
+           d="m 2.1166667,13.758333 a 1.5875,1.5875 0 0 0 1.5875,1.5875 H 15.345833 a 1.5875,1.5875 0 0 0 1.5875,-1.5875 z"
+           id="path1724" />
+      </g>
+    </symbol>
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -28,17 +82,22 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="-358.15223"
-     inkscape:cy="329.15403"
+     inkscape:zoom="0.35"
+     inkscape:cx="1302.2857"
+     inkscape:cy="68.209528"
      inkscape:document-units="mm"
-     inkscape:current-layer="g22"
+     inkscape:current-layer="g919"
      showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
      inkscape:window-width="1920"
-     inkscape:window-height="1015"
-     inkscape:window-x="0"
+     inkscape:window-height="1009"
+     inkscape:window-x="2560"
      inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     units="px" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -55,36 +114,31 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-197)">
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="78.577248"
-       y="210.40468"
-       id="text4308"><tspan
-         sodipodi:role="line"
-         id="tspan4306"
-         x="78.577248"
-         y="220.13628"
-         style="stroke-width:0.26458332" /></text>
+     transform="translate(825.44936,-64.257588)">
     <g
-       id="g14292"
-       transform="translate(-2.0054735,-1.0949652)">
+       id="g919"
+       transform="matrix(1.0288249,0,0,1.0288249,23.148004,-3.0546917)">
       <g
-         id="g22"
-         transform="translate(-0.82661069,2.4683477)">
+         id="g984"
+         transform="matrix(0,-1.0587297,1.0587297,0,-895.96045,-676.44218)">
         <path
-           sodipodi:type="spiral"
-           style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#dd0000;stroke-width:3.71310997;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="path858"
-           sodipodi:cx="48.434784"
-           sodipodi:cy="250.00137"
-           sodipodi:expansion="1"
-           sodipodi:revolution="2.8898003"
-           sodipodi:radius="50.821846"
-           sodipodi:argument="-18.165415"
-           sodipodi:t0="0.33629131"
-           d="m 63.375378,258.30071 c -3.652037,10.17127 -15.691929,14.32439 -25.374946,10.48474 -12.249837,-4.8575 -17.168968,-19.56266 -12.193198,-31.35344 6.048452,-14.33265 23.437448,-20.02135 37.331924,-13.90166 16.418197,7.23122 22.878578,27.31473 15.610132,43.31041 -8.408951,18.50558 -31.193687,25.73902 -49.288902,17.3186 -20.594259,-9.58334 -28.60171591,-35.0738 -19.027066,-55.26739 10.755394,-22.68387 38.954748,-31.46603 61.24588,-20.73554 15.919666,7.6634 26.462576,23.85897 27.575693,41.42496" />
+           style="fill:#71c837;fill-opacity:1;stroke:none;stroke-width:0.18068224;stroke-opacity:1"
+           d="m -706.87508,108.41217 c 0.22807,23.23523 -24.51221,40.55824 -47.74751,40.7863 -23.23522,0.22805 -42.43209,-23.89131 -42.66018,-47.12656 -0.22805,-23.235217 14.27614,-33.191797 37.51142,-33.419867 23.2352,-0.22807 52.6682,16.52487 52.89627,39.760127 z"
+           id="path875-1"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="sssss" />
+        <path
+           style="fill:#d400aa;fill-opacity:1;stroke:none;stroke-width:0.18068224;stroke-opacity:1"
+           d="m -708.60247,149.31419 c 0.22807,23.23523 -24.51221,40.55824 -47.74751,40.7863 -23.23522,0.22805 -42.43209,-23.89131 -42.66018,-47.12654 -0.22805,-23.23522 14.27614,-33.19177 37.51142,-33.41984 23.2352,-0.22807 52.6682,16.52484 52.89627,39.76008 z"
+           id="path875-9"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="sssss" />
+        <path
+           style="fill:#ffa000;fill-opacity:1;stroke:none;stroke-width:0.18068224;stroke-opacity:1"
+           d="m -728.5148,129.25494 c 0.22807,23.23523 -24.51221,40.55824 -47.74751,40.7863 -23.23522,0.22805 -42.43209,-23.89131 -42.66018,-47.12655 -0.22805,-23.235229 14.27614,-33.191809 37.51142,-33.419879 23.2352,-0.22807 52.6682,16.524879 52.89627,39.760129 z"
+           id="path875"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="sssss" />
       </g>
     </g>
   </g>
