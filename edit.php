@@ -45,27 +45,30 @@ error_reporting(E_ERROR);
 		$md_file = $_SESSION['mdfile'];
 		$data = $_POST["text"];
 		file_put_contents($md_file, $data);
+		echo "<script>";
+		echo 'alert("Changes have been saved.")';
+		echo "</script>";
 	};
 	?>
 	<div style="text-align: center;">
-	<form style="display: inline;" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-		<textarea name="text"><?php Read(); ?></textarea>
-		<input style="display: inline; margin-top: 1em;" type="submit" name="save" value="Save">
-	</form>
-	<?php
-	if (isset($_POST['publish'])) {
-		$md_file = $_SESSION['mdfile'];
-		if (!copy($md_file, "content/pub/" . basename($md_file))) {
-			echo "<script>";
-			echo 'alert("Failed to publish "' . basename($md_file) . '")';
-			echo "</script>";
-		} else {
-			echo "<script>";
-			echo 'alert("Page has been published.")';
-			echo "</script>";
+		<form style="display: inline;" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+			<textarea name="text"><?php Read(); ?></textarea>
+			<input style="display: inline; margin-top: 1em;" type="submit" name="save" value="Save">
+		</form>
+		<?php
+		if (isset($_POST['publish'])) {
+			$md_file = $_SESSION['mdfile'];
+			if (!copy($md_file, "content/pub/" . basename($md_file))) {
+				echo "<script>";
+				echo 'alert("Failed to publish "' . basename($md_file) . '")';
+				echo "</script>";
+			} else {
+				echo "<script>";
+				echo 'alert("Page has been published.")';
+				echo "</script>";
+			}
 		}
-	}
-	?>
+		?>
 		<form style="display: inline;" method="POST" action="">
 			<?php
 			$md_file = $_SESSION['mdfile'];
