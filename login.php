@@ -29,7 +29,7 @@ if (isset($_POST['password']) && password_verify($_POST['password'], $pw_hash)) 
 		<h1 style="display: inline; font-size: 1.9em; margin-left: 0.19em; vertical-align: middle; letter-spacing: 3px; color: #ff6600;"><?php echo $title ?></h1>
 		<hr style="margin-bottom: 2em; margin-top: 1em;">
 		<form method="POST">
-			<label>Type password and press ENTER:
+			<label>Password:
 				<input style="margin-top: 1em; display: inline;" type="password" name="password">
 				<input style='display: inline;' type='submit' value='Go'>
 			</label>
