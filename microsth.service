@@ -1,0 +1,11 @@
+[Unit]
+Description=micro.sth
+Wants=syslog.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/php -S 0.0.0.0:3000 -t /path/to/microsth
+ExecStop=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
