@@ -13,5 +13,5 @@
     // Number of items before the trash is emptied
     $trash_limit = 100;
     // Footer
-    $footer = "<a href='https://github.com/dmpop/micro.sth'>micro.sth</a> - write here";
+    $footer = "<a href='https://github.com/dmpop/microsth'>micro.sth</a> - write here. I really 🧡 <a href='https://www.paypal.com/paypalme/dmpop'>coffee</a>";
 ?>
