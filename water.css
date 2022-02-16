@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body {
-  font-family: Barlow-Regular, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Barlow-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.4;
   max-width: 800px;
   margin: 20px auto;
@@ -12,7 +12,6 @@ body {
 
 h1 {
   font-family: "Barlow-Medium", sans-serif;
-  font-size: 1.5em;
   margin-top: 0;
 }
 
@@ -26,7 +25,7 @@ strong {
 }
 
 h1, h2, h3, h4, h5, h6, b, strong, th {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 blockquote {
@@ -70,7 +69,7 @@ input, select, button, textarea {
 }
 
 input, button {
-  font-family: Barlow-Medium;
+  font-family: 'Barlow-Medium';
   color: #ff6600;
 }
 
@@ -79,7 +78,7 @@ input:not([type='checkbox']):not([type='radio']), select, button, textarea {
 }
 
 textarea {
-  font-family: Barlow-Regular;
+  font-family: 'Barlow-Regular';
   margin-right: 0;
   width: 100%;
   box-sizing: border-box;
