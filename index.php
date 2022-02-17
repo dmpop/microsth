@@ -91,6 +91,16 @@ require_once('protect.php');
 		$url = 'index.php';
 		header("Location: $url");
 	}
+	if (isset($_GET['url']) && password_verify($_GET['password'], $pw_hash)) {
+		$page = "content/pages/" . $_GET['page'] . ".md";
+		if (!is_file($page)) {
+			file_put_contents($page, '');
+		}
+		$note = $_GET['note'] . "\n\n";
+		$note .= file_get_contents($page);
+		file_put_contents($page, $note);
+		header("location:" . $_GET['url'] . "");
+	}
 	$md_file = "content/pages/" . $page . ".md";
 	$_SESSION["page"] = $page;
 	$_SESSION["mdfile"] = $md_file;
