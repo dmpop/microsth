@@ -4,8 +4,11 @@ namespace Verot\Upload;
 
 include('inc/class.upload.php');
 include('config.php');
-require_once('protect.php');
-error_reporting(E_ERROR);
+if ($protect) {
+	require_once('protect.php');
+} else {
+	session_start();
+}
 ?>
 <html lang='en'>
 

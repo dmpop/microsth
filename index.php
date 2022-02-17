@@ -6,6 +6,7 @@ if ($protect) {
 } else {
 	session_start();
 }
+$pw_hash = password_hash('secret', PASSWORD_DEFAULT);
 ?>
 <html lang="en">
 

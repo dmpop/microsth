@@ -2,6 +2,10 @@
 $config = include('config.php');
 $pw_hash = password_hash('secret', PASSWORD_DEFAULT);
 
+if ($protect) {
+	session_start();
+}
+
 /* Redirects here after login */
 $redirect_after_login = 'index.php';
 
