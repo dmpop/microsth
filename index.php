@@ -1,7 +1,11 @@
 <?php
 include 'inc/parsedown.php';
 include('config.php');
-require_once('protect.php');
+if ($protect) {
+	require_once('protect.php');
+} else {
+	session_start();
+}
 ?>
 <html lang="en">
 

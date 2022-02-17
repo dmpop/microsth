@@ -1,5 +1,4 @@
 <?php
-session_start();
 $config = include('config.php');
 $pw_hash = password_hash('secret', PASSWORD_DEFAULT);
 
