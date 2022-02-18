@@ -1,17 +1,14 @@
 <?php
 $config = include('config.php');
-$pw_hash = password_hash('secret', PASSWORD_DEFAULT);
+$pw_hash = password_hash($password, PASSWORD_DEFAULT);
 
 if ($protect) {
 	session_start();
 }
 
-/* Redirects here after login */
-$redirect_after_login = 'index.php';
-
 if (isset($_POST['password']) && password_verify($_POST['password'], $pw_hash)) {
 	$_SESSION["password"] = $pw_hash;
-	header('Location: ' . $redirect_after_login);
+	header('Location: index.php');
 	exit;
 }
 ?>

@@ -6,7 +6,7 @@ if ($protect) {
 } else {
 	session_start();
 }
-$pw_hash = password_hash('secret', PASSWORD_DEFAULT);
+$pw_hash = password_hash($password, PASSWORD_DEFAULT);
 ?>
 <html lang="en">
 
@@ -87,7 +87,7 @@ $pw_hash = password_hash('secret', PASSWORD_DEFAULT);
 		}
 	}
 	if (isset($_POST["rename"])) {
-		// $md_file = file_get_contents('.mdfile');
+		$md_file = file_get_contents('.mdfile');
 		$pagename = $_POST["pagename"];
 		rename($md_file, "content/pages/" . $pagename . ".md");
 		$url = "index.php?page=" . $pagename;
