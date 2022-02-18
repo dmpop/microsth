@@ -30,6 +30,17 @@ $pw_hash = password_hash('secret', PASSWORD_DEFAULT);
 	<noscript>
 		<p>Make sure that JavaScript is enabled.</p>
 	</noscript>
+	<select style="width: 100%;" name="" onchange="javascript:location.href = this.value;">
+		<option value='Label'>Go to page</option>";
+		<?php
+		$files = glob("content/pages/*.md");
+		foreach ($files as $file) {
+			$filename = basename($file);
+			$name = basename($file, ".md");
+			echo "<option value='?page=" . str_replace('\'', '&apos;', $name) . "'>" . $name . "</option>";
+		}
+		?>
+	</select>
 	<?php
 	if (!file_exists("content")) {
 		mkdir("content", 0755, true);
@@ -58,6 +69,7 @@ $pw_hash = password_hash('secret', PASSWORD_DEFAULT);
 	}
 	if (isset($_GET["page"])) {
 		$page = $_GET["page"];
+		file_put_contents(".page", $page);
 	} else {
 		$page = $first_page;
 		if (!file_exists("content/pages/" . $page . ".md")) {
@@ -75,20 +87,20 @@ $pw_hash = password_hash('secret', PASSWORD_DEFAULT);
 		}
 	}
 	if (isset($_POST["rename"])) {
-		$md_file = $_SESSION['mdfile'];
+		// $md_file = file_get_contents('.mdfile');
 		$pagename = $_POST["pagename"];
 		rename($md_file, "content/pages/" . $pagename . ".md");
 		$url = "index.php?page=" . $pagename;
 		header("Location: $url");
 	};
 	if (isset($_POST['archive'])) {
-		$md_file = $_SESSION['mdfile'];
+		$md_file = file_get_contents('.mdfile');
 		rename($md_file, "content/archive/" . basename($md_file));
 		$url = 'index.php';
 		header("Location: $url");
 	}
 	if (isset($_POST['trash'])) {
-		$md_file = $_SESSION['mdfile'];
+		$md_file = file_get_contents('.mdfile');
 		rename($md_file, "content/trash/" . basename($md_file));
 		if (file_exists("content/pub/" . basename($md_file))) {
 			unlink("content/pub/" . basename($md_file));
@@ -107,21 +119,7 @@ $pw_hash = password_hash('secret', PASSWORD_DEFAULT);
 		header("location:" . $_GET['url'] . "");
 	}
 	$md_file = "content/pages/" . $page . ".md";
-	$_SESSION["page"] = $page;
-	$_SESSION["mdfile"] = $md_file;
-	?>
-	<select style="width: 100%;" name="" onchange="javascript:location.href = this.value;">
-		<option value='Label'>Go to page</option>";
-		<?php
-		$files = glob("content/pages/*.md");
-		foreach ($files as $file) {
-			$filename = basename($file);
-			$name = basename($file, ".md");
-			echo "<option value='?page=" . str_replace('\'', '&apos;', $name) . "'>" . $name . "</option>";
-		}
-		?>
-	</select>
-	<?php
+	file_put_contents('.mdfile', $md_file);
 	if (!is_file($md_file)) {
 		exit("<p>Page not found</p>");
 	}

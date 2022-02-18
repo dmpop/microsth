@@ -36,16 +36,16 @@ if ($protect) {
 		<img style="display: inline; height: 2.5em; border-radius: 0; vertical-align: middle;" src="favicon.svg" alt="logo" />
 		<h1 style="display: inline; font-size: 1.9em; margin-left: 0.19em; vertical-align: middle; letter-spacing: 3px; color: #ff6600;"><?php echo $title ?></h1>
 		<hr style="margin-bottom: 2em; margin-top: 1em;">
-		<button style="margin-bottom: 1.3em;" onclick="window.location.href='<?php echo $base_dir . '?page=' . $_SESSION['page'] ?>';">Back</button>
+		<button style="margin-bottom: 1.3em;" onclick="window.location.href='<?php echo $base_dir . '?page=' . file_get_contents('.page') ?>';">Back</button>
 	</div>
 	<?php
 	function Read()
 	{
-		$md_file = $_SESSION['mdfile'];
+		$md_file = file_get_contents('.mdfile');
 		echo file_get_contents($md_file);
 	}
-	if ($_POST["save"]) {
-		$md_file = $_SESSION['mdfile'];
+	if (isset($_POST["save"])) {
+		$md_file = file_get_contents('.mdfile');
 		$data = $_POST["text"];
 		file_put_contents($md_file, $data);
 		echo "<script>";
@@ -60,7 +60,7 @@ if ($protect) {
 		</form>
 		<?php
 		if (isset($_POST['publish'])) {
-			$md_file = $_SESSION['mdfile'];
+			$md_file = file_get_contents('.mdfile');
 			if (!copy($md_file, "content/pub/" . basename($md_file))) {
 				echo "<script>";
 				echo 'alert("Failed to publish "' . basename($md_file) . '")';
@@ -74,7 +74,7 @@ if ($protect) {
 		?>
 		<form style="display: inline;" method="POST" action="">
 			<?php
-			$md_file = $_SESSION['mdfile'];
+			$md_file = file_get_contents('.mdfile');
 			if (isset($_POST['unpublish'])) {
 				unlink("content/pub/" . basename($md_file));
 				echo "<script>";
