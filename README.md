@@ -30,7 +30,7 @@ When you open micro.sth for the first time, it automatically creates the default
 
 You can add as many pages as you need, and there are two ways to add a page:
 
-1. Enter the desired page name into the **Page name** field and press the **New Page** button.
+1. Enter the desired page name into the **Page name** field and press the **Create** button.
 
 2. Create an _.md_ file directly in the _content_ directory.
 
