@@ -6,7 +6,7 @@ body {
   margin: 20px auto;
   padding: 0 10px;
   color: #363636;
-  background: #fffaee;
+  background: #f8f6f1;
   text-rendering: optimizeLegibility;
 }
 
@@ -91,7 +91,7 @@ button, input[type='submit'], input[type='button'] {
 }
 
 button:hover, input[type='submit']:hover, input[type='button']:hover {
-  background: #dddddd;
+  background: #efebe0;
 }
 
 /* input:focus, select:focus, button:focus, textarea:focus {
@@ -133,7 +133,7 @@ a:hover {
 }
 
 code {
-  background: #ffe7c8;
+  background: #efefef;
   color: #000000;
   padding: 5px;
   border-radius: 5px;
