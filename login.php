@@ -8,7 +8,13 @@ if ($protect) {
 
 if (isset($_POST['password']) && password_verify($_POST['password'], $pw_hash)) {
 	$_SESSION["password"] = $pw_hash;
-	header('Location: index.php');
+	if (file_exists(".page")) {
+		$page = file_get_contents('.page');
+		$url = "index.php?page=" . $page;
+	} else {
+		$url = "index.php";
+	}
+	header('Location: ' . $url);
 	exit;
 }
 ?>

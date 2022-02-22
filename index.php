@@ -74,7 +74,13 @@ $pw_hash = password_hash($password, PASSWORD_DEFAULT);
 		$page = $first_page;
 		if (!file_exists("content/pages/" . $page . ".md")) {
 			fopen("content/pages/" . $page . ".md", "w");
+			file_put_contents(".page", $page);
+			$url = "index.php?page=" . $page;
+			header("Location: $url");
 		}
+	}
+	if (file_exists(".page")) {
+		$page = file_get_contents('.page');
 	}
 	if (isset($_POST['newpage'])) {
 		$pagename = $_POST["pagename"];
