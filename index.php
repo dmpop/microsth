@@ -1,18 +1,26 @@
-<?php
-include 'inc/parsedown.php';
-include('config.php');
-if ($protect) {
-	require_once('protect.php');
-} else {
-	session_start();
-}
-$pw_hash = password_hash($password, PASSWORD_DEFAULT);
-?>
-<html lang="en">
-
 <!-- Author: Dmitri Popov, dmpop@linux.com
 	 License: GPLv3 https://www.gnu.org/licenses/gpl-3.0.txt -->
 
+<?php
+include 'inc/parsedown.php';
+include('config.php');
+$pw_hash = password_hash($password, PASSWORD_DEFAULT);
+if (isset($_GET['url']) && password_verify($_GET['password'], $pw_hash)) {
+	$page = "content/pages/" . $_GET['page'] . ".md";
+	if (!is_file($page)) {
+		file_put_contents($page, '');
+	}
+	$note = $_GET['note'] . "\n\n";
+	$note .= file_get_contents($page);
+	file_put_contents($page, $note);
+	header("location:" . $_GET['url'] . "");
+	exit();
+}
+if ($protect) {
+	require_once('protect.php');
+}
+?>
+<html lang="en">
 <head>
 	<title><?php echo $title ?></title>
 	<meta charset="utf-8">
@@ -72,6 +80,7 @@ $pw_hash = password_hash($password, PASSWORD_DEFAULT);
 		file_put_contents(".page", $page);
 	} else {
 		$page = $first_page;
+		file_put_contents(".page", $page);
 		if (!file_exists("content/pages/" . $page . ".md")) {
 			fopen("content/pages/" . $page . ".md", "w");
 			file_put_contents(".page", $page);
@@ -114,26 +123,25 @@ $pw_hash = password_hash($password, PASSWORD_DEFAULT);
 		$url = 'index.php';
 		header("Location: $url");
 	}
-	if (isset($_GET['url']) && password_verify($_GET['password'], $pw_hash)) {
-		$page = "content/pages/" . $_GET['page'] . ".md";
-		if (!is_file($page)) {
-			file_put_contents($page, '');
-		}
-		$note = $_GET['note'] . "\n\n";
-		$note .= file_get_contents($page);
-		file_put_contents($page, $note);
-		header("location:" . $_GET['url'] . "");
+	if (isset($_POST['logout'])) {
+		session_destroy();
+		header('Location: login.php');
 	}
 	$md_file = "content/pages/" . $page . ".md";
 	file_put_contents('.mdfile', $md_file);
 	if (!is_file($md_file)) {
 		exit("<p>Page not found</p>");
 	}
-	echo "<div style='text-align: center;'>
-		<form method='GET' action='edit.php'>
-        <button style='margin-top: 1.5em;'  type='submit'>Edit this page</button>
-        </form>
-		</div>";
+	?>
+	<div style='text-align: center;'>
+		<form style='display:inline-block;' method='GET' action='edit.php'>
+			<button style='margin-top: 1em;' type='submit'>Edit this page</button>
+		</form>
+		<form style='display:inline-block;' method='POST' action=''>
+			<input style='margin-top: 1em;' type='submit' name='logout' value='Log out'></input>
+		</form>
+	</div>
+	<?php
 	if (($handle = fopen($md_file, "r")) !== FALSE) {
 		$text = file_get_contents($md_file);
 		$Parsedown = new Parsedown();
@@ -152,6 +160,7 @@ $pw_hash = password_hash($password, PASSWORD_DEFAULT);
 		<input style='display: inline;' type='submit' name='rename' value='Rename'>
 		<input style='display: inline;' type='submit' name='archive' value='Archive'></input>
 		<input style='display: inline;' type='submit' name='trash' value='Trash'></input>
+		<input style='display: inline;' type='submit' name='logout' value='Log out'></input>
 	</form>
 	<hr style="margin-bottom: 1.5em;">
 	<div style="text-align: center;">
