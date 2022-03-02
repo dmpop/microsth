@@ -102,23 +102,23 @@ if ($protect) {
 		}
 	}
 	if (isset($_POST["rename"])) {
-		$md_file = file_get_contents('.mdfile');
+		$page_path = file_get_contents('.path');
 		$pagename = $_POST["pagename"];
-		rename($md_file, "content/pages/" . $pagename . ".md");
+		rename($page_path, "content/pages/" . $pagename . ".md");
 		$url = "index.php?page=" . $pagename;
 		header("Location: $url");
 	};
 	if (isset($_POST['archive'])) {
-		$md_file = file_get_contents('.mdfile');
-		rename($md_file, "content/archive/" . basename($md_file));
+		$page_path = file_get_contents('.path');
+		rename($page_path, "content/archive/" . basename($page_path));
 		$url = 'index.php';
 		header("Location: $url");
 	}
 	if (isset($_POST['trash'])) {
-		$md_file = file_get_contents('.mdfile');
-		rename($md_file, "content/trash/" . basename($md_file));
-		if (file_exists("content/pub/" . basename($md_file))) {
-			unlink("content/pub/" . basename($md_file));
+		$page_path = file_get_contents('.path');
+		rename($page_path, "content/trash/" . basename($page_path));
+		if (file_exists("content/pub/" . basename($page_path))) {
+			unlink("content/pub/" . basename($page_path));
 		}
 		$url = 'index.php';
 		header("Location: $url");
@@ -127,9 +127,9 @@ if ($protect) {
 		session_destroy();
 		header('Location: login.php');
 	}
-	$md_file = "content/pages/" . $page . ".md";
-	file_put_contents('.mdfile', $md_file);
-	if (!is_file($md_file)) {
+	$page_path = "content/pages/" . $page . ".md";
+	file_put_contents('.path', $page_path);
+	if (!is_file($page_path)) {
 		exit("<p>Page not found</p>");
 	}
 	?>
@@ -142,12 +142,12 @@ if ($protect) {
 		</form>
 	</div>
 	<?php
-	if (($handle = fopen($md_file, "r")) !== FALSE) {
-		$text = file_get_contents($md_file);
+	if (($handle = fopen($page_path, "r")) !== FALSE) {
+		$text = file_get_contents($page_path);
 		$Parsedown = new Parsedown();
 		echo $Parsedown->text($text);
-		if (file_exists("content/pub/" . basename($md_file))) {
-			echo '<div style="text-align: center; margin-top: 1.5em;"><a href="pub.php?page=' . basename($md_file, ".md") . '">Public link</a></div>';
+		if (file_exists("content/pub/" . basename($page_path))) {
+			echo '<div style="text-align: center; margin-top: 1.5em;"><a href="pub.php?page=' . basename($page_path, ".md") . '">Public link</a></div>';
 		}
 	}
 	?>
@@ -160,7 +160,6 @@ if ($protect) {
 		<input style='display: inline;' type='submit' name='rename' value='Rename'>
 		<input style='display: inline;' type='submit' name='archive' value='Archive'></input>
 		<input style='display: inline;' type='submit' name='trash' value='Trash'></input>
-		<input style='display: inline;' type='submit' name='logout' value='Log out'></input>
 	</form>
 	<hr style="margin-bottom: 1.5em;">
 	<div style="text-align: center;">

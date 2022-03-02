@@ -41,13 +41,13 @@ if ($protect) {
 	<?php
 	function Read()
 	{
-		$md_file = file_get_contents('.mdfile');
-		echo file_get_contents($md_file);
+		$page_path = file_get_contents('.path');
+		echo file_get_contents($page_path);
 	}
 	if (isset($_POST["save"])) {
-		$md_file = file_get_contents('.mdfile');
+		$page_path = file_get_contents('.path');
 		$data = $_POST["text"];
-		file_put_contents($md_file, $data);
+		file_put_contents($page_path, $data);
 		echo "<script>";
 		echo 'alert("Changes have been saved.")';
 		echo "</script>";
@@ -60,10 +60,10 @@ if ($protect) {
 		</form>
 		<?php
 		if (isset($_POST['publish'])) {
-			$md_file = file_get_contents('.mdfile');
-			if (!copy($md_file, "content/pub/" . basename($md_file))) {
+			$page_path = file_get_contents('.path');
+			if (!copy($page_path, "content/pub/" . basename($page_path))) {
 				echo "<script>";
-				echo 'alert("Failed to publish "' . basename($md_file) . '")';
+				echo 'alert("Failed to publish "' . basename($page_path) . '")';
 				echo "</script>";
 			} else {
 				echo "<script>";
@@ -74,24 +74,24 @@ if ($protect) {
 		?>
 		<form style="display: inline;" method="POST" action="">
 			<?php
-			$md_file = file_get_contents('.mdfile');
+			$page_path = file_get_contents('.path');
 			if (isset($_POST['unpublish'])) {
-				unlink("content/pub/" . basename($md_file));
+				unlink("content/pub/" . basename($page_path));
 				echo "<script>";
 				echo 'alert("Page has been unpublished.")';
 				echo "</script>";
 			}
 			if (isset($_POST['update'])) {
-				unlink("content/pub/" . basename($md_file));
-				copy($md_file, "content/pub/" . basename($md_file));
+				unlink("content/pub/" . basename($page_path));
+				copy($page_path, "content/pub/" . basename($page_path));
 				echo "<script>";
 				echo 'alert("Page has been updated.")';
 				echo "</script>";
 			}
-			if (!file_exists("content/pub/" . basename($md_file))) {
+			if (!file_exists("content/pub/" . basename($page_path))) {
 				echo '<input style="display: inline;" type="submit" name="publish" value="Publish" />';
 			}
-			if (file_exists("content/pub/" . basename($md_file))) {
+			if (file_exists("content/pub/" . basename($page_path))) {
 				echo '<input style="display: inline;" type="submit" name="update" value="Update" />';
 				echo '<input style="display: inline;" type="submit" name="unpublish" value="Unpublish" />';
 			}
