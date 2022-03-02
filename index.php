@@ -138,7 +138,7 @@ if ($protect) {
 			<button style='margin-top: 1em;' type='submit'>Edit this page</button>
 		</form>
 		<form style='display:inline-block;' method='POST' action=''>
-			<input style='margin-top: 1em;' type='submit' name='logout' value='Log out'></input>
+			<input style='margin-top: 1em; color:#ff0000;' type='submit' name='logout' value='Log out'></input>
 		</form>
 	</div>
 	<?php
@@ -156,10 +156,10 @@ if ($protect) {
 		<label>Page name:
 			<input style='display: inline;' type='text' name='pagename'>
 		</label>
-		<input style='display: inline;' type='submit' name='newpage' value='Create'>
-		<input style='display: inline;' type='submit' name='rename' value='Rename'>
+		<input style='display: inline; color:#009933;' type='submit' name='newpage' value='Create'>
+		<input style='display: inline; color:#00aaff;' type='submit' name='rename' value='Rename'>
 		<input style='display: inline;' type='submit' name='archive' value='Archive'></input>
-		<input style='display: inline;' type='submit' name='trash' value='Trash'></input>
+		<input style='display: inline; color:#ff0000;' type='submit' name='trash' value='Trash'></input>
 	</form>
 	<hr style="margin-bottom: 1.5em;">
 	<div style="text-align: center;">

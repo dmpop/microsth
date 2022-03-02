@@ -56,7 +56,7 @@ if ($protect) {
 	<div style="text-align: center;">
 		<form style="display: inline;" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 			<textarea name="text"><?php Read(); ?></textarea>
-			<input style="display: inline; margin-top: 1em;" type="submit" name="save" value="Save">
+			<input style="display: inline; margin-top: 1em; color:#009933;" type="submit" name="save" value="Save">
 		</form>
 		<?php
 		if (isset($_POST['publish'])) {
@@ -92,7 +92,7 @@ if ($protect) {
 				echo '<input style="display: inline;" type="submit" name="publish" value="Publish" />';
 			}
 			if (file_exists("content/pub/" . basename($page_path))) {
-				echo '<input style="display: inline;" type="submit" name="update" value="Update" />';
+				echo '<input style="display: inline; color:#00aaff;" type="submit" name="update" value="Update" />';
 				echo '<input style="display: inline;" type="submit" name="unpublish" value="Unpublish" />';
 			}
 			?>
@@ -126,7 +126,7 @@ if ($protect) {
 	?>
 	<form style="margin-top: 2em;" enctype="multipart/form-data" method="POST" action="">
 		<input style="display: inline; vertical-align: middle;" type="file" size="32" name="image_field" value="">
-		<button style="vertical-align: middle;" type="submit" role="button" name="upload">Upload</button>
+		<button style="vertical-align: middle; color:#00aaff;" type="submit" role="button" name="upload">Upload</button>
 	</form>
 	<hr>
 	<div style="text-align: center;">
