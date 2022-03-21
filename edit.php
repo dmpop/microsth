@@ -20,7 +20,9 @@ if ($protect) {
 	<meta charset="utf-8">
 	<link rel="shortcut icon" href="favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="water.css" />
+	<link rel="stylesheet" href="css/water.css" />
+	<link rel="stylesheet" href="css/popup.css">
+	<script src="js/popup.js"></script>
 	<style>
 		textarea {
 			font-size: 15px;
@@ -49,7 +51,7 @@ if ($protect) {
 		$data = $_POST["text"];
 		file_put_contents($page_path, $data);
 		echo "<script>";
-		echo 'alert("Changes have been saved.")';
+		echo 'popup("Changes have been saved");';
 		echo "</script>";
 	};
 	?>
@@ -63,11 +65,11 @@ if ($protect) {
 			$page_path = file_get_contents('.path');
 			if (!copy($page_path, "content/pub/" . basename($page_path))) {
 				echo "<script>";
-				echo 'alert("Failed to publish "' . basename($page_path) . '")';
+				echo 'popup("Failed to publish "' . basename($page_path) . '");';
 				echo "</script>";
 			} else {
 				echo "<script>";
-				echo 'alert("Page has been published.")';
+				echo 'popup("Page has been published");';
 				echo "</script>";
 			}
 		}
@@ -78,14 +80,14 @@ if ($protect) {
 			if (isset($_POST['unpublish'])) {
 				unlink("content/pub/" . basename($page_path));
 				echo "<script>";
-				echo 'alert("Page has been unpublished.")';
+				echo 'popup("Page has been unpublished");';
 				echo "</script>";
 			}
 			if (isset($_POST['update'])) {
 				unlink("content/pub/" . basename($page_path));
 				copy($page_path, "content/pub/" . basename($page_path));
 				echo "<script>";
-				echo 'alert("Page has been updated.")';
+				echo 'popup("Page has been updated");';
 				echo "</script>";
 			}
 			if (!file_exists("content/pub/" . basename($page_path))) {
@@ -117,7 +119,7 @@ if ($protect) {
 					$handle->clean();
 				} else {
 					echo "<script>";
-					echo 'alert("Error: ' . $handle->error . ')"';
+					echo 'popup("Error: ' . $handle->error . ')";';
 					echo "</script>";
 				}
 			}
