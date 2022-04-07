@@ -21,12 +21,18 @@ if ($protect) {
 }
 ?>
 <html lang="en">
+
 <head>
 	<title><?php echo $title ?></title>
 	<meta charset="utf-8">
 	<link rel="shortcut icon" href="favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/water.css" />
+	<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/default.min.css">
+	<script src="//unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script>
+	<script>
+		hljs.highlightAll();
+	</script>
 </head>
 
 <body>
