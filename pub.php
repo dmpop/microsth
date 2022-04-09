@@ -38,9 +38,9 @@ include('config.php');
 		exit("Nothing to see here.");
 	}
 	?>
-	</div>
-	<hr style="margin-top: 2em; margin-bottom: 1.5em;">
 	<div style="text-align: center;">
+		<button style="margin-top: 1.3em;" onclick="window.location.href='<?php echo $base_dir . 'pub.php?page=' . $first_page ?>';">Home</button>
+		<hr style="margin-top: 2em; margin-bottom: 1.5em;">
 		<?php echo $footer; ?>
 	</div>
 </body>
