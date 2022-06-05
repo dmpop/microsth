@@ -26,6 +26,20 @@ include('config.php');
 		<h1 style="display: inline; font-size: 1.9em; margin-left: 0.19em; vertical-align: middle; letter-spacing: 3px; color: #ff6600;"><?php echo $title ?></h1>
 	</div>
 	<hr style="margin-bottom: 2em; margin-top: 1em;">
+	<noscript>
+		<p>Make sure that JavaScript is enabled.</p>
+	</noscript>
+	<select style="width: 100%;" name="" onchange="javascript:location.href = this.value;">
+		<option value='Label'>Go to page</option>";
+		<?php
+		$files = glob("content/pub/*.md");
+		foreach ($files as $file) {
+			$filename = basename($file);
+			$name = basename($file, ".md");
+			echo "<option value='?page=" . str_replace('\'', '&apos;', $name) . "'>" . $name . "</option>";
+		}
+		?>
+	</select>
 	<?php
 	if (isset($_GET["page"])) {
 		$page = "content/pub/" . $_GET["page"] . ".md";
