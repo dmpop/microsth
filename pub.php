@@ -30,13 +30,14 @@ include('config.php');
 		<p>Make sure that JavaScript is enabled.</p>
 	</noscript>
 	<select style="width: 100%;" name="" onchange="javascript:location.href = this.value;">
-		<option value='Label'>Go to page</option>";
+		<option selected="selected" value='Label'>Go to page</option>";
 		<?php
 		$files = glob("content/pub/*.md");
+		setlocale(LC_ALL, 'C.UTF-8');
 		foreach ($files as $file) {
-			$filename = basename($file);
-			$name = basename($file, ".md");
-			echo "<option value='?page=" . str_replace('\'', '&apos;', $name) . "'>" . $name . "</option>";
+			$option = basename($file, ".md");
+			$title = ltrim(fgets(fopen($file, 'r')), "# ");;
+			echo "<option value='?page=" . str_replace('\'', '&apos;', $option) . "'>" . $title . "</option>";
 		}
 		?>
 	</select>
