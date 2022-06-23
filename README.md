@@ -8,7 +8,7 @@ micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool
 - password protection
 - support for multiple pages
 - publish individual pages
-- resize specified size during upload
+- automatic image resizing during upload
 
 ## Dependencies
 
