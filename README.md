@@ -5,10 +5,10 @@ micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool
 ## Features
 
 - Markdown support
-- Password protection
-- Support for multiple pages
-- Publish individual pages
-- Images are resized to a specified size during upload
+- password protection
+- support for multiple pages
+- publish individual pages
+- resize specified size during upload
 
 ## Dependencies
 
@@ -16,7 +16,6 @@ micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool
 - PHP7 GD extension
 - Apache or any other web server
 
-# Installation and usage
 
 # Installation and usage
 
