@@ -18,31 +18,11 @@ micro.sth stands for _micro something_ or _micro stash_. It is a minimalist tool
 
 # Installation and usage
 
-1. Use the `git clone https://gitlab.com/dmpop/microsth.git` command to fetch micro.sth.
+# Installation and usage
 
-2. Open the _microsth/config.php_ file and edit the default values.
+The [From Draft to EPUB](https://dmpop.gumroad.com/l/from-draft-to-epub) book provides detailed instructions on installing and using microsth.
 
-3. Save the changes and close the file. Upload the entire _microsth_ folder to the document directory of a web server.
-
-## Working with pages
-
-When you open micro.sth for the first time, it automatically creates the default page specified in the _config.php_ file and an accompanying _.md_ file in the _content_ directory. For example, the default value of the `$first_page` variable is set to _Home_. When you open micro.sth, it creates the **Home** page and the _content/Home.md_ file.
-
-You can add as many pages as you need, and there are two ways to add a page:
-
-1. Enter the desired page name into the **Page name** field and press the **Create** button.
-
-2. Create an _.md_ file directly in the _content_ directory.
-
-Keep in mind that page names are case-sensitive.
-
-How you choose to use pages is up to you. For example, you might want to create a separate page for each year (2020, 2019, 2018, and so on). Alternatively, you can create pages for specific types of content (for example, links, quotes, snippets. etc.) or different kinds of activities (for example, travel, hacking, photography, etc.).
-
-### Publish pages
-
-If you enabled password protection, you can make individual pages publicly available. To do this, open the desired page for editing and press the **Publish** button. You can then access the page by pointing the browser the direct link _https://127.0.0.1/microsth/pub.php?page=PAGENAME_ (where _PAGENAME_ is the actual name of the published page). To unpublish a published page, use the **Unpublish** button on the edit page.
-
-Use the **Trash** button to remove the currently viewed page. Keep in mind that this doesn't delete the page but moves it to the _trash_ directory. All trashed pages are deleted only when the limit specified in the _config.php_ file (the value of the `$trash_limit` setting) is exceeded.
+<img src="https://tokyoma.de/bookcovers/from-draft-to-epub.jpg" title="From Draft to EPUB book" width="200"/>
 
 ## Problems?
 
