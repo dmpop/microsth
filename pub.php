@@ -45,7 +45,7 @@ include('config.php');
 	if (isset($_GET["page"])) {
 		$page = "content/pub/" . $_GET["page"] . ".md";
 	}
-	if (($handle = fopen($page, "r")) !== FALSE) {
+	if (file_exists($page)) {
 		$text = file_get_contents($page);
 		$Parsedown = new Parsedown();
 		echo $Parsedown->text($text);

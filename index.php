@@ -149,7 +149,7 @@ if ($protect) {
 		</form>
 	</div>
 	<?php
-	if (($handle = fopen($page_path, "r")) !== FALSE) {
+	if (file_exists($page_path)) {
 		$text = file_get_contents($page_path);
 		$Parsedown = new Parsedown();
 		echo $Parsedown->text($text);
