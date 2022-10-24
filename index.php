@@ -28,6 +28,8 @@ if ($protect) {
 	<link rel="shortcut icon" href="favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/water.css" />
+	<link rel="stylesheet" href="css/popup.css">
+	<script src="js/popup.js"></script>
 	<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/default.min.css">
 	<script src="//unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script>
 	<script>
@@ -100,20 +102,30 @@ if ($protect) {
 	}
 	if (isset($_POST['newpage'])) {
 		$pagename = $_POST["pagename"];
-		$url = "index.php?page=" . $pagename;
-		if (!file_exists("content/pages/" . $pagename . ".md")) {
-			file_put_contents("content/pages/" . $pagename . ".md", "# " . $pagename);
-			header("Location: $url");
+		if (!($pagename)) {
+			echo '<script>
+			popup("Something went wrong");
+			</script>';
 		} else {
-			header("Location: $url");
+			$url = "index.php?page=" . $pagename;
+			if (!file_exists("content/pages/" . $pagename . ".md")) {
+				file_put_contents("content/pages/" . $pagename . ".md", "# " . $pagename);
+				header("Location: $url");
+			}
 		}
 	}
 	if (isset($_POST["rename"])) {
 		$page_path = file_get_contents('.path');
 		$pagename = $_POST["pagename"];
-		rename($page_path, "content/pages/" . $pagename . ".md");
-		$url = "index.php?page=" . $pagename;
-		header("Location: $url");
+		if (!($pagename)) {
+			echo '<script>
+			popup("Something went wrong");
+			</script>';
+		} else {
+			rename($page_path, "content/pages/" . $pagename . ".md");
+			$url = "index.php?page=" . $pagename;
+			header("Location: $url");
+		}
 	};
 	if (isset($_POST['archive'])) {
 		$page_path = file_get_contents('.path');

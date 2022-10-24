@@ -50,9 +50,9 @@ if ($protect) {
 		$page_path = file_get_contents('.path');
 		$data = $_POST["text"];
 		file_put_contents($page_path, $data);
-		echo "<script>";
-		echo 'popup("Changes have been saved");';
-		echo "</script>";
+		echo '<script>
+			popup("Changes have been saved");
+			</script>';
 	};
 	?>
 	<div style="text-align: center;">
@@ -64,13 +64,13 @@ if ($protect) {
 		if (isset($_POST['publish'])) {
 			$page_path = file_get_contents('.path');
 			if (!copy($page_path, "content/pub/" . basename($page_path))) {
-				echo "<script>";
-				echo 'popup("Failed to publish "' . basename($page_path) . '");';
-				echo "</script>";
+				echo '<script>
+				popup("Failed to publish "' . basename($page_path) . '");
+				</script>';
 			} else {
-				echo "<script>";
-				echo 'popup("Page has been published");';
-				echo "</script>";
+				echo '<script>
+				popup("Page has been published");
+				</script>';
 			}
 		}
 		?>
@@ -79,16 +79,16 @@ if ($protect) {
 			$page_path = file_get_contents('.path');
 			if (isset($_POST['unpublish'])) {
 				unlink("content/pub/" . basename($page_path));
-				echo "<script>";
-				echo 'popup("Page has been unpublished");';
-				echo "</script>";
+				echo '<script>
+				popup("Page has been unpublished");
+				</script>';
 			}
 			if (isset($_POST['update'])) {
 				unlink("content/pub/" . basename($page_path));
 				copy($page_path, "content/pub/" . basename($page_path));
-				echo "<script>";
-				echo 'popup("Page has been updated");';
-				echo "</script>";
+				echo '<script>
+				popup("Page has been updated");
+				</script>';
 			}
 			if (!file_exists("content/pub/" . basename($page_path))) {
 				echo '<input style="display: inline;" type="submit" name="publish" value="Publish" />';
@@ -118,9 +118,9 @@ if ($protect) {
 					echo "</script>";
 					$handle->clean();
 				} else {
-					echo "<script>";
-					echo 'popup("Error: ' . $handle->error . ')";';
-					echo "</script>";
+					'<script>
+					popup("Error: ' . $handle->error . ')"
+					</script>';
 				}
 			}
 		}
