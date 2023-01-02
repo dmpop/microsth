@@ -65,6 +65,9 @@ if ($protect) {
 	if (!file_exists("content/pages")) {
 		mkdir("content/pages", 0755, true);
 	}
+	if (!file_exists("content/pages/" . $first_page . ".md")) {
+		file_put_contents("content/pages/" . $first_page . ".md", "# Home");
+	}
 	if (!file_exists("content/pub")) {
 		mkdir("content/pub", 0755, true);
 	}
@@ -84,6 +87,7 @@ if ($protect) {
 	if (!file_exists("content/img")) {
 		mkdir("content/img", 0755, true);
 	}
+
 	if (isset($_GET["page"])) {
 		$page = $_GET["page"];
 		file_put_contents(".page", $page);
